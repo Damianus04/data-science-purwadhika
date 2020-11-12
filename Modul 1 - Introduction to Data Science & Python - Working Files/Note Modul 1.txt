@@ -1,0 +1,4 @@
+- Interpreter programming language -> program akan langsung mengeksekusi setiap baris kode dari atas ke bawah
+- case sensitive -> "A" beda dengan "a"
+- tidak butuh semicolon
+- Tabulasi - indentasi
