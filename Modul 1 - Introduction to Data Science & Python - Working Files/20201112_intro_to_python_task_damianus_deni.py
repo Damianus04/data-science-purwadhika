@@ -49,15 +49,16 @@
 
 # Output:
 # Usia ayah saat ini adalah ... tahun dan usia budi saat ini adalah ... tahun
- 
+
 total_usia = int(input("total_usia: "))
 rasio_dulu = int(input("rasio dulu: "))
 periode_lalu = int(input("masukkan periode ke belakang: "))
-rasio_sekarang = int(input("masukkan rasio sekarang"))
+rasio_sekarang = int(input("masukkan rasio sekarang: "))
 
 # usia_budi = int((total_usia + (rasio_usia * periode_lalu)) / 7)
 # usia_ayah = int(total_usia - usia_budi)
-usia_ayah = int((rasio_dulu * (total_usia - periode_lalu) + periode_lalu)/(rasio_sekarang + rasio_dulu))
+usia_ayah = int((rasio_dulu * (total_usia - periode_lalu) +
+                 periode_lalu)/(rasio_sekarang + rasio_dulu))
 usia_budi = int(total_usia - usia_ayah)
 
 

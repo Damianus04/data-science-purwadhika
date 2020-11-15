@@ -40,6 +40,7 @@
 # Case 6
 
 
+# 20201112 - FIRST TASK
 # Task 1
 # Joni memelihara ayam dan kambing, jumlah ayam dan kambing joni 13,
 # jumlah kaki ayam dan kambing joni 32
@@ -157,7 +158,7 @@
 # print(nama.count('j'))
 
 
-# 20201112
+# 20201112 - SECOND TASK
 # TASK 1
 # Input: jumlah hari:
 # output: ... tahun ... bulan .. minggu .. hari
@@ -211,6 +212,17 @@
 # masukkan huruf vokal: o
 # output: Horo ono odoloh horo robo
 
+# text = str(input("input your text: "))
+# vocal_to_replace = str(input("type replacement character: ")).lower()
+# vocal_characters = ["a", "i", "u", "e", "o", "A", "I", "U", "E", "O"]
+
+# for character in vocal_characters:
+#     if character in text:
+#         text = text.replace(character, vocal_to_replace)
+
+# print(text)
+
+
 # TASK 4: BMI Calculator
 # mass = float(input("input body mass: "))
 # height = float(input("input body height: "))
@@ -228,6 +240,41 @@
 # BMI >= 40 ==> obesitas
 
 # Tinggi badan anda ... m dan massa anda ... kg, BMI anda ... dan anda termasuk ...
+
+# try:
+#     mass = float(input("input body mass: "))
+#     height = float(input("input body height: "))
+
+#     if (1 <= mass <= 200) and (1 <= height <= 300):
+#         height_m = height/100
+#         BMI = round(mass / height_m ** 2, 2)
+#         BMI_status = "not calculated"
+
+#         if 0 < BMI < 18.5:
+#             BMI_status = "less ideal"
+#         elif 18.5 <= BMI <= 24.9:
+#             BMI_status = "ideal"
+#         elif 25.0 <= BMI <= 29.9:
+#             BMI_status = "overweight"
+#         elif 30.0 <= BMI <= 39.9:
+#             BMI_status = "very overweight"
+#         elif BMI >= 40:
+#             BMI_status = "obecity disorder"
+
+#         print(
+#             f"Your height is {height_m} m, your body mass is {mass}, your BMI is {BMI}, and you are {BMI_status}")
+#     elif mass > 200:
+#         print("body mass should be under 200 kg")
+#     elif height > 300:
+#         print("body height should be under 300 cm or 3 meter")
+#     else:
+#         print("mass and height cannot be lower than or similar to 1")
+
+# except ValueError:
+#     print("mass or weight must be number, cannot be string")
+# except ZeroDivisionError:
+#     print("zero division error, body mass and height cannot be lower than 1")
+
 
 # TASK 5: Score value
 # Input:
@@ -250,6 +297,37 @@
 
 # output:
 # nilai anda ... dan anda ... (sesuai kondisi)
+
+
+try:
+    score = float(input("input your score: "))
+    grade = "not defined"
+
+    if 0 <= score <= 100:
+        if 90 < score <= 100:
+            grade = "Grade A"
+        elif 85 < score <= 90:
+            grade = "Grade A-"
+        elif 80 < score <= 85:
+            grade = "Grade B+"
+        elif 75 < score <= 80:
+            grade = "Grade B-"
+        elif 70 < score <= 75:
+            grade = "Grade C"
+        elif 65 < score <= 70:
+            grade = "Grade D"
+        elif 0 <= score <= 65:
+            grade = "unqualified Grade"
+
+        print(f"your score is {score} and your grade is {grade}")
+    elif score > 100:
+        print("score cannot be greater than 100")
+    elif score < 0:
+        print("score cannot be lower than 0")
+
+except ValueError:
+    print("your input should be score number between 0 - 100")
+
 
 # email ke khumaeni@purwadhika.co.id
 # deadline: senin jam 12 siang
@@ -286,3 +364,41 @@
 #     print(f"IMT is {IMT} your body is very overweight")
 # else:
 #     print(f"IMT is {IMT} you have obecity disorder")
+
+
+# ERROR & EXCEPTION HANDLING
+# try:
+#     inp = input()
+#     print("Press ctrl+c or interrup the kernel")
+# except KeyboardInterrupt:
+#     print("Caught KeyboardInterrupt")
+# else:
+#     print('no exception occured')
+
+# Zero division
+# try:
+#     a = 100/2
+#     print(a)
+# except ZeroDivisionError:
+#     print("Zero division exception raised.")
+# else:
+#     print("success, no error")
+
+# Key error
+# try:
+#     a = {1: 'a', 2: 'b', 3: 'c'}
+#     print(a[3])
+# except LookupError:
+#     print("Key error exception raised")
+# else:
+#     print("success, no error")
+
+# Value error
+# try:
+#     input = float(input('input number: '))
+# except ValueError:
+#     print("could not convert string to float")
+# else:
+#     print('success, no error')
+
+# cek
