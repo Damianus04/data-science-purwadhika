@@ -102,13 +102,13 @@ try:
             BMI_status = "obecity disorder"
 
         print(
-            f"Your height is {height_m} m, your body mass is {mass}, your BMI is {BMI}, and you are {BMI_status}")
+            f"Your height is {height_m} m, your body mass is {mass} kg, your BMI is {BMI}, and you are {BMI_status}")
     elif mass > 200:
         print("body mass should be under 200 kg")
     elif height > 300:
         print("body height should be under 300 cm or 3 meter")
     else:
-        print("mass and height cannot be lower than or similar to 1")
+        print("mass and height cannot be lower than 1")
 
 except ValueError:
     print("mass or weight must be number, cannot be string")
@@ -148,7 +148,7 @@ try:
         elif 85 < score <= 90:
             grade = "Grade A-"
         elif 80 < score <= 85:
-            grade = "Grade B+"
+            grade = "Grade B"
         elif 75 < score <= 80:
             grade = "Grade B-"
         elif 70 < score <= 75:
