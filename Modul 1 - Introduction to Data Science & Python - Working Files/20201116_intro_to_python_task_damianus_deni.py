@@ -1,3 +1,5 @@
+'''
+print("TASK 1")
 # TASK 1
 # Input: jumlah hari:
 # output: ... tahun ... bulan .. minggu .. hari
@@ -6,75 +8,102 @@
 # 1 tahun = 365 hari
 # 1 bulan = 30 hari
 
-days = int(input("please input number of days: "))
 n_year = 365
 n_month = 30
 n_week = 7
 
-year = days // n_year  # 35 hari
-days_mod = days % n_year
-# print(days_mod)
+try:
+    days = int(input("please input number of days: "))
 
-month = days_mod // n_month
-days_mod = days_mod % n_month
-# print(days_mod)
+    if days >= 0:
+        year = days // n_year  # 35 hari
+        days_mod = days % n_year
+        # print(days_mod)
 
-week = days_mod // n_week
-week_mod = days_mod % n_week
-# print(days_mod)
+        month = days_mod // n_month
+        days_mod = days_mod % n_month
+        # print(days_mod)
 
-day = int(week_mod)
+        week = days_mod // n_week
+        week_mod = days_mod % n_week
+        # print(days_mod)
 
-print(year, "year,", month, "month,", week, "week", day, "day.")
+        day = int(week_mod)
+
+        print(year, "year,", month, "month,", week, "week", day, "day.")
+    else:
+        print('number cannot be lower than 0')
+except ValueError:
+    print("input should be number")
+
+
+print("\n")
+print("#" * 100)
+'''
 
 # Alternative with "0"
-days = int(input("please input number of days: "))
 n_year = 365
 n_month = 30
 n_week = 7
 
-year = days // n_year  # 35 hari
-days_mod = days % n_year
-# print(days_mod)
+try:
+    days = int(input("please input number of days: "))
 
-month = days_mod // n_month
-days_mod = days_mod % n_month
-# print(days_mod)
+    if days >= 0:
+        year = days // n_year  # 35 hari
+        days_mod = days % n_year
+        # print(days_mod)
 
-week = days_mod // n_week
-week_mod = days_mod % n_week
-# print(days_mod)
+        month = days_mod // n_month
+        days_mod = days_mod % n_month
+        # print(days_mod)
 
-day = int(week_mod)
+        week = days_mod // n_week
+        week_mod = days_mod % n_week
+        # print(days_mod)
+
+        day = int(week_mod)
+
+        time = []
+
+        if year < 10:
+            year_0 = "0" + str(year)
+            time.append(year_0)
+        else:
+            time.append(year)
+
+        if month < 10:
+            day_0 = "0" + str(month)
+            time.append(day_0)
+        else:
+            time.append(day)
+
+        if week < 10:
+            week_0 = "0" + str(week)
+            time.append(week_0)
+        else:
+            time.append(week)
+
+        if day < 10:
+            day_0 = "0" + str(day)
+            time.append(day_0)
+        else:
+            time.append(day)
+
+        print(time[0], "year,", time[1], "month,",
+              time[2], "week", time[3], "day.")
+    else:
+        print('number cannot be lower than 0')
+
+except ValueError:
+    print("input should be number")
+
+print("#"*100)
 
 
-time = []
-if year < 10:
-    year_0 = "0" + str(year)
-    time.append(year_0)
-else:
-    time.append(year)
-
-if month < 10:
-    day_0 = "0" + str(month)
-    time.append(day_0)
-else:
-    time.append(day)
-
-if week < 10:
-    week_0 = "0" + str(week)
-    time.append(week_0)
-else:
-    time.append(week)
-
-if day < 10:
-    day_0 = "0" + str(day)
-    time.append(day_0)
-else:
-    time.append(day)
-
-print(time[0], "year,", time[1], "month,", time[2], "week", time[3], "day.")
-
+'''
+##########################################################################################
+print("\n TASK 2")
 # TASK 2
 # Input:
 # masukkan kalimat:
@@ -86,30 +115,60 @@ print(time[0], "year,", time[1], "month,", time[2], "week", time[3], "day.")
 # masukkan karakter: a
 # output: 5
 
-# text = str(input("please input your text: "))
-# character = str(input("character to count: ")).lower()
+text = str(input("please input your text: "))
+character = str(input("character to count: ")).lower()
 
-# lower_text = text.lower()
-# result = lower_text.count(character)
-# print("number of", character, "is", result, "characters")
+lower_text = text.lower()
+result = lower_text.count(character)
+print("number of", character, "is", result, "characters")
 
+
+print("#" * 100)
+'''
+
+##########################################################################################
+print("\n TASK 3")
 # TASK 3
 # Input:
 # masukkan text: Hari ini adalah Hari Rabu
 # masukkan huruf vokal: o
 # output: Horo ono odoloh horo robo
 
-# text = str(input("input your text: "))
-# vocal_to_replace = str(input("type replacement character: ")).lower()
-# vocal_characters = ["a", "i", "u", "e", "o", "A", "I", "U", "E", "O"]
+try:
+    text = str(input("input your text: "))
+    vocal_to_replace = str(input("type replacement character: "))
+    vocal_characters = ["a", "i", "u", "e", "o", "A", "I", "U", "E", "O"]
 
-# for character in vocal_characters:
-#     if character in text:
-#         text = text.replace(character, vocal_to_replace)
+    for character in vocal_characters:
+        if character in text:
+            text = text.replace(character, vocal_to_replace)
 
-# print(text)
+    print(text)
+    print("#" * 100)
+except:
+    print("input should be text only")
 
 
+# alternative
+text = input("masukkan text: ")
+vokal = input("masukkan hufu vokal: ")
+
+text = text.replace('a', vokal.lower())
+text = text.replace('i', vokal.lower())
+text = text.replace('u', vokal.lower())
+text = text.replace('e', vokal.lower())
+text = text.replace('o', vokal.lower())
+text = text.replace('A', vokal.upper())
+text = text.replace('I', vokal.upper())
+text = text.replace('U', vokal.upper())
+text = text.replace('E', vokal.upper())
+text = text.replace('O', vokal.upper())
+
+print(text)
+
+
+##########################################################################################
+print("\n TASK 4")
 # TASK 4: BMI Calculator
 # mass = float(input("input body mass: "))
 # height = float(input("input body height: "))
@@ -129,41 +188,46 @@ print(time[0], "year,", time[1], "month,", time[2], "week", time[3], "day.")
 # Tinggi badan anda ... m dan massa anda ... kg, BMI anda ... dan anda termasuk ...
 
 
-# try:
-#     mass = float(input("input body mass: "))
-#     height = float(input("input body height: "))
+try:
+    mass = int(input("input body mass: "))
+    height = int(input("input body height: "))
 
-#     if (1 <= mass <= 200) and (1 <= height <= 300):
-#         height_m = height/100
-#         BMI = round(mass / height_m ** 2, 2)
-#         BMI_status = "not calculated"
+    if (1 <= mass <= 200) and (1 <= height <= 300):
+        height_m = height/100
+        BMI = round(mass / height_m ** 2, 2)
+        BMI_status = "not calculated"
 
-#         if 0 < BMI < 18.5:
-#             BMI_status = "less ideal"
-#         elif 18.5 <= BMI <= 24.9:
-#             BMI_status = "ideal"
-#         elif 25.0 <= BMI <= 29.9:
-#             BMI_status = "overweight"
-#         elif 30.0 <= BMI <= 39.9:
-#             BMI_status = "very overweight"
-#         elif BMI >= 40:
-#             BMI_status = "obecity disorder"
+        if 0 < BMI < 18.5:
+            BMI_status = "less ideal"
+        elif 18.5 <= BMI <= 24.9:
+            BMI_status = "ideal"
+        elif 25.0 <= BMI <= 29.9:
+            BMI_status = "overweight"
+        elif 30.0 <= BMI <= 39.9:
+            BMI_status = "very overweight"
+        elif BMI >= 40:
+            BMI_status = "obecity disorder"
 
-#         print(
-#             f"Your height is {height_m} m, your body mass is {mass} kg, your BMI is {BMI}, and you are {BMI_status}")
-#     elif mass > 200:
-#         print("body mass should be under 200 kg")
-#     elif height > 300:
-#         print("body height should be under 300 cm or 3 meter")
-#     else:
-#         print("mass and height cannot be lower than 1")
+        print(
+            f"Your height is {height_m} m, your body mass is {mass} kg, your BMI is {BMI}, and you are {BMI_status}")
+    elif mass > 200:
+        print("body mass should be under 200 kg")
+    elif height > 300:
+        print("body height should be under 300 cm or 3 meter")
+    else:
+        print("mass and height cannot be lower than 1")
 
-# except ValueError:
-#     print("mass or weight must be number, cannot be string")
-# except ZeroDivisionError:
-#     print("zero division error, body mass and height cannot be lower than 1")
+except ValueError:
+    print("mass or weight must be integer number, cannot be string or decimal")
+except ZeroDivisionError:
+    print("zero division error, body mass and height cannot be lower than 1")
+
+print("#" * 100)
 
 
+'''
+##########################################################################################
+print("\n TASK 5")
 # TASK 5: Score value
 # Input:
 # Masukkan nilai: ...
@@ -186,31 +250,32 @@ print(time[0], "year,", time[1], "month,", time[2], "week", time[3], "day.")
 # output:
 # nilai anda ... dan anda ... (sesuai kondisi)
 
-# try:
-#     score = float(input("input your score: "))
-#     grade = "not defined"
+try:
+    score = float(input("input your score: "))
+    grade = "not defined"
 
-#     if 0 <= score <= 100:
-#         if 90 < score <= 100:
-#             grade = "Grade A"
-#         elif 85 < score <= 90:
-#             grade = "Grade A-"
-#         elif 80 < score <= 85:
-#             grade = "Grade B"
-#         elif 75 < score <= 80:
-#             grade = "Grade B-"
-#         elif 70 < score <= 75:
-#             grade = "Grade C"
-#         elif 65 < score <= 70:
-#             grade = "Grade D"
-#         elif 0 <= score <= 65:
-#             grade = "unqualified Grade"
+    if 0 <= score <= 100:
+        if 90 < score <= 100:
+            grade = "Grade A"
+        elif 85 < score <= 90:
+            grade = "Grade A-"
+        elif 80 < score <= 85:
+            grade = "Grade B"
+        elif 75 < score <= 80:
+            grade = "Grade B-"
+        elif 70 < score <= 75:
+            grade = "Grade C"
+        elif 65 < score <= 70:
+            grade = "Grade D"
+        elif 0 <= score <= 65:
+            grade = "unqualified Grade"
 
-#         print(f"your score is {score} and your grade is {grade}")
-#     elif score > 100:
-#         print("score cannot be greater than 100")
-#     elif score < 0:
-#         print("score cannot be lower than 0")
+        print(f"your score is {score} and your grade is {grade}")
+    elif score > 100:
+        print("score cannot be greater than 100")
+    elif score < 0:
+        print("score cannot be lower than 0")
 
-# except ValueError:
-#     print("your input should be score number between 0 - 100")
+except ValueError:
+    print("your input should be score number between 0 - 100")
+'''

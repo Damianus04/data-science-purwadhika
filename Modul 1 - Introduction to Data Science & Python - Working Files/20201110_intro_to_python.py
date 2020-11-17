@@ -1,3 +1,5 @@
+#
+
 # # Case 1
 # x, y, z = 4, 3, 2
 # w = (((x+y) * z)/(x*y)) ** 2
@@ -299,34 +301,34 @@
 # nilai anda ... dan anda ... (sesuai kondisi)
 
 
-try:
-    score = float(input("input your score: "))
-    grade = "not defined"
+# try:
+#     score = float(input("input your score: "))
+#     grade = "not defined"
 
-    if 0 <= score <= 100:
-        if 90 < score <= 100:
-            grade = "Grade A"
-        elif 85 < score <= 90:
-            grade = "Grade A-"
-        elif 80 < score <= 85:
-            grade = "Grade B+"
-        elif 75 < score <= 80:
-            grade = "Grade B-"
-        elif 70 < score <= 75:
-            grade = "Grade C"
-        elif 65 < score <= 70:
-            grade = "Grade D"
-        elif 0 <= score <= 65:
-            grade = "unqualified Grade"
+#     if 0 <= score <= 100:
+#         if 90 < score <= 100:
+#             grade = "Grade A"
+#         elif 85 < score <= 90:
+#             grade = "Grade A-"
+#         elif 80 < score <= 85:
+#             grade = "Grade B+"
+#         elif 75 < score <= 80:
+#             grade = "Grade B-"
+#         elif 70 < score <= 75:
+#             grade = "Grade C"
+#         elif 65 < score <= 70:
+#             grade = "Grade D"
+#         elif 0 <= score <= 65:
+#             grade = "unqualified Grade"
 
-        print(f"your score is {score} and your grade is {grade}")
-    elif score > 100:
-        print("score cannot be greater than 100")
-    elif score < 0:
-        print("score cannot be lower than 0")
+#         print(f"your score is {score} and your grade is {grade}")
+#     elif score > 100:
+#         print("score cannot be greater than 100")
+#     elif score < 0:
+#         print("score cannot be lower than 0")
 
-except ValueError:
-    print("your input should be score number between 0 - 100")
+# except ValueError:
+#     print("your input should be score number between 0 - 100")
 
 
 # email ke khumaeni@purwadhika.co.id
@@ -402,3 +404,82 @@ except ValueError:
 #     print('success, no error')
 
 # cek
+
+
+# Looping
+# while Looping
+# for looping
+
+# x = 0
+# while x < 10:
+#     print(x)
+#     x += 1
+
+# angka = 1 # define variable yang akan dilakukan pengecekan kondisi
+# while angka < 10: # proses looping akan dihentikan, ketika kondisi bernilai FALSE
+#     print(angka)
+#     angka = angka + 1 #increment => penambahan 1, kita lakukan manual
+
+# # Tahapan looping => iterasi => iterable object
+# iterasi ke-1: angka = 1
+# print(1)
+
+# iterasi ke-1: angka = 2
+# print(2)
+
+# iterasi ke-1: angka = 3
+# print(3)
+# ...
+# ...
+
+# iterasi ke-8: angka = 8
+# print(8)
+
+# iterasi ke-9: angka = 9
+# print(9)
+
+# iterasi ke-10: angka = 10
+
+
+# angka = "5987"
+# tebak = ""
+
+# while tebak != angka:
+#     tebak = input("masukkan angka: ")
+#     if tebak == angka:
+#         print("Tebakan Berhasil")
+#     else:
+#         print("tebakan salah")
+
+
+# password = 'andi1234'
+# login = ""
+# coba = 1
+# batas_coba = 5
+
+# while login != password and coba <= batas_coba:
+#     if coba <= batas_coba:
+#         login = input("masukkan password Anda: ")
+#         if login != password and coba < batas_coba:
+#             coba += 1
+#             print(f"password Salah, silakan coba lagi. Percobaan ke-{coba}")
+#         elif login != password and coba == batas_coba:
+#             coba += 1
+#             print(f"password salah dan kesempatan habis")
+#         else:
+#             print("password benar, anda berhasil login")
+
+
+# latihan 1
+# 1
+# 2 2
+# 3 3 3
+# 4 4 4 4
+# 5 5 5 5 5
+
+# latihan 2
+# 1 1 1 1 1
+# 2 2 2 2
+# 3 3 3
+# 4 4
+# 5
