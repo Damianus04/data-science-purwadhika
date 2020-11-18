@@ -409,6 +409,15 @@
 # Looping
 # while Looping
 # for looping
+# sama seperti if, looping bisa nested
+
+# WHILE LOOP
+# looping memiliki karakter yang mirip dengan IF
+# karena sama-masa membutuhkan conditional statement (kondisi yang bernilai TRUE atau FALSE)
+# IF => program akan dijalankan hanya SATU kali (Kondisi bernilai TRUE)
+# Looping => program akan dijalankan beberapa kali/berulang kali/beberpa iterasi (selama kondisi bernilai TRUE)
+
+# Looping digunakan => ketika ingin menjalankan program yang sama berulang kali
 
 # x = 0
 # while x < 10:
@@ -440,34 +449,209 @@
 
 # iterasi ke-10: angka = 10
 
-
-# angka = "5987"
+# Tebak Angka
+# angka = 598
 # tebak = ""
 
 # while tebak != angka:
-#     tebak = input("masukkan angka: ")
+#     tebak = int(input("masukkan angka: "))
 #     if tebak == angka:
 #         print("Tebakan Berhasil")
+#     elif tebak > angka:
+#         print("Angka lebih kecil dari tebakan Anda")
 #     else:
-#         print("tebakan salah")
+#         print("Angka lebih besar dari tebakan Anda")
+
+'''
+password = 'andi1234'
+login = ""
+coba = 1
+batas_coba = 5
+
+while login != password and coba <= batas_coba:
+    if coba <= batas_coba:
+        login = input("masukkan password Anda: ")
+        if login != password and coba < batas_coba:
+            coba += 1
+            print(f"password Salah, silakan coba lagi. Percobaan ke-{coba}")
+        elif login != password and coba == batas_coba:
+            coba += 1
+            print(f"password salah dan kesempatan habis")
+        else:
+            print("password benar, anda berhasil login")
 
 
-# password = 'andi1234'
-# login = ""
-# coba = 1
-# batas_coba = 5
 
-# while login != password and coba <= batas_coba:
-#     if coba <= batas_coba:
-#         login = input("masukkan password Anda: ")
-#         if login != password and coba < batas_coba:
-#             coba += 1
-#             print(f"password Salah, silakan coba lagi. Percobaan ke-{coba}")
-#         elif login != password and coba == batas_coba:
-#             coba += 1
-#             print(f"password salah dan kesempatan habis")
-#         else:
-#             print("password benar, anda berhasil login")
+iterasi = 1  # untuk while, harus mendefine kondisi awal (inisiasi looping)
+while iterasi < 11:
+    print('Selamat Datang')
+    iterasi += 1  # buat increment/decrement manual -> penambahan atau pengurangan
+print("Selamat Datang")
+
+iterasi = 5
+while iterasi > 0:
+    print((str(iterasi) + " ") * iterasi)
+    iterasi -= 1
+
+# 5 5 5 5 5
+# 4 4 4 4
+# 3 3 3
+# 2 2
+# 1
+
+# inisiasi awal
+# iterasi ke-1 : angka = 5
+# - pengecekan kondisi while (karena TRUE, program akan dijalankan)
+
+# '5 ' * 5
+# 5 5 5 5 5
+
+# = masuk ke decrement manual
+# angka = 5 - 1
+# angka = 4
+
+# iterasi ke-2 : angka = 4
+# - pengecekan kondisi while (karena TRUE, program akan dijalankan)
+
+# '4 ' * 4
+# 4 4 4 4
+
+# = masuk ke decrement manual
+# angka = 4 - 1
+# angka = 3
+
+# iterasi ke-3 : angka = 3
+# - pengecekan kondisi while (karena TRUE, program akan dijalankan)
+
+# '3 ' * 3
+# 3 3 3
+
+# = masuk ke decrement manual
+# angka = 3 - 1
+# angka = 2
+
+# iterasi ke-4 : angka = 2
+# - pengecekan kondisi while (karena TRUE, program akan dijalankan)
+
+# '2 ' * 2
+# 2 2
+
+# = masuk ke decrement manual
+# angka = 2 - 1
+# angka = 1
+
+# iterasi ke-5 : angka = 1
+# - pengecekan kondisi while (karena TRUE, program akan dijalankan)
+
+# '1 ' * 1
+# 1
+
+# = masuk ke decrement manual
+# angka = 1 - 1
+# angka = 0
+
+# iterasi ke-6 : angka = 0
+# - pengecekan kondisi while (karena FALSE, program akan berhenti)
+
+
+# FOR LOOP
+# increment/decrement pada for loop dapat terjadi otomatis
+# inisiasi awal looping tidak harus men define variable
+
+# Basic Syntax
+# for ...variable... in ... iterable object/data...: #looping akan dijalankan hingga seluruh data iterable diakses
+#     ...program... # program akan dijalankan selama data iterable diakses (TRUE)
+
+# iterable object/data -> data/object yang isinya lebih dari 1 -> sebagian besar dapat dilakukan indexing
+
+# for i in angka:
+#     print(i)
+#     for j in angka:
+#         print(j)
+
+# angka = range(10)
+# print(angka)
+# range mirip dengan indexing dan berisi angka/numerik
+# angka berupa integer
+# range(START, END, STEP)
+
+# range(10) # ketika di dalam range, angka hanya 1, angka tersebut adalah STOP
+# default START = 0
+# default STEP = 1
+
+# range(1, 10) # ketika di dalam range, angka hanya 2, angka tersebut adalah START dan STOP
+# default START dan STOP mengikuti aturan inclusive & exclusive
+# default STEP = 1
+
+for i in range(10):
+    print(i)
+
+print('=' * 50)
+
+for i in range(3, 10):
+    print(i)
+
+
+# for secara natural dengan sendirinya bisa mendapatkan kondisi false (menghentikan proses looping) == limited looping
+# while tidak bisa mendapatkan kondisi false kecuali kita tentukan -> bisa unlimited looping
+for i in range(1, 21, 2):  # ketika step increment, Exclusive (end - 1)
+    print(i)
+
+for i in range(10, 0, -1):  # ketika step decrement, Exclusive (end + 1)
+    print(i)
+'''
+
+'''
+# syntax tambahan dalam looping
+# BREAK -> menghentikan proses looping secara paksa
+for i in range(10):
+    print(i)
+
+print('='*50)
+
+for i in range(10):
+    print(i)
+    if i == 7:
+        break
+
+hari = "Selasa"
+for i in hari:
+    print(i)
+
+print("-"*50)
+hari = "Selasa"
+i = 0
+while i < len(hari):
+    print(hari[i])
+    i += 1
+
+
+# CONTINUE -. biasanya dipasangkan dengan if statement, menghentikan sementara proses looping (tahapan-iterasi langsung ke iterasi berikutnya)
+for i in range(10):
+    print(i)
+    if i == 5:
+        break
+
+print("-"*50)
+for i in range(10):
+    if i == 5:
+        continue  # ketika i = 5 akan di skip, lanjut ke iterasi berikutnya
+    print(i)
+    print(f"ini adalah angka ke {i}")
+'''
+
+# ELSE
+# perintah/program di bawah else akan dijalankan ketika looping berhenti secara natural
+angka = 25
+for i in range(20):
+    print(i)
+    if i == angka:
+        print("Data ditemukan")
+        break
+    else:
+        print("Data tidak ditemukan !!!!")
+
+print("Perintah/program di luar looping")
 
 
 # latihan 1
@@ -477,9 +661,76 @@
 # 4 4 4 4
 # 5 5 5 5 5
 
-# latihan 2
+# latihan 2a
 # 1 1 1 1 1
 # 2 2 2 2
 # 3 3 3
 # 4 4
 # 5
+
+# latihan 2b
+# 1
+# 1 2
+# 1 2 3
+# 1 2 3 4
+# 1 2 3 4 5
+
+# latihan 3
+# 5
+# 5 4
+# 5 4 3
+# 5 4 3 2
+# 5 4 3 2 1
+
+# latihan 4
+# 1 1 1 1 1
+# 2 2 2 2
+# 3 3 3
+# 4 4
+# 5
+
+# latihan 5
+# 1 2 3 4 5
+# 1 2 3 4
+# 1 2 3
+# 1 2
+# 1
+
+# latihan 6
+# 5 4 3 2 1
+# 5 4 3 2
+# 5 4 3
+# 5 4
+# 5
+
+# latihan 7
+#         *
+#       * * *
+#     * * * * *
+#   * * * * * * *
+# * * * * * * * * *
+# * * * * * * * * *
+#   * * * * * * *
+#     * * * * *
+#       * * *
+#         *
+
+# kirim email ke khumaeni@purwadhika.com
+
+# 1
+x = 0
+while x < 5:
+    x += 1
+    x_string = str(x) + " "
+    print(x_string * x)
+
+print("-" * 100)
+
+# 2
+x = 6
+y = 0
+while x > 0:
+    x -= 1
+    y += 1
+    y_string = str(y) + " "
+    print(y_string * x)
