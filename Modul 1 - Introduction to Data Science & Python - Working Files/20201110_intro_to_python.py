@@ -638,7 +638,7 @@ for i in range(10):
         continue  # ketika i = 5 akan di skip, lanjut ke iterasi berikutnya
     print(i)
     print(f"ini adalah angka ke {i}")
-'''
+
 
 # ELSE
 # perintah/program di bawah else akan dijalankan ketika looping berhenti secara natural
@@ -734,3 +734,109 @@ while x > 0:
     y += 1
     y_string = str(y) + " "
     print(y_string * x)
+
+
+# STRING
+hari = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
+# print(hari.index('Kamis'))
+
+print(hari[1:3])  # akan mengakses index 1 sampai dengan index 2 (end - 1)
+print(hari[2:])  # akan mengakses index 2 sampai index terakhir (paling akhir)
+print(hari[:4])  # akan mengakses index paling awal sampai index ke-3 (end-1)
+print(hari[:])  # akan mengakses keseluruhan elemen, dengan STEP +1 (increment)
+# akan mengakses keseluruhan elemen, dengan STEP -1 (decrement)
+print(hari[::-1])
+
+
+# menambahkan data dengan append dan extend
+nama = ['andi', 'beni', 'doni']
+# nilai = [89, 90, 78]
+
+# nama.append(nilai)
+# print(nama)
+# nama.extend(nilai)
+# print(nama)
+hari.append('sunday')
+print(hari)
+
+# menambahkan data dengan insert
+hari.insert(3, 'wednesday')
+print(hari)
+
+hari[1] = 'selasa 2'
+print(hari)
+'''
+
+# menghapus data dengan remove
+hari = ["Senin", "Kamis", "Selasa", "Rabu",
+        "Kamis", "Jumat", "Sabtu", "Kamis", "Selasa"]
+print(hari)
+
+# hari.remove('Kamis')
+# print(hari)
+
+# hari.pop(4)
+# print(hari)
+
+for i in hari:
+    if i == "Kamis":
+        hari.remove("Kamis")
+print(hari)
+
+
+# TASK ASSIGNMENT
+'''
+- kelompok 2 - 3 orang
+- mini application
+- CRUD - Create, Read, Update, Delete
+
+aplikasi mini untuk data barang / elektronik / buah / atk / dll
+1. apps awal di run - akan meminta login (password)
+2. batas 4x
+3. jika salah password sampai 4x akan keluar aplikasi
+
+jika password benar: akan keluar menu
+
+--Menu--
+1. cetak isi daftar barang (read)
+2. menambahkan data barang (create)
+3. mengubah data barang (update)
+4. menghapus data barang (delete)
+5. exit (keluar apps)
+
+--kondisi (T&C)
+1. Read (cetak data)
+- jika tidak ada data, akan keluar notif: daftar barang masih kosong
+- jika ada data, akan menampilkan seluruh data barang
+
+2. Create (tambah data)
+- pengeceken jenis data, jika salah format: data yang anda masukkan salah
+- pengecekan duplikasi:
+jika data sudah ada sebelumnya, 
+keluar notifikasi:
+data sudah ada, apakah tetap akan disimpan? (Y/N)
+Y: keluar notif - data tersimpan --> data akan disimpan
+N: keluar notif - data tidak tersimpan
+- ketika data berhasil disimpan, keluar notif: data berhasil disimpan (jika tidak ada duplikasi)
+
+3. Update (ubah data)
+- program akan meminta user memasukkan data yang akan diupdate
+- jika data yang diminta user tidak ada, keluar notif: data barang tidak ada.
+- jika barang ada -> update datanya -> jeruk - jeruk bali
+- keluar notif: data terupdate/data berhasil diubah
+
+4. Delete (hapus data)
+- program akan meminta user memasukkan data yang akan dihapus
+- jika data yang diminta user tidak ada keluar notif: data barang tidak ada
+- jika barang ada -> hapus seluruh data yang sesuai dengan inputan user
+
+5. Exit
+- selama user belum memilih opsi ini, menu akan terus ditampilkan
+
+setelah melakukan proses CRUD (akan keluar mini menu yang memiliki 2 opsi)
+1. kembali ke menu utama
+2. ke menu awal (yang diakses)
+
+kirim ke email: khumaeni@purwadhika.com
+deadline: Selasa
+'''
