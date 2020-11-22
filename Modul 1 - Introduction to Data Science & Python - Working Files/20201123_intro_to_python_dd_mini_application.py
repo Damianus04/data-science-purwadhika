@@ -80,7 +80,8 @@ try:
                                     print("data format is incorrect")
                             elif input_item not in car_list:
                                 command = str(
-                                    input("\t\t---> Data is not registered.\n \t\tDo you want to add data?(Y/N): "))
+                                    input("\t\t---> Data is not registered.\n \t\tDo you want to add data?(Y/N): ")).upper()
+                                command = command.upper()
                                 if command == "Y":
                                     car_list.append(input_item)
                                     print(f"\t\t'item has been added'")
