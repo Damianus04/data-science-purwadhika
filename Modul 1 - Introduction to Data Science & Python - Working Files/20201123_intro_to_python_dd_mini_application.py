@@ -163,7 +163,9 @@ try:
                         print("-"*70)
 
                     system = str(
-                        input("do you want to continue?(yes/exit): "))
+                        input('''\t1. type any keyword to return to main menu
+\t2. type "exit" to quit application
+\t--->'''))
 except:
     print("\t\terror occurs")
 
