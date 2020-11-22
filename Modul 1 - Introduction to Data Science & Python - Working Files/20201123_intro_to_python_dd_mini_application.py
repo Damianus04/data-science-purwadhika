@@ -116,7 +116,7 @@ try:
                                 else:
                                     print("'data format is incorrect'")
                             else:
-                                print("\t\t'the item is not in the lis't")
+                                print("\t\t'the item is not in the list'")
                                 print("\t\t'please check your item in this list'")
                                 for n, i in enumerate(car_list):
                                     print(f"\t\t{n+1}. {i}")
@@ -131,21 +131,15 @@ try:
                             print('\t\tDELETE MENU')
                             input_item = str(
                                 input("\t\t---> Enter item name to delete: "))
-                            for i in car_list:
-                                if i == input_item:
-                                    car_list.remove(input_item)
-                                # index = car_list.index(input_item)
-                                # if type(input_item) == type(car_list[index]):
-                                #     car_list.remove(input_item)
-                                #     print(
-                                #         f"\t\t'-{input_item}- has been deleted'")
-                                #     for n, i in enumerate(car_list):
-                                #         print(f"\t\t{n+1}. {i}")
-                                # else:
-                                #     print("'data format is incorrect'")
+                            if input_item in car_list:
+                                for i in car_list:
+                                    if i == input_item:
+                                        car_list.remove(input_item)
+                                print(f"'{input_item}' has been deleted")
                             else:
                                 print("\t\t'the item is not in the list'")
-                                print("\t\t'please check your item in this list'")
+                                print(
+                                    "\t\t'please check your item in this list'")
                                 for n, i in enumerate(car_list):
                                     print(f"\t\t{n+1}. {i}")
 
@@ -166,6 +160,8 @@ try:
 except:
     print("\t\terror occurs")
 
+
+# NOTES
     # input_item = str(
     #     input("\t\t---> Enter item name: "))
     # if input_item in car_list:
@@ -178,3 +174,15 @@ except:
     #         print(f"\t\t{n+1}. {i}")
     # else:
     #     print("'you do not enter the required inputs'")
+
+    # delete per item
+    # index = car_list.index(input_item)
+    # if type(input_item) == type(car_list[index]):
+    #     car_list.remove(input_item)
+    #     print(
+    #         f"\t\t'-{input_item}- has been deleted'")
+    #     for n, i in enumerate(car_list):
+    #         print(f"\t\t{n+1}. {i}")
+    # else:
+    #     print("'data format is incorrect'")
+"""
