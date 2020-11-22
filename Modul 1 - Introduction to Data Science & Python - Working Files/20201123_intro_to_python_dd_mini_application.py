@@ -37,8 +37,8 @@ try:
                     print("\t\t===INSTRUCTIONS===")
                     print('''\t\tSelect the following instructions:\b
                     - "print" to print item\b
-                    - "add" to add item\b
-                    - "update" to udpate item\b
+                    - "add" to add item check\b
+                    - "update" to update item\b
                     - "delete" to delete item\b
                     - "exit" to exit the application\b''')
                     instruction = str(
@@ -68,7 +68,7 @@ try:
                                 index = car_list.index(input_item)
                                 if type(input_item) == type(car_list[index]):
                                     command = str(
-                                        input("\t\t---> Data has been registered.\n \t\tDo you want to add?(Y/N): "))
+                                        input("\t\t---> Data has been registered.\n \t\tDo you want to add?(Y/N): ")).upper()
                                     if command == "Y":
                                         car_list.append(input_item)
                                         print("\t\t'item has been added'")
@@ -105,14 +105,23 @@ try:
                             input_item = str(
                                 input("\t\t---> Enter item name to update: "))
                             if input_item in car_list:
-                                index = car_list.index(input_item)
-                                if type(input_item) == type(car_list[index]):
-                                    update_item = str(
-                                        input("\t\t---> Data has been registered.\n \t\tEnter the update?: "))
-                                    car_list[index] = update_item
-                                    print("\t\t'data has been updated'")
-                                    for n, i in enumerate(car_list):
-                                        print(f"\t\t{n+1}. {i}")
+                                update_item = str(
+                                    input("\t\t---> Data has been registered.\n \t\tEnter the update?: "))
+                                for i in car_list:
+                                    if i == input_item:
+                                        index = car_list.index(input_item)
+                                        car_list[index] = update_item
+                                print("\t\t'data has been updated'")
+                                for n, i in enumerate(car_list):
+                                    print(f"\t\t{n+1}. {i}")
+                                # index = car_list.index(input_item)
+                                # if type(input_item) == type(car_list[index]):
+                                #     update_item = str(
+                                #         input("\t\t---> Data has been registered.\n \t\tEnter the update?: "))
+                                #     car_list[index] = update_item
+                                #     print("\t\t'data has been updated'")
+                                #     for n, i in enumerate(car_list):
+                                #         print(f"\t\t{n+1}. {i}")
                                 else:
                                     print("'data format is incorrect'")
                             else:
@@ -185,4 +194,3 @@ except:
     #         print(f"\t\t{n+1}. {i}")
     # else:
     #     print("'data format is incorrect'")
-"""
