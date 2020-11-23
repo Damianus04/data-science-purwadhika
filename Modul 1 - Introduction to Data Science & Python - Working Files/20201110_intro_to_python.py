@@ -840,3 +840,79 @@ setelah melakukan proses CRUD (akan keluar mini menu yang memiliki 2 opsi)
 kirim ke email: khumaeni@purwadhika.com
 deadline: Selasa
 '''
+
+
+# if input_item in car_list:
+#                                 index = car_list.index(input_item)
+#                                 if input_item == car_list[index]:
+#                                     command = str(
+#                                         input("\t\t---> Data has been registered.\n \t\tDo you want to add?(Y/N): ")).upper()
+#                                     if command == "Y":
+#                                         car_list.append(input_item)
+#                                         print("\t\t'item has been added'")
+#                                     else:
+#                                         print("\t\t'item is not added'")
+#                                     for n, i in enumerate(car_list):
+#                                         print(f"\t\t{n+1}. {i}")
+#                                 else:
+#                                     print("data incorrect")
+
+
+# elif input_item not in car_list:
+#                                 command = str(
+#                                     input("\t\t---> Data is not registered.\n \t\tDo you want to add data?(Y/N): ")).upper()
+#                                 command = command.upper()
+#                                 if command == "Y":
+#                                     car_list.append(input_item)
+#                                     print(f"\t\t'item has been added'")
+#                                 else:
+#                                     print("\t\t'item is not added'")
+#                                 for n, i in enumerate(car_list):
+#                                     print(f"\t\t{n+1}. {i}")
+
+
+# 20201123
+# TUGAS
+# 1. Hari = ["senin", "selasa", "rabu", "kamis", "jum'at", 'sabtu', 'minggu']
+
+# input:
+# "masukkan nama Hari: " senin
+# "masukkan jumlah: " 100 (nilai harus integer) - jika bukan integer keluar notifikasi: ..., bisa minus
+
+# Output:
+# " 100 hari dari (senin) ... adalah hari ..."
+# " -2 hari dari (senin) ... adalah hari (sabtu)..."
+# "3 hari dari hari (senin) ... adalah hari (kamis)..."
+
+# kondisi:
+# - tidak case sensitive
+# - ada pengecekan hari: tidak ada nama hari
+# - jumlah angka harus integer (bisa positif maupun negatif)
+
+# 2. Palindrome
+# katak = katak
+# Level = level
+# Madam = Madam
+# Noon = Noon
+
+# input: masukkan kata: ....
+# kondisi: lakukan pengecekan apakah kata tersebut masuk palindrome
+
+# output: kata ... tidak termasuk/palindrome
+
+# 3. gunakan hanya fungsi numerik-aritmatik (+ - * / % //)
+# input: masukkan 4 digit angka: 5493
+# output: 9354 (2 digit belakang pindah ke depan)
+
+
+# 4. gunakan hanya fungsi numerik-aritmatik (+ - * / % //)
+# input:
+# masukkan 2 digit angka: 63
+# masukkan 2 digit angka kedua: 87
+
+# output: 6387
+
+# kondisi untuk soal 3-4:
+# - tidak menerima input string
+# - tidak negatif
+# - tidak desimal

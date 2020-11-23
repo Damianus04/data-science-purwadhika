@@ -34,7 +34,7 @@ jika password benar: akan keluar menu
 - jika ada data, akan menampilkan seluruh data barang
 
 2. Create (tambah data)
-- pengeceken jenis data, jika salah format: data yang anda masukkan salah
+- pengeceken jenis data, jika salah format: data yang anda masukkan salah - 12buah tidak bisa, honda 125r bisa
 - pengecekan duplikasi:
 jika data sudah ada sebelumnya, 
 keluar notifikasi:
@@ -47,7 +47,7 @@ N: keluar notif - data tidak tersimpan
 - program akan meminta user memasukkan data yang akan diupdate
 - jika data yang diminta user tidak ada, keluar notif: data barang tidak ada.
 - jika barang ada -> update datanya -> jeruk - jeruk bali
-- keluar notif: data terupdate/data berhasil diubah
+- keluar notif: data terupdate/data berhasil diubah  
 
 4. Delete (hapus data)
 - program akan meminta user memasukkan data yang akan dihapus
@@ -64,3 +64,4 @@ setelah melakukan proses CRUD (akan keluar mini menu yang memiliki 2 opsi)
 kirim ke email: khumaeni@purwadhika.com
 deadline: Selasa
 '''
+
