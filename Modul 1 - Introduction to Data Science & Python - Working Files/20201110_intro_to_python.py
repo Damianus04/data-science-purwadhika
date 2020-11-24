@@ -768,20 +768,23 @@ print(hari)
 '''
 
 # menghapus data dengan remove
-hari = ["Senin", "Kamis", "Selasa", "Rabu",
-        "Kamis", "Jumat", "Sabtu", "Kamis", "Selasa"]
-print(hari)
 
-# hari.remove('Kamis')
+
+# from typing import Union
+# hari = ["Senin", "Kamis", "Selasa", "Rabu",
+#         "Kamis", "Jumat", "Sabtu", "Kamis", "Selasa"]
 # print(hari)
 
-# hari.pop(4)
-# print(hari)
+# # hari.remove('Kamis')
+# # print(hari)
 
-for i in hari:
-    if i == "Kamis":
-        hari.remove("Kamis")
-print(hari)
+# # hari.pop(4)
+# # print(hari)
+
+# for i in hari:
+#     if i == "Kamis":
+#         hari.remove("Kamis")
+# print(hari)
 
 
 # TASK ASSIGNMENT
@@ -916,3 +919,51 @@ deadline: Selasa
 # - tidak menerima input string
 # - tidak negatif
 # - tidak desimal
+
+
+# latihan SET
+# A = Himpunan Bilangan Genap dari 1-20
+# B = Himpunan bilangan ganjil dari 1-20
+# C = Himpunan bilangan negatif lebih besar -20
+# D = Himpunan bilangan prima dari 1-20
+# E = Himpunan bilangan komposit dari 1-20
+
+# bilangan komposit = bukan bilangan prima
+
+# U = Union
+# n = Irisan
+
+# a. A u B u C u D u E
+# b. (A n B) u (D n E)
+# c. (A u B) n (D u E)
+# d. (A u B) - (D u E)
+# e. (A u B u C) - (A n E)
+
+A = set()
+B = set()
+for i in range(21):
+    if i % 2 == 0:
+        A.add(i)
+    else:
+        B.add(i)
+print(f"A = {A}")
+print(f"B = {B}")
+C = set()
+for i in range(-20, 0):
+    C.add(i)
+print(f"C = {C}")
+
+D = set()
+E = set()
+for i in range(20):
+    if i > 1:
+        for j in range(2, i):
+            if (i % j) == 0:
+                E.add(i)
+                break
+            else:
+                D.add(i)
+    else:
+        continue
+print(f"D = {D}")
+print(f"E = {E}")
