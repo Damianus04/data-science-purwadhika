@@ -939,31 +939,107 @@ deadline: Selasa
 # d. (A u B) - (D u E)
 # e. (A u B u C) - (A n E)
 
-A = set()
-B = set()
-for i in range(21):
-    if i % 2 == 0:
-        A.add(i)
-    else:
-        B.add(i)
-print(f"A = {A}")
-print(f"B = {B}")
-C = set()
-for i in range(-20, 0):
-    C.add(i)
-print(f"C = {C}")
+# A = set()
+# B = set()
+# for i in range(21):
+#     if i % 2 == 0:
+#         A.add(i)
+#     else:
+#         B.add(i)
+# print(f"A = {A}")
+# print(f"B = {B}")
+# C = set()
+# for i in range(-20, 0):
+#     C.add(i)
+# print(f"C = {C}")
 
-D = set()
-E = set()
-for i in range(20):
-    if i > 1:
-        for j in range(2, i):
-            if (i % j) == 0:
-                E.add(i)
-                break
-            else:
-                D.add(i)
-    else:
-        continue
-print(f"D = {D}")
-print(f"E = {E}")
+# D = set()
+# E = set()
+# for i in range(20):
+#     if i > 1:
+#         # print('loop i', i)
+#         for j in range(2, i):
+#             # print('loop j', j)
+#             if (i % j) == 0:
+#                 E.add(i)
+#                 break
+#             else:
+#                 D.add(i)
+#     else:
+#         continue
+# print(f"D = {D}")
+# print(f"E = {E}")
+
+# print("*"*50)
+# # a. A u B u C u D u E
+# print("soal a: ", A | B | C | D | E)
+# # b. (A n B) u (D n E)
+# print("soal b: ", (A & B) | (D & E))
+# # c. (A u B) n (D u E)
+# print("soal c: ", (A | B) & (D | E))
+# # d. (A u B) - (D u E)
+# print("soal d: ", (A | B) - (D | E))
+# # e. (A u B u C) - (A n E)
+# print("soal e: ", (A | B | C) - (A & E))
+
+
+# string = ""
+
+# x = int(input("Masukkan angka :"))
+# bar = x
+# # Looping Baris
+# while bar >= 0:
+#     # Looping Kolom Spasi Kosong
+#     kol = bar
+#     while kol > 0:
+#         string = string + " . "
+#         kol = kol - 1
+#     # Looping Kolom Bintang Sisi Kiri
+#     # kiri = 1
+#     # while kiri < (x - (bar-1)):
+#     #     string = string + " * "
+#     #     kiri = kiri + 1
+#     # # Looping Kolom Bintang Sisi Kanan
+#     # kanan = 1
+#     # while kanan < kiri - 1:
+#     #     string = string + " * "
+#     #     kanan = kanan + 1
+
+#     string = string + "\n\n"
+#     bar = bar - 1
+# print(string)
+
+# string = ""
+# x = int(input("Masukkan angka :"))
+
+# counter = x
+# for i in range(6):
+#     # looping spasi kosong
+#     string += " . "
+#     print(string)
+
+
+# print(string)
+
+
+# Latihan
+# Auto - Translator
+Hari = {"senin": "monday",
+        "selasa": "tuesday",
+        "rabu": "wednesday",
+        "kamis": "thursday",
+        "jumat": "friday",
+        "sabtu": "saturday"}
+
+Input: masukkan nama hari: ...
+
+Kondisi:
+- tidak case sensitif
+- Tidak menerima inputan bukan hari, integer, float, dll
+
+Keluar notif: nama hari yang anda masukkan salah
+
+Output:
+tergantung inputan
+- jika inputan hari dalam bahasa Indonesia == > (f"Hari {hari} dalam bahasa Inggris adalah {eng}")
+- jika inputan hari dalam bahasa English == > (f"{hari} in bahasa Indonesia is {...}")
