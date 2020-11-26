@@ -1024,22 +1024,47 @@ deadline: Selasa
 
 # Latihan
 # Auto - Translator
-Hari = {"senin": "monday",
-        "selasa": "tuesday",
-        "rabu": "wednesday",
-        "kamis": "thursday",
-        "jumat": "friday",
-        "sabtu": "saturday"}
+# Hari = {"senin": "monday",
+#         "selasa": "tuesday",
+#         "rabu": "wednesday",
+#         "kamis": "thursday",
+#         "jumat": "friday",
+#         "sabtu": "saturday"}
 
-Input: masukkan nama hari: ...
+# Input: masukkan nama hari: ...
 
-Kondisi:
-- tidak case sensitif
-- Tidak menerima inputan bukan hari, integer, float, dll
+# Kondisi:
+# - tidak case sensitif
+# - Tidak menerima inputan bukan hari, integer, float, dll
 
-Keluar notif: nama hari yang anda masukkan salah
+# Keluar notif: nama hari yang anda masukkan salah
 
-Output:
-tergantung inputan
-- jika inputan hari dalam bahasa Indonesia == > (f"Hari {hari} dalam bahasa Inggris adalah {eng}")
-- jika inputan hari dalam bahasa English == > (f"{hari} in bahasa Indonesia is {...}")
+# Output:
+# tergantung inputan
+# - jika inputan hari dalam bahasa Indonesia == > (f"Hari {hari} dalam bahasa Inggris adalah {eng}")
+# - jika inputan hari dalam bahasa English == > (f"{hari} in bahasa Indonesia is {...}")
+
+# latihan 20201126:
+# email verification
+# - buat sebuah return function dengan 1 argumen untuk mengecek/memvalidasi email
+
+# input: masukkan email:
+
+# kondisi:
+# email valid jika:
+# - memiliki format nama user@nama hosting.ekstensi
+# - nama user hanya boleh huruf, angka, underscore(_) dan dot (.)
+# - nama hosting hanya boleh huruf dan angka
+# - nama ekstensi hanya boleh huruf dan maksimal 5 karakter
+
+# output:
+# alamat email yang anda masukkan valid!!
+# jika tidak valid, keluar alasannya:
+# format email salah (misal tidak ada @ atau tidak ada .ekstensi)
+# format username yang anda masukkan salah
+# format hosting yang anda masukkan salah
+# format ekstensi yang anda masukkan salah
+
+# contoh email
+# valid: andre@gmail.com, joni_12@yahoo.com, andy34@city.id, steve.roger_77@avengers01.space
+# invalid: andre254@gmail.com, andre%^&@gmail.com, john_capt@yah^^oo.com, tony_stark@stark.corporation, Thor@@gmail.com
