@@ -1,3 +1,4 @@
+'''
 # Soal 1
 print("soal 1")
 
@@ -119,6 +120,7 @@ try:
             print(output[:-counter])
 except:
     print("error occurs, type only integer number")
+'''
 
 print("-"*50)
 
@@ -127,7 +129,7 @@ print("soal 7")
 try:
     baris = 5
     triangle = ""
-    for i in range(1, baris + 1):
+    for i in range(1, baris+1):
         counter = 1
         space = 8
         for j in range(1, i+1):
@@ -136,14 +138,14 @@ try:
             counter += 2
         print(triangle)
 
-    for i in range(1, baris + 1):
-        counter = 9
-        space = 0
-        for j in range(1, i+1):
-            triangle = (' ' * space + '* ' * counter)
-            space += 2
-            counter -= 2
-        print(triangle)
+    # for i in range(1, baris + 1):
+    #     counter = 9
+    #     space = 0
+    #     for j in range(1, i+1):
+    #         triangle = (' ' * space + '* ' * counter)
+    #         space += 2
+    #         counter -= 2
+    #     print(triangle)
 except:
     print("error occurs, type only integer number")
 
