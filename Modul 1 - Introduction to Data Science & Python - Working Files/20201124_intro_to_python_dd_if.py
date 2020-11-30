@@ -36,6 +36,7 @@ except ValueError:
 
 print("*" * 50)
 
+
 # Soal 2
 print("Soal 2")
 text_input = str(input("enter the words: ")).lower()
@@ -47,19 +48,25 @@ if len(text_input) > 1:
         print("this word is not a palindrome\n")
 else:
     print("the word must be longer than 1")
-
+'''
 # Soal 3
 # print("Soal 3")
 # number_input = int(input("enter the number: "))
 # result = ((number_input - 93) // 100) + (93 * 100)
 # print(result)
 
-'''
-# Soal 4
-print("Soal 4")
-input1 = int(input("enter the number: "))
-input2 = int(input("enter the number: "))
 
-# result = (input1 * 100) + input2
-result = (input1 * (10 ** len(str(input1)))) + input2
-print(result)
+# Soal 4
+# print("Soal 4")
+try:
+    input1 = int(input("enter the number: "))
+    input2 = int(input("enter the number: "))
+
+    result = ""
+    if len(str(input1)) == 2 and len(str(input2)) == 2:
+        result = (input1 * (10 ** len(str(input1)))) + input2
+        print(result)
+    else:
+        print("input should be 2 digit")
+except:
+    print("input should be integer")

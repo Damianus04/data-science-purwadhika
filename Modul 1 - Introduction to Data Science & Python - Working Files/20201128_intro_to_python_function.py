@@ -58,16 +58,28 @@ def verify_email(email):
     return result
 
 
-print("*"*50)
-print("andre@gmail.com: ", verify_email("andre@gmail.com"))
-print("joni_12@yahoo.com: ", verify_email("joni_12@yahoo.com"))
-print("andy34@city.id: ", verify_email("andy34@city.id"))
-print("steve.roger_77@avengers01.space: ",
-      verify_email("steve.roger_77@avengers01.space"))
-print("*"*50)
-print("andre254@gmail.com: ", verify_email("andre254@gmail.com"))
-print("andre%^&@gmail.com: ", verify_email("andre%^&@gmail.com"))
-print("john_capt@yah^^oo.com: ", verify_email("john_capt@yah^^oo.com"))
-print("tony_stark@stark.corporation: ",
-      verify_email("tony_stark@stark.corporation"))
-print("Thor@@gmail.com: ", verify_email("Thor@@gmail.com"))
+def print_email_verification(email):
+    result = verify_email(email)
+    print(f"{email}: {result}")
+
+
+email1 = "andre@gmail.com"
+email2 = "joni_12@yahoo.com"
+email3 = "andy34@city.id"
+email4 = "steve.roger_77@avengers01.space"
+email5 = "andre254@gmail.com"
+email6 = "andre%^&@gmail.com"
+email7 = "john_capt@yah^^oo.com"
+email8 = "tony_stark@stark.corporation"
+email9 = "Thor@@gmail.com"
+
+
+print_email_verification(email1)
+print_email_verification(email2)
+print_email_verification(email3)
+print_email_verification(email4)
+print_email_verification(email5)
+print_email_verification(email6)
+print_email_verification(email7)
+print_email_verification(email8)
+print_email_verification(email9)
