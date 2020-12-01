@@ -30,7 +30,6 @@ characters = alphabet + number + special_characters
 
 
 def verify_email(email):
-    # try:
     email = str(email).lower()
 
     result = ""
@@ -60,19 +59,19 @@ def verify_email(email):
 
 def print_email_verification(email):
     result = verify_email(email)
-    print(f"{email}: {result}")
+    print(f"{email}: {result} \n")
 
 
 email1 = "andre@gmail.com"
 email2 = "joni_12@yahoo.com"
 email3 = "andy34@city.id"
 email4 = "steve.roger_77@avengers01.space"
-email5 = "andre254@gmail.com"
+email5 = "andre254@gmail"
 email6 = "andre%^&@gmail.com"
 email7 = "john_capt@yah^^oo.com"
 email8 = "tony_stark@stark.corporation"
 email9 = "Thor@@gmail.com"
-
+email10 = "@gmail"
 
 print_email_verification(email1)
 print_email_verification(email2)
@@ -83,3 +82,6 @@ print_email_verification(email6)
 print_email_verification(email7)
 print_email_verification(email8)
 print_email_verification(email9)
+print_email_verification(email10)
+
+print_email_verification(email=input("type email: "))

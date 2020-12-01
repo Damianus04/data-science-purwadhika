@@ -31,24 +31,28 @@ try:
                 f"'{counter}' days from '{day_input}' is '{day[appointed_day]}'\n")
     else:
         print("day doesn't exist\n")
-except ValueError:
+except:
     print("counter should be integer\n")
 
 print("*" * 50)
-
+'''
 
 # Soal 2
-print("Soal 2")
-text_input = str(input("enter the words: ")).lower()
+# print("Soal 2")
 
-if len(text_input) > 1:
-    if text_input[:] == text_input[::-1]:
-        print("this word is a palindrome\n")
-    else:
-        print("this word is not a palindrome\n")
-else:
-    print("the word must be longer than 1")
-'''
+# try:
+#     text_input = input("enter the words: ").lower()
+
+#     if len(text_input) > 1:
+#         if text_input[:] == text_input[::-1]:
+#             print("this is a palindrome\n")
+#         else:
+#             print("this is not a palindrome\n")
+#     else:
+#         print("the input must be longer than 1 character")
+# except:
+#     print('error occurs, input should be a text')
+
 # Soal 3
 # print("Soal 3")
 # number_input = int(input("enter the number: "))
@@ -67,6 +71,6 @@ try:
         result = (input1 * (10 ** len(str(input1)))) + input2
         print(result)
     else:
-        print("input should be 2 digit")
+        print("input should be 2 digit and not negative")
 except:
     print("input should be integer")
