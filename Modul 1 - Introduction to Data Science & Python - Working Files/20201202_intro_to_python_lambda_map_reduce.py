@@ -57,12 +57,64 @@ print("#"*50)
 # Tidak boleh menggunakan Fungsi Sort atau[::-1] atau min() atau max()
 # gunakan algoritma
 
+# functions
+
+
+def min_sort(input_list):
+    temporary_order = input_list[0]
+
+    for i in range(len(input_list)):
+        if temporary_order < input_list[i]:
+            temporary_order = temporary_order
+        else:
+            temporary_order = input_list[i]
+
+    return temporary_order
+
+
+def max_sort(input_list):
+    temporary_order = input_list[0]
+
+    for i in range(len(input_list)):
+        if temporary_order > input_list[i]:
+            temporary_order = temporary_order
+        else:
+            temporary_order = input_list[i]
+
+    return temporary_order
+
+
+def ascending_list(input_list):
+    input_list_copy = input_list[:]
+    ascending_list = []
+    asc_order = ""
+    for i in range(len(input_list_copy)):
+        if len(input_list_copy) != 0:
+            asc_order = min_sort(input_list_copy)
+            reduced_list = input_list_copy.remove(asc_order)
+        ascending_list.append(asc_order)
+    return ascending_list
+
+
+def descending_list(input_list):
+    input_list_copy = input_list[:]
+    descending_list = []
+    desc_order = ""
+    for i in range(len(input_list_copy)):
+        if len(input_list_copy) != 0:
+            desc_order = max_sort(input_list_copy)
+            reduced_list = input_list_copy.remove(desc_order)
+        descending_list.append(desc_order)
+    return descending_list
+
+
+# execution
 try:
-    list = []
+    input_list = []
     list_length = int(input("type the length of the list: "))
     for i in range(0, list_length):
         element = int(input(f"element {i+1}: "))
-        list.append(element)
+        input_list.append(element)
     sort_mode = input("""sort mode:
         - Ascending (1)
         - Descending (2)
@@ -70,28 +122,15 @@ try:
     --> """)
 
     if sort_mode == "1":
-        asc_list = []
-        for i in list:
-            while i < i+1:
-                asc_list.append(i)
-        print(f"ascending list: {asc_list}")
+        result = ascending_list(input_list)
+        print(f"ascending_list: {result}")
     elif sort_mode == "2":
-        print(f"descending list: ")
+        result = descending_list(input_list)
+        print(f"descending list: {result}")
     elif sort_mode == "3":
-        minmax = []
-        x = ""
-        for i in range(len(list)):
-            # print(i)
-            if i+1 < len(list):
-                if list[i] < list[i+1]:
-                    x = list[i]
-                else:
-                    x = list[i+1]
-            else:
-                break
-        minmax.append(x)
-
-        print(f"min number is '{minmax}' and max number is ''")
+        min_number = min_sort(input_list)
+        max_number = max_sort(input_list)
+        print(f"min number is '{min_number}' and max number is '{max_number}'")
     else:
         print("you don't enter the correct option")
 
