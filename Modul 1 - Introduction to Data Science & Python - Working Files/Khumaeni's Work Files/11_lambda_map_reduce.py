@@ -1,4 +1,4 @@
-## def Function
+# def Function
 '''
 - Function yg akan dipake berkali-kali 
 - Memiliki Nama 
@@ -40,7 +40,9 @@ lambda kilo, harga, diskon : (kilo * harga) - diskon ## 3 argumen => kilo, harga
 
 '''
 
-### Format Def Function
+# Format Def Function
+
+
 def penjumlahan(x, y):
     hasil = x + y
     return hasil
@@ -48,12 +50,14 @@ def penjumlahan(x, y):
 # def jumlah(x, y):
 #     return x + y
 
+
 def pangkat(x):
     hasil = x ** 2
-    return hasil 
+    return hasil
+
 
 def triplet(a, b, c):
-    hasil = a * b * c 
+    hasil = a * b * c
     return hasil
 
 
@@ -62,23 +66,32 @@ def triplet(a, b, c):
 # print(triplet(5, 10, 20))
 print('=' * 50)
 
-## Format Lambda Function 
-### Menggunakan Lambda dengan Meng-Assign ke dalam Variabel
-jumlah = lambda x, y: x + y
-power = lambda x: x ** 2
-triplet2 = lambda a, b, c : a * b * c 
+# Format Lambda Function
+# Menggunakan Lambda dengan Meng-Assign ke dalam Variabel
+
+
+def jumlah(x, y): return x + y
+
+
+def power(x): return x ** 2
+
+
+def triplet2(a, b, c): return a * b * c
 
 # print(jumlah(5, 5))
 # print(power(5))
 # print(triplet2(5,10,20))
 
-### Menggunakan Lambda dg Def Function (Memasukkan Lambda kedalam Def Funct.)
+# Menggunakan Lambda dg Def Function (Memasukkan Lambda kedalam Def Funct.)
+
+
 def myFunc(x):
     # hasil = lambda a : a ** x
     # return hasil
-    return lambda a : a ** x ## x = 2, a = 10, 10 ** 2
+    return lambda a: a ** x  # x = 2, a = 10, 10 ** 2
 
-# print(myFunc(2))  ### 2 adalah nilai x 
+
+# print(myFunc(2))  ### 2 adalah nilai x
 '''
 pangkat2 = myFunc(2) ### 2 => nilai x
 pangkat3 = myFunc(3) ### 3 => nilai x
@@ -108,10 +121,12 @@ pangkat4 = myFunc(4) ### 4 => nilai x
 # 1 1 1 1
 # 1 1 1 1 1
 
-def myFunction(y):
-    return lambda x : x * y
 
-kali5 = myFunction(5) ## nilai y = 5
+def myFunction(y):
+    return lambda x: x * y
+
+
+kali5 = myFunction(5)  # nilai y = 5
 
 # print(kali5(10)) ### nilai x = 10
 
@@ -126,9 +141,11 @@ else:
     print("Ganjil")
 '''
 
-## Def Function
+# Def Function
+
+
 def GanGen(x):
-    if x%2 == 0:
+    if x % 2 == 0:
         return "Genap"
     else:
         return "Ganjil"
@@ -137,33 +154,38 @@ def GanGen(x):
 # print(GanGen(257))
 # print(GanGen(6982))
 
-## Lambda Function
-CekGG = lambda x: True if x%2 == 0 else False
+
+# Lambda Function
+def CekGG(x): return True if x % 2 == 0 else False
 # print(CekGG(57))
 
 # print(CekGG(77))
 
-cekGG2 = lambda x: "Angka Genap" if x%2 == 0 else "Angka Ganjil"
+
+def cekGG2(x): return "Angka Genap" if x % 2 == 0 else "Angka Ganjil"
 
 # print(cekGG2(987))
 # print(cekGG2(1234))
 
-### Map Function
+# Map Function
 # Function yg Mirip dg Lambda Function
 # Tapi digunakan untuk Data Iterables - Data Structures (List, Tuple, Dict, set, dll)
 
 
-### Dengan 1 Argumen
+# Dengan 1 Argumen
 A = [2, 70, 15, 81]
+
 
 def kuadrat(x):
     hasil = x ** 2
     return hasil
 
-kuadrat2 = lambda x: x ** 2
+
+def kuadrat2(x): return x ** 2
 
 # print(kuadrat(5))
 # print(kuadrat2(6))
+
 
 # print(kuadrat(A))
 # print(kuadrat2(A))
@@ -177,8 +199,8 @@ Argumen = Berbentuk Data Iterable - Data Structures
 Jumlah Argumen Sesuai dengan Jumlah Argumen pada Function yg digunakan 
 Hasil Operasional map, berupa Objek sehingga perlu dikonversi
 '''
-hasil = list(map(kuadrat, A)) # map menggunakan Def Funct
-hasil2 = tuple(map(kuadrat, A)) # map menggunakan def function
+hasil = list(map(kuadrat, A))  # map menggunakan Def Funct
+hasil2 = tuple(map(kuadrat, A))  # map menggunakan def function
 
 # print(hasil)
 # print(hasil2)
@@ -193,8 +215,8 @@ for i in A:
     hasil.append(i ** 2)
 '''
 
-hasil3 = list(map(kuadrat2, A)) # map dengan Lambda Function
-hasil4 = tuple(map(kuadrat2, A)) # map dengan lambda function
+hasil3 = list(map(kuadrat2, A))  # map dengan Lambda Function
+hasil4 = tuple(map(kuadrat2, A))  # map dengan lambda function
 # print(hasil3)
 # print(hasil4)
 
@@ -210,14 +232,18 @@ hasil6 = list(map(kuadrat2, A[2:]))
 # print(hasil6)
 
 
-### Dengan 2 Argumen
+# Dengan 2 Argumen
 
-## def function
+# def function
 def pangkat6(x, y):
     hasil = x ** y
-    return hasil 
-## Lambda function
-jumlah2 = lambda x, y: x + y
+    return hasil
+
+# Lambda function
+
+
+def jumlah2(x, y): return x + y
+
 
 A = [1, 2, 3]
 B = [10, 20, 30, 40, 50]
@@ -231,22 +257,26 @@ hasil2 = list(map(lambda x, y: x + y, A, B))
 # print(hasil2)
 
 
-### dengan 3 argumen
+# dengan 3 argumen
 A = [2, 5, 6]
 B = [10, 20, 30]
 C = [9, 8, 7]
 
-## Def function
+# Def function
+
+
 def triple(x, y, z):
     hasil = x * y * z
-    return hasil 
+    return hasil
+
 
 hasil = list(map(triple, A, B, C))
 # print(hasil)
 
 
-## lambda function
-triple2 = lambda x, y, z: x * y * z
+# lambda function
+def triple2(x, y, z): return x * y * z
+
 
 hasil = list(map(triple2, A, B, C))
 # print(hasil)
@@ -259,17 +289,21 @@ D = [10, 15, 20, 30]
 
 ### D * (D ** 2)
 
+
 def power1(x):
     hasil = x ** 2
     return hasil
+
 
 def kali(x, y):
     hasil = x * y
     return hasil
 
+
 def calc(x):
     y = x ** 2
     return x * y
+
 
 E = list(map(power1, D))
 
@@ -277,10 +311,15 @@ hasil = list(map(kali, D, E))
 
 # print(hasil)
 
-pangkat2 = lambda x: x ** 2
-perkalian = lambda x, y: x * y 
 
-calc2 = lambda x: x * (x**2) 
+def pangkat2(x): return x ** 2
+
+
+def perkalian(x, y): return x * y
+
+
+def calc2(x): return x * (x**2)
+
 
 F = list(map(pangkat2, D))
 hasil = list(map(perkalian, D, F))
@@ -297,7 +336,7 @@ hasil = list(map(perkalian, D, list(map(lambda x: x ** 2, D))))
 # print(hasil)
 
 
-hasil = list(map(lambda x, y: x * y , D, list(map(lambda x: x ** 2, D))))
+hasil = list(map(lambda x, y: x * y, D, list(map(lambda x: x ** 2, D))))
 # print(hasil)
 
 ###################################
@@ -326,10 +365,17 @@ A = [1, 2, 3, 4, 5]
 
 ### (A ** 2) + ((A ** 2) * 3) + ((A ** 2) * 5)
 
-pangkat2 = lambda i: i ** 2
-kali3 = lambda x: x * 3
-kali5 = lambda x: x * 5
-jumlahkan = lambda j, k, l: j + k + l 
+
+def pangkat2(i): return i ** 2
+
+
+def kali3(x): return x * 3
+
+
+def kali5(x): return x * 5
+
+
+def jumlahkan(j, k, l): return j + k + l
 
 # print(pangkat2(10))
 # print(kali3(5))
@@ -338,27 +384,29 @@ jumlahkan = lambda j, k, l: j + k + l
 
 # print(A)
 
-E = list(map(pangkat2, A)) ## ==> (A ** 2)
+
+E = list(map(pangkat2, A))  # ==> (A ** 2)
 
 # print(E)
 
-F = list(map(kali3, E)) ## ==> (A ** 2) * 3
+F = list(map(kali3, E))  # ==> (A ** 2) * 3
 
 # print(F)
 
-G = list(map(kali5, E)) ## (A ** 2) * 5
+G = list(map(kali5, E))  # (A ** 2) * 5
 # print(G)
 
-result = list(map(jumlahkan, E, F, G))  ## (A ** 2) + ((A ** 2) * 3) + ((A ** 2) * 5)
+# (A ** 2) + ((A ** 2) * 3) + ((A ** 2) * 5)
+result = list(map(jumlahkan, E, F, G))
 print(result)
 
-E1 = list(map(lambda i: i ** 2, A)) ## ==> (A ** 2)
+E1 = list(map(lambda i: i ** 2, A))  # ==> (A ** 2)
 # print(E1)
 
-F1 = list(map(kali3, list(map(lambda i: i ** 2, A)))) ## ==> (A ** 2) * 3
+F1 = list(map(kali3, list(map(lambda i: i ** 2, A))))  # ==> (A ** 2) * 3
 # print(F1)
 
-G1 = list(map(kali5, list(map(lambda i: i ** 2, A)))) ## (A ** 2) * 5
+G1 = list(map(kali5, list(map(lambda i: i ** 2, A))))  # (A ** 2) * 5
 # print(G1)
 
 result2 = list(map(jumlahkan, list(map(lambda i: i ** 2, A)), F, G))
@@ -374,19 +422,20 @@ G2 = list(map(lambda x: x * 5, list(map(lambda i: i ** 2, A))))
 # print(G2)
 
 # F = F1 = F2
-result3 =  list(map(jumlahkan, list(map(lambda i: i ** 2, A)), list(map(lambda x: x * 3, list(map(lambda i: i ** 2, A)))), G))
+result3 = list(map(jumlahkan, list(map(lambda i: i ** 2, A)),
+                   list(map(lambda x: x * 3, list(map(lambda i: i ** 2, A)))), G))
 print(result3)
 
 # G = G1 = G2
-result4 = list(map(jumlahkan, list(map(lambda i: i ** 2, A)), ### E
-list(map(lambda x: x * 3, list(map(lambda i: i ** 2, A)))), ### F
-list(map(lambda x: x * 5, list(map(lambda i: i ** 2, A)))))) ### G
+result4 = list(map(jumlahkan, list(map(lambda i: i ** 2, A)),  # E
+                   list(map(lambda x: x * 3, list(map(lambda i: i ** 2, A)))),  # F
+                   list(map(lambda x: x * 5, list(map(lambda i: i ** 2, A))))))  # G
 
 print(result4)
 
-result5 = list(map(lambda j, k, l: j + k + l, list(map(lambda i: i ** 2, A)), ### E
-list(map(lambda x: x * 3, list(map(lambda i: i ** 2, A)))), ### F
-list(map(lambda x: x * 5, list(map(lambda i: i ** 2, A)))))) ### G
+result5 = list(map(lambda j, k, l: j + k + l, list(map(lambda i: i ** 2, A)),  # E
+                   list(map(lambda x: x * 3, list(map(lambda i: i ** 2, A)))),  # F
+                   list(map(lambda x: x * 5, list(map(lambda i: i ** 2, A))))))  # G
 
 print(result5)
 
@@ -397,38 +446,48 @@ print(result5)
 
 ###################################################
 
-Func1 = lambda i: i ** 2
+
+def Func1(i): return i ** 2
+
 
 R = list(map(Func1, A))
 
-result6 = list(map(lambda j, k, l: j + k + l, list(map(lambda i: i ** 2, A)), ### E
-list(map(lambda x: x * 3, list(map(lambda i: i ** 2, A)))), ### F
-list(map(lambda x: x * 5, R))))
+result6 = list(map(lambda j, k, l: j + k + l, list(map(lambda i: i ** 2, A)),  # E
+                   list(map(lambda x: x * 3, list(map(lambda i: i ** 2, A)))),  # F
+                   list(map(lambda x: x * 5, R))))
 
 print(result6)
 
-result7 = list(map(lambda j, k, l: j + k + l, R, ### E
-list(map(lambda x: x * 3, R)), ### F
-list(map(lambda x: x * 5, R))))
+result7 = list(map(lambda j, k, l: j + k + l, R,  # E
+                   list(map(lambda x: x * 3, R)),  # F
+                   list(map(lambda x: x * 5, R))))
 
 print(result7)
 
-Func2 = lambda x: x * 5
+
+def Func2(x): return x * 5
+
+
 S = list(map(Func2, R))
 
-result7 = list(map(lambda j, k, l: j + k + l, R, ### E
-list(map(lambda x: x * 3, R)), ### F
-S))
+result7 = list(map(lambda j, k, l: j + k + l, R,  # E
+                   list(map(lambda x: x * 3, R)),  # F
+                   S))
 print(result7)
 
-Func3 = lambda x: x * 3
+
+def Func3(x): return x * 3
+
+
 T = list(map(Func3, R))
 result8 = list(map(lambda j, k, l: j + k + l, R,
-T,
-S))
+                   T,
+                   S))
 print(result8)
 
-jumlah2 = lambda j, k, l: j + k + l
 
-result9 = list(map(jumlah2,R,T,S))
+def jumlah2(j, k, l): return j + k + l
+
+
+result9 = list(map(jumlah2, R, T, S))
 print(result9)

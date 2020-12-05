@@ -39,7 +39,7 @@ except ValueError:
 
 print("\n")
 print("#" * 100)
-'''
+
 
 # Alternative with "0"
 n_year = 365
@@ -115,16 +115,16 @@ print("\n TASK 2")
 # masukkan karakter: a
 # output: 5
 
-text = str(input("please input your text: "))
-character = str(input("character to count: ")).lower()
+# text = str(input("please input your text: "))
+# character = str(input("character to count: ")).lower()
 
-lower_text = text.lower()
-result = lower_text.count(character)
-print("number of", character, "is", result, "characters")
+# lower_text = text.lower()
+# result = lower_text.count(character)
+# print("number of", character, "is", result, "characters")
 
 
-print("#" * 100)
-'''
+# print("#" * 100)
+# '''
 
 ##########################################################################################
 print("\n TASK 3")
@@ -134,37 +134,45 @@ print("\n TASK 3")
 # masukkan huruf vokal: o
 # output: Horo ono odoloh horo robo
 
-try:
-    text = str(input("input your text: "))
-    vocal_to_replace = str(input("type replacement character: "))
-    vocal_characters = ["a", "i", "u", "e", "o", "A", "I", "U", "E", "O"]
+# try:
+#     text = str(input("input your text: "))
+#     vocal_to_replace = str(input("type replacement character: "))
+#     vocal_characters = ["a", "i", "u", "e", "o", "A", "I", "U", "E", "O"]
 
-    for character in vocal_characters:
-        if character in text:
-            text = text.replace(character, vocal_to_replace)
+#     for character in vocal_characters:
+#         if character in text:
+#             text = text.replace(character, vocal_to_replace)
 
-    print(text)
-    print("#" * 100)
-except:
-    print("input should be text only")
+#     print(text)
+#     print("#" * 100)
+# except:
+#     print("input should be text only")
 
 
 # alternative
 text = input("masukkan text: ")
-vokal = input("masukkan hufu vokal: ")
+vokal = input("masukkan huruf vokal: ")
 
-text = text.replace('a', vokal.lower())
-text = text.replace('i', vokal.lower())
-text = text.replace('u', vokal.lower())
-text = text.replace('e', vokal.lower())
-text = text.replace('o', vokal.lower())
-text = text.replace('A', vokal.upper())
-text = text.replace('I', vokal.upper())
-text = text.replace('U', vokal.upper())
-text = text.replace('E', vokal.upper())
-text = text.replace('O', vokal.upper())
+lower_vocal = ["a", "i", "u", "e", "o"]
+upper_vocal = ["A", "I", "U", "E", "O"]
+
+for i in lower_vocal:
+    text.replace(i, vokal.lower())
+
+for i in upper_vocal:
+    text.replace(i, vokal.upper())
 
 print(text)
+# text = text.replace('a', vokal.lower())
+# text = text.replace('i', vokal.lower())
+# text = text.replace('u', vokal.lower())
+# text = text.replace('e', vokal.lower())
+# text = text.replace('o', vokal.lower())
+# text = text.replace('A', vokal.upper())
+# text = text.replace('I', vokal.upper())
+# text = text.replace('U', vokal.upper())
+# text = text.replace('E', vokal.upper())
+# text = text.replace('O', vokal.upper())
 
 
 ##########################################################################################
@@ -188,41 +196,41 @@ print("\n TASK 4")
 # Tinggi badan anda ... m dan massa anda ... kg, BMI anda ... dan anda termasuk ...
 
 
-try:
-    mass = int(input("input body mass: "))
-    height = int(input("input body height: "))
+# try:
+#     mass = int(input("input body mass: "))
+#     height = int(input("input body height: "))
 
-    if (1 <= mass <= 200) and (1 <= height <= 300):
-        height_m = height/100
-        BMI = round(mass / height_m ** 2, 2)
-        BMI_status = "not calculated"
+#     if (1 <= mass <= 200) and (1 <= height <= 300):
+#         height_m = height/100
+#         BMI = round(mass / height_m ** 2, 2)
+#         BMI_status = "not calculated"
 
-        if 0 < BMI < 18.5:
-            BMI_status = "less ideal"
-        elif 18.5 <= BMI <= 24.9:
-            BMI_status = "ideal"
-        elif 25.0 <= BMI <= 29.9:
-            BMI_status = "overweight"
-        elif 30.0 <= BMI <= 39.9:
-            BMI_status = "very overweight"
-        elif BMI >= 40:
-            BMI_status = "obecity disorder"
+#         if 0 < BMI < 18.5:
+#             BMI_status = "less ideal"
+#         elif 18.5 <= BMI <= 24.9:
+#             BMI_status = "ideal"
+#         elif 25.0 <= BMI <= 29.9:
+#             BMI_status = "overweight"
+#         elif 30.0 <= BMI <= 39.9:
+#             BMI_status = "very overweight"
+#         elif BMI >= 40:
+#             BMI_status = "obecity disorder"
 
-        print(
-            f"Your height is {height_m} m, your body mass is {mass} kg, your BMI is {BMI}, and you are {BMI_status}")
-    elif mass > 200:
-        print("body mass should be under 200 kg")
-    elif height > 300:
-        print("body height should be under 300 cm or 3 meter")
-    else:
-        print("mass and height cannot be lower than 1")
+#         print(
+#             f"Your height is {height_m} m, your body mass is {mass} kg, your BMI is {BMI}, and you are {BMI_status}")
+#     elif mass > 200:
+#         print("body mass should be under 200 kg")
+#     elif height > 300:
+#         print("body height should be under 300 cm or 3 meter")
+#     else:
+#         print("mass and height cannot be lower than 1")
 
-except ValueError:
-    print("mass or weight must be integer number, cannot be string or decimal")
-except ZeroDivisionError:
-    print("zero division error, body mass and height cannot be lower than 1")
+# except ValueError:
+#     print("mass or weight must be integer number, cannot be string or decimal")
+# except ZeroDivisionError:
+#     print("zero division error, body mass and height cannot be lower than 1")
 
-print("#" * 100)
+# print("#" * 100)
 
 
 '''

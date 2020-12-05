@@ -34,8 +34,8 @@ jika password benar: akan keluar menu
 - jika ada data, akan menampilkan seluruh data barang
 
 2. Create (tambah data)
-- pengeceken jenis data, jika salah format: data yang anda masukkan salah - 12buah tidak bisa, honda 125r bisa
-- pengecekan duplikasi:
+- pengeceken jenis data, jika salah format: data yang anda masukkan salah ##12buah tidak bisa, honda 125r bisa
+- pengecekan duplikasi: ##jeRUk = jeruk
 jika data sudah ada sebelumnya, 
 keluar notifikasi:
 data sudah ada, apakah tetap akan disimpan? (Y/N)

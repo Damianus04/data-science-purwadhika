@@ -1053,9 +1053,9 @@ deadline: Selasa
 # kondisi:
 # email valid jika:
 # - memiliki format nama user@nama hosting.ekstensi
-# - nama user hanya boleh huruf, angka, underscore(_) dan dot (.)
-# - nama hosting hanya boleh huruf dan angka
-# - nama ekstensi hanya boleh huruf dan maksimal 5 karakter
+# - (check) nama user hanya boleh huruf, angka, underscore(_) dan dot (.)
+# - (check) nama hosting hanya boleh huruf dan angka
+# - (check) nama ekstensi hanya boleh huruf dan maksimal 5 karakter
 
 # output:
 # alamat email yang anda masukkan valid!!

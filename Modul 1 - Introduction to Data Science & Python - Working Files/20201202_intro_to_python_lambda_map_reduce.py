@@ -37,7 +37,7 @@ try:
     print(text_reverse_join)
 except:
     print("error")
-'''
+
 print("#"*50)
 
 # 2.
@@ -58,6 +58,15 @@ print("#"*50)
 # gunakan algoritma
 
 # functions
+
+
+def input_list():
+    input_list = []
+    list_length = int(input("length of list: "))
+    for i in range(0, list_length):
+        index = int(input(f"index {i+1}: "))
+        input_list.append(index)
+    return input_list
 
 
 def min_sort(input_list):
@@ -110,11 +119,7 @@ def descending_list(input_list):
 
 # execution
 try:
-    input_list = []
-    list_length = int(input("type the length of the list: "))
-    for i in range(0, list_length):
-        element = int(input(f"element {i+1}: "))
-        input_list.append(element)
+    input_list = input_list()
     sort_mode = input("""sort mode:
         - Ascending (1)
         - Descending (2)
@@ -136,3 +141,30 @@ try:
 
 except:
     print("input should be integer")
+'''
+
+print("#"*50)
+
+# 3.
+# -Buat Algoritma Stats-
+# Buat List
+# - Cari Nilai
+# Modus: Nilai yg paling sering muncul
+# Median: Nilai tengah
+# Mean: Rata-rata
+# Q1 - Quartil 1 - 25%
+# Q3 - Quartil 3 - 75%
+# Outliers
+
+
+def input_list():
+    input_list = []
+    list_length = int(input("length of list: "))
+    for i in range(0, list_length):
+        index = int(input(f"index {i+1}: "))
+        input_list.append(index)
+    return input_list
+
+
+list_number = input_list()
+print(list_number)
