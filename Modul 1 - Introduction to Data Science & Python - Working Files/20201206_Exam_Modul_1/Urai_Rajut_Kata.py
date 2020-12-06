@@ -17,7 +17,11 @@ print(f"{text2} --> {urai(text2)}")
 print(f"{text3} --> {urai(text3)}")
 
 
+print("="*100)
+
 # 2) RAJUT Function
+
+
 def rajut(text):
     output = ""
 

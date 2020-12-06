@@ -69,3 +69,22 @@ print_time_converter(time4)
 print_time_converter(time5)
 print_time_converter(time6)
 print_time_converter(time7)
+
+
+# Output
+# 3600 seconds
+#  --> Convertion: 01:00:00
+# 3665 seconds
+#  --> Convertion: 01:01:05
+# 359999 seconds
+#  --> Convertion: 99:59:59
+# 360000 seconds
+#  --> Invalid Input!
+# 498909 seconds
+#  --> Invalid Input!
+# -18900 seconds
+#  --> Invalid Input!
+# 20.5 seconds
+#  --> Invalid Input!
+# ujian seconds
+#  --> Invalid Input!

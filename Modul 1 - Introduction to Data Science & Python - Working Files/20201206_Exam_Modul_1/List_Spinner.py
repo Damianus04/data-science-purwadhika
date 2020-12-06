@@ -25,3 +25,6 @@ def counterClockwise(input_list):
 
 
 print(counterClockwise(sample_list))
+
+# Output
+# [[3, 6, 9], [2, 5, 8], [1, 4, 7]]
