@@ -59,7 +59,6 @@ print("#"*50)
 
 # functions
 
-
 def input_list():
     input_list = []
     list_length = int(input("length of list: "))
@@ -157,14 +156,14 @@ print("#"*50)
 # Outliers
 
 
-def input_list():
-    input_list = []
-    list_length = int(input("length of list: "))
-    for i in range(0, list_length):
-        index = int(input(f"index {i+1}: "))
-        input_list.append(index)
-    return input_list
+# def input_list():
+#     input_list = []
+#     list_length = int(input("length of list: "))
+#     for i in range(0, list_length):
+#         index = int(input(f"index {i+1}: "))
+#         input_list.append(index)
+#     return input_list
 
 
-list_number = input_list()
-print(list_number)
+# list_number = input_list()
+# print(list_number)

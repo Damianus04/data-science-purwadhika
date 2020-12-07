@@ -304,22 +304,92 @@ print(f"Bilangan Komposit E = {E}")
 # # segitigaKata('lintang')
 # Mohon maaf, jumlah karakter tidak memenuhi syarat membentuk pola.
 
-text = "Purwadhika"
-multiplier = 0
-star = ""
-for i in range(len(text)//2):
-    for j in range(len(text)):
-        star += text[i]
+# text = "Purwadhika"
+# multiplier = 0
+# star = ""
+# for i in range(len(text)//2):
+#     for j in range(len(text)):
+#         star += text[i]
 
-    multiplier += 1
-    print(star)
+#     multiplier += 1
+#     print(star)
 
-multiplier = len(text)//2 - 1
-star = ""
-for i in range(len(text)//2):
-    star = " * " * (multiplier)
-    multiplier -= 1
-    print(star)
+
+# multiplier = len(text)//2 - 1
+# star = ""
+# for i in range(len(text)//2):
+#     star = " * " * (multiplier)
+#     multiplier -= 1
+#     print(star)
+
+# solution from https://stackoverflow.com/questions/42606054/right-triangle-shaped-words-and-numbers-in-python-3
+word = 'Purwadhika'
+
+
+# word = word_input.replace(" ", "")
+# print(word_split)
+
+def triangle_1(word):
+    line = 0
+    start = 0
+    end = 0
+    suffix = ''
+    done = False
+
+    while not done:
+        start = end
+
+        end = start + line + 1
+
+        # Kondisi untuk membuat looping berhenti
+        if end > len(word):
+            done = True
+
+        # print(word[start:end] + "")
+
+        letters = word[start:end].split(" ")
+        letters_list = []
+        for i in letters:
+            letters_list.append(i)
+
+        x = ""
+        for i in letters_list:
+            x += i
+
+        print(x)
+
+        line += 1
+
+
+def triangle_2(message, size):
+    # Size = 0: we're done; ran out of rows
+    if size == 0:
+        return
+    # Not enough message left: print it all
+    if size >= len(message):
+        print(message)
+    # print "size" characters and go to next line
+    else:
+        print(message[:size])
+        triangle_2(message[size:], size-1)
+
+
+text = "kode python"
+
+
+def word_triangle(text):
+    triangle_1(text)
+    triangle_2(text, 0)
+    triangle_2(text, 4)
+
+
+print(word_triangle(text))
+
+
+# if start+1 < len(word):
+#     while word[start] == '':
+#         start += 1
+#         print(start)
 
 
 # ⭐Soal 7 - 🆒 Mengurai & Merajut Kata
@@ -354,22 +424,3 @@ for i in range(len(text)//2):
 # Code
 # Python
 # Purwadhika
-
-
-word = 'Faculty of computer'
-line = 0
-start = 0
-end = 0
-suffix = ''
-done = False
-while not done:
-    start = end
-    while word[start] == ' ':
-        start += 1
-    end = start + line + 1
-    if end > len(word):
-        suffix = '_' * (end - len(word))
-        end = len(word)
-        done = True
-    print(word[start:end].replace(' ', '_') + suffix)
-    line += 1

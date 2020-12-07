@@ -1,3 +1,6 @@
+# source: https://github.com/Lecturer-Jcds/Exam-Python-Fundamental
+
+
 def timeConverter(input_second):
     try:
         n_hour = 3600

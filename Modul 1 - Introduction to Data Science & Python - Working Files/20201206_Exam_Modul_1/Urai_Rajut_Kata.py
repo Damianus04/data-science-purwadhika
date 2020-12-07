@@ -1,4 +1,8 @@
+# source: https://github.com/Lecturer-Jcds/Exam-Python-Fundamental
+
 # 1) URAI Function
+
+
 def urai(text):
     output = ""
 
