@@ -133,8 +133,8 @@ while login != password and trial <= trial_limit:
                             print("\t\t'data has been updated'")
                             for n, i in enumerate(car_list):
                                 print(f"\t\t{n+1}. {i}")
-                            else:
-                                print("'data format is incorrect'")
+                            # else:
+                            #     print("'data format is incorrect'")
                         else:
                             print("\t\t'the item is not in the list'")
                             print("\t\t'please check your item in this list'")
@@ -156,6 +156,12 @@ while login != password and trial <= trial_limit:
                                 if i == input_item:
                                     car_list.remove(input_item)
                             print(f"'{input_item}' has been deleted")
+                        # if input_item in car_list:
+                        #     for i in car_list:
+                        #         if i == input_item:
+                        #             index = car_list.index(input_item)
+                        #             car_list.remove(input_item)
+                        #     print("\t\t'data has been deleted'")
                         else:
                             print("\t\t'the item is not in the list'")
                             print(
@@ -177,6 +183,8 @@ while login != password and trial <= trial_limit:
 
                 # system = str(
                 #     input("\t1. type any keyword to return to main menu\n\t2. type 'exit' to quit application\n\t--->"))
+
+
 # except:
 #     print("\t\terror occurs")
 
