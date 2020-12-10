@@ -1068,3 +1068,33 @@ deadline: Selasa
 # contoh email
 # valid: andre@gmail.com, joni_12@yahoo.com, andy34@city.id, steve.roger_77@avengers01.space
 # invalid: andre254@gmail.com, andre%^&@gmail.com, john_capt@yah^^oo.com, tony_stark@stark.corporation, Thor@@gmail.com
+
+
+elif instruction == "update":
+    exit_command = ""
+    while exit_command != "1":
+        print('\t\tUPDATE MENU')
+        input_item = str(
+            input("\t\t---> Enter item name to update: "))
+        if input_item in car_list:
+            update_item = str(
+                input("\t\t---> Data has been registered.\n \t\tEnter the update?: "))
+            for i in car_list:
+                if i == input_item:
+                    index = car_list.index(input_item)
+                    car_list[index] = update_item
+            print("\t\t'data has been updated'")
+            for n, i in enumerate(car_list):
+                print(f"\t\t{n+1}. {i}")
+            # else:
+            #     print("'data format is incorrect'")
+        else:
+            print("\t\t'the item is not in the list'")
+            print("\t\t'please check your item in this list'")
+            for n, i in enumerate(car_list):
+                print(f"\t\t{n+1}. {i}")
+
+        exit_command = str(
+            input(f"1. back to main menu: (1) \n2. repeat menu {instruction}: (2) \n--->"))
+
+    print("-"*70)
