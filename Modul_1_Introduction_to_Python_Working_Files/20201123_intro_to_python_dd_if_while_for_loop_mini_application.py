@@ -1,6 +1,6 @@
 # car_list = ["mustang", "ford", "volkswagen",
 #             "ferrari", "lamborghini", "porsche", "BMW"]
-car_list = []
+car_list = ["sawi", "jamur", "terong", "lobak", "tomat", "jamur"]
 
 # try:
 password = "pw9876"
@@ -127,7 +127,7 @@ while login != password and trial <= trial_limit:
                             update_item = str(
                                 input("\t\t---> Data has been registered.\n \t\tEnter the update?: "))
                             for i in car_list:
-                                if i == input_item:
+                                if i.lower() == input_item.lower():
                                     index = car_list.index(input_item)
                                     car_list[index] = update_item
                             print("\t\t'data has been updated'")
@@ -222,3 +222,37 @@ while login != password and trial <= trial_limit:
     #     print("\t\t'data has been updated'")
     #     for n, i in enumerate(car_list):
     #         print(f"\t\t{n+1}. {i}")
+
+
+while exit_command != "1":
+    print('\t\tDELETE MENU')
+    input_item = str(
+        input("\t\t---> Enter item name to delete: "))
+
+    index_to_delete = []
+    for h, i in enumerate(car_list):
+        if i.lower() == input_item.lower():
+            index_to_delete.append(h)
+
+    try:
+        if input_item.lower() in car_list[index_to_delete[0]].lower():
+            for i in sorted(index_to_delete, reverse=True):
+                del car_list[i]
+            print(f"'{input_item}' has been deleted")
+        else:
+            print("\t\t'the item is not in the list'")
+            print(
+                "\t\t'please check your item in this list'")
+            for n, i in enumerate(car_list):
+                print(f"\t\t{n+1}. {i}")
+    except:
+        print("\t\t'the item is not in the list'")
+        print(
+            "\t\t'please check your item in this list'")
+        for n, i in enumerate(car_list):
+            print(f"\t\t{n+1}. {i}")
+
+    exit_command = str(
+        input(f"1. back to main menu: (1) \n2. repeat menu {instruction}: (2) \n--->"))
+
+print("-"*70)

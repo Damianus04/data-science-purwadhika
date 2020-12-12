@@ -33,24 +33,29 @@ def verify_email(email):
     email = str(email).lower()
 
     result = ""
-    if email.count("@") == 1:
-        if email.count(".") > 0:
-            dot_index = ~email[::-1].index(".")
-            if dot_index >= -6:
-                for i in email[-6:]:
-                    if i in alphabet:
-                        for i in email:
-                            if i in characters:
-                                result = "email is valid"
-                            else:
-                                result = "email not valid, email can only contain letters, numbers, '_', or '.'"
-                                break
-                    else:
-                        result = "email not valid, extension can be only letters"
+    index_at = ""
+    if email.count("@") == 1 and email[0] != "@":
+        index_at = email.index("@")
+        if email[:index_at].isalnum:
+            if email.count(".") > 0:
+                # looking index from the end of list
+                dot_index = ~email[::-1].index(".")
+
+                if dot_index >= -6:
+                    for i in email[-6:]:
+                        if i in alphabet:
+                            for i in email:
+                                if i in characters:
+                                    result = "email is valid"
+                                else:
+                                    result = "email not valid, email can only contain letters, numbers, '_', or '.'"
+                                    break
+                        else:
+                            result = "email not valid, extension can be only letters"
+                else:
+                    result = "email not valid, extension should be no longer than 5 characters"
             else:
-                result = "email not valid, extension should be no longer than 5 characters"
-        else:
-            result = "email not valid, email should contain extension preceded by '.'"
+                result = "email not valid, email should contain extension preceded by '.'"
     else:
         result = "email not valid, pay attention to '@'"
 
@@ -59,7 +64,7 @@ def verify_email(email):
 
 def print_email_verification(email):
     result = verify_email(email)
-    print(f"{email}: {result} \n")
+    print(f"{email}: {result}")
 
 
 email1 = "andre@gmail.com"

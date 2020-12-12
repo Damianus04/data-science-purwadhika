@@ -156,6 +156,109 @@ print("#"*50)
 # Outliers
 
 
+def input_list():
+    input_list = []
+    list_length = int(input("length of list: "))
+    for i in range(0, list_length):
+        index = int(input(f"index {i+1}: "))
+        input_list.append(index)
+    return input_list
+
+
+def min_sort(input_list):
+    temporary_order = input_list[0]
+
+    for i in range(len(input_list)):
+        if temporary_order < input_list[i]:
+            temporary_order = temporary_order
+        else:
+            temporary_order = input_list[i]
+
+    return temporary_order
+
+
+def max_sort(input_list):
+    temporary_order = input_list[0]
+
+    for i in range(len(input_list)):
+        if temporary_order > input_list[i]:
+            temporary_order = temporary_order
+        else:
+            temporary_order = input_list[i]
+
+    return temporary_order
+
+
+def ascending_list(input_list):
+    input_list_copy = input_list[:]
+    ascending_list = []
+    asc_order = ""
+    for i in range(len(input_list_copy)):
+        if len(input_list_copy) != 0:
+            asc_order = min_sort(input_list_copy)
+            reduced_list = input_list_copy.remove(asc_order)
+        ascending_list.append(asc_order)
+    return ascending_list
+
+
+list_number = [56, 220, 4, 45, 6, 13, 10, 45, 6, 10, 100, 1]
+
+# mean
+
+
+def mean(list_number):
+    sum = 0
+    for i in range(len(list_number)):
+        sum += list_number[i]
+    mean = round(sum / len(list_number), 2)
+    return mean
+
+
+# med
+
+def med(list_number):
+    ascending_result = ascending_list(list_number)
+
+    if len(ascending_result) % 2 == 0:
+        half_index = len(ascending_result)//2
+        half_index_minus_1 = half_index - 1
+        median = (ascending_result[half_index] +
+                  ascending_result[half_index_minus_1]) / 2
+    else:
+        half_index = len(ascending_result)//2
+        median = ascending_result[half_index]
+
+    return median
+
+# mod
+
+
+def mod(list_number):
+    list_number_unique = list(set(list_number))
+
+    result = {}
+
+    for i, j in enumerate(list_number_unique):
+        sum = list_number.count(j)
+        output = {f"{j}": sum}
+        result.update(output)
+
+    result_values = list(result.values())
+    result_keys = list(result.keys())
+
+    mod_temp = max_sort(result_values)
+    mod = result_keys[result_values.index(mod_temp)]
+
+    return mod
+
+
+input_number = [56, 220, 4, 45, 13, 10, 45, 6, 10, 100, 1]
+# input_number = [1, 4, 6, 6, 10, 10, 13, 45, 45, 56, 100, 220]
+
+print(med(input_number))
+print(mean(input_number))
+print(mod(input_number))
+
 # def input_list():
 #     input_list = []
 #     list_length = int(input("length of list: "))
