@@ -138,7 +138,7 @@ masukkan operator: +
 
 Output: Hasil Penjumlahan dari 8 + 10 = 18
 
-5.
+6.
 Buat Def Function
 Fizz Buzz
 
@@ -153,7 +153,7 @@ angka yg habis dibagi 5 diubah menjadi Buzz
 angka yg habis dibagi 3 dan 5 menjadi FizzBuzz
 angka lain akan dicetak normal
 
-6.
+7.
 Buat Def Function
 Caesar Cipher
 Masukkan kata: Joni
@@ -168,7 +168,7 @@ masukkan kata: Joni
 masukkan angka: -2
 Output: imlg
 
-7.
+8.
 Konversi Romawi
 Buat Return Function
 Gunakan Dict

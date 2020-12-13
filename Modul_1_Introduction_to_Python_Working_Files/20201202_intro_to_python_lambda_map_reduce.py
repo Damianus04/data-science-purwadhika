@@ -264,11 +264,11 @@ print("#"*50)
 # 4. Buat Return Function untuk Spin angka
 
 # Ada Deret Angka(List dalam list)
-# [[1 2 3 4 5],
-#  [6 7 8 9 10],
-#  [11 12 13 14 15],
-#  [16 17 18 19 20],
-#  [21 22 23 24 25]]
+# input_list = [[1, 2, 3, 4, 5],
+#  [6, 7, 8, 9, 10],
+#  [11, 12, 13, 14, 15],
+#  [16, 17, 18, 19, 20],
+#  [21, 22, 23, 24, 25]]
 
 # Input:
 # Masukkan Angka 1-3
@@ -293,6 +293,73 @@ print("#"*50)
 #  [3, 8, 13, 18, 23],
 #  [2, 7, 12, 17, 22],
 #  [1, 6, 11, 16, 21]]
+
+
+def option1(input_list):
+    temp_list = []
+    x = 0
+    input_list = input_list[::-1]
+    for i, j in enumerate(input_list):
+        for k in range(len(input_list[x])):
+            temp_list.append(input_list[k][x])
+        x += 1
+
+    main_list = []
+    x = 0
+    y = len(input_list[0])
+
+    for i in range(len(input_list[0])):
+        main_list.append(temp_list[x:y])
+        x += len(input_list[0])
+        y += len(input_list[0])
+
+    main_list = main_list[::]
+    return main_list
+
+
+def option2(input_list):
+    temp_list = []
+    x = 0
+    for i, j in enumerate(input_list):
+        temp_list.append(j[::-1])
+        x += 1
+    main_list = temp_list[::-1]
+    return main_list
+
+
+def option3(input_list):
+    temp_list = []
+    x = 0
+    for i, j in enumerate(input_list):
+        for k in range(len(input_list[x])):
+            temp_list.append(input_list[k][x])
+        x += 1
+
+    main_list = []
+    x = 0
+    y = len(input_list[0])
+
+    for i in range(len(input_list[0])):
+        main_list.append(temp_list[x:y])
+        x += len(input_list[0])
+        y += len(input_list[0])
+
+    main_list = main_list[::-1]
+    return main_list
+
+
+input_list = [[1, 2, 3, 4, 5],
+              [6, 7, 8, 9, 10],
+              [11, 12, 13, 14, 15],
+              [16, 17, 18, 19, 20],
+              [21, 22, 23, 24, 25]]
+
+op1 = option1(input_list)
+op2 = option2(input_list)
+op3 = option3(input_list)
+
+print(f"{op1}\n{op2}\n{op3}")
+
 
 print("#"*50)
 
