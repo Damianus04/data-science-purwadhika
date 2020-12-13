@@ -429,7 +429,7 @@ def calculator():
 print(calculator())
 '''
 print("#"*50)
-
+'''
 # 6.
 # Buat Def Function
 # Fizz Buzz
@@ -444,6 +444,34 @@ print("#"*50)
 # angka yg habis dibagi 5 diubah menjadi Buzz
 # angka yg habis dibagi 3 dan 5 menjadi FizzBuzz
 # angka lain akan dicetak normal
+
+
+def input_list():
+    input_list = []
+    list_length = int(input("length of list: "))
+    for i in range(0, list_length):
+        index = int(input(f"index {i+1}: "))
+        input_list.append(index)
+    return input_list
+
+
+def fizzbuzz():
+    input_number = input_list()
+    temp_list = []
+    for i in input_number:
+        if i % 3 == 0 and i % 5 == 0:
+            temp_list.append('FizzBuzz')
+        elif i % 3 == 0:
+            temp_list.append('Fizz')
+        elif i % 5 == 0:
+            temp_list.append('Buzz')
+        else:
+            temp_list.append(i)
+    return temp_list
+
+
+print(fizzbuzz())
+'''
 
 print("#"*50)
 
@@ -462,9 +490,43 @@ print("#"*50)
 # masukkan angka: -2
 # Output: imlg
 
+
+def caesar_cipher(text, step):
+    try:
+        new_text = ""
+        alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+                    'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+        for i in text:
+            index = alphabet.index(i)
+            after_step_index = index + step
+            if -len(alphabet) <= after_step_index <= len(alphabet) - 1:
+                after_step_letter = alphabet[after_step_index]
+                new_text += after_step_letter
+            else:
+                if after_step_index > (len(alphabet) - 1):
+                    while after_step_index > (len(alphabet) - 1):
+                        after_step_index -= len(alphabet)
+                    after_step_letter = alphabet[after_step_index]
+                    new_text += after_step_letter
+                elif after_step_index < -len(alphabet):
+                    while after_step_index < -len(alphabet):
+                        after_step_index += len(alphabet)
+                    after_step_letter = alphabet[after_step_index]
+                    new_text += after_step_letter
+                else:
+                    return('error')
+        output = f"caesar cipher of '{text}' with '{step}' steps is '{new_text}'"
+        return output
+    except:
+        return(f"{text} should be string and {step} should be integer")
+
+
+print(caesar_cipher('joni', 2000))
+
 print("#"*50)
 
-
+'''
 # 8.
 # Konversi Romawi
 # Buat Return Function
@@ -531,3 +593,4 @@ print(roman_latin_number(2016))
 print(roman_latin_number("mmxvi"))
 print(roman_latin_number("MMXyuIIIe"))
 print(roman_latin_number("MMX8"))
+'''

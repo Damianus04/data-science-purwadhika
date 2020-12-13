@@ -39,12 +39,14 @@ Database ----> Frond End (Html Page) ==> Scrapped
 # py -m pip install beautifulsoup4
 # py -m pip install requests
 
-# pip install beautifulsoup4 
+# pip install beautifulsoup4
 # pip install requests
 
-###File HTML Offline
-# Beautifulsoup 
+# File HTML Offline
+# Beautifulsoup
 
+import json
+import requests
 from bs4 import BeautifulSoup
 
 # BeautifulSoup()
@@ -52,15 +54,33 @@ from bs4 import BeautifulSoup
 
 # bs4.BeautifulSoup()
 
-url = "contoh.html"
+# url = "http://127.0.0.1:5500/4DOMEvents.html"
 
-Out = BeautifulSoup(open(url, 'r'), "html.parser")
-# r => read
+# Out = BeautifulSoup(open(url, 'r'), "html.parser")
+# # r => read
 
 # print(Out)
+
+# Web Scrapping
+url = "http://127.0.0.1:5500/4DOMEvents.html"
+
+web = requests.get(url)
+
+# Out = BeautifulSoup(open(url, 'r'), "html.parser")
+Out = BeautifulSoup(web.content, 'html.parser')
+
+print(Out.title.text)
+
+for i in Out.find_all('p'):
+    print(i.text)
+
+for i in Out.find_all('li', class_='b-list'):
+    print(i.text)
+
+
 # print(Out.prettify)
-# print(Out.title)
-# print(Out.title.text)
+print(Out.title)
+print(Out.title.text)
 # tag html
 # <.>Data yg kita cari</.>
 
@@ -88,28 +108,27 @@ Out = BeautifulSoup(open(url, 'r'), "html.parser")
 # print(tamu)
 
 
-# - JSON ==> JavaScript Object Notation 
+# - JSON ==> JavaScript Object Notation
 
 member = [{
-    "nama" : "Rudi",
-    "usia" : 20,
-    "kota" : "bandung"
+    "nama": "Rudi",
+    "usia": 20,
+    "kota": "bandung"
 }]
 
-import json
 
-## Menulis file Json
+# Menulis file Json
 # with open("latihan.json", "w") as file:
 #     json.dump(member, file)
 
 # print("File Created")
 # w = write => nulis
-# dump = fungsi untuk menulis file json 
+# dump = fungsi untuk menulis file json
 
 # r = read => ngebaca
-# load = fungsi untuk membaca file json 
+# load = fungsi untuk membaca file json
 
-## Membaca File Json
+# Membaca File Json
 # with open("latihan.json", "r") as file:
 #     Output = json.load(file)
 
@@ -117,51 +136,50 @@ import json
 # print(Output)
 
 
-
-### File HTML Online
+# File HTML Online
 # BeautifulSoup
-# Requests 
+# Requests
 
-from bs4 import BeautifulSoup
-import requests
-# --- GET dan POST ==> Request 
+# from bs4 import BeautifulSoup
+# import requests
+# # --- GET dan POST ==> Request
 
-url = "http://127.0.0.1:5500/contoh.html"
+# url = "http://127.0.0.1:5500/contoh.html"
 
-web = requests.get(url)
+# web = requests.get(url)
 
-Out = BeautifulSoup(web.content, 'html.parser')
+# Out = BeautifulSoup(web.content, 'html.parser')
 
-print(Out.h1.text)
+# print(Out.h1.text)
 
-print(Out.p.text)
+# print(Out.p.text)
 
-print(Out.strong.text)
+# print(Out.strong.text)
 
-tamu = []
-for i in Out.find_all('li', class_ = "Orang"):
-    tamu.append(i.text)
+# tamu = []
+# for i in Out.find_all('li', class_ = "Orang"):
+#     tamu.append(i.text)
 
-print(tamu)
+# print(tamu)
 
-employee = []
-for i in Out.find_all('li', id= "Person2"):
-    employee.append(i.text)
-print(employee)
+# employee = []
+# for i in Out.find_all('li', id= "Person2"):
+#     employee.append(i.text)
+# print(employee)
 
 ### Latihan - Tugas
-Lakukan Web-Scrapping dari :
-http://www.scifijapan.com/articles/2015/10/04/bandai-ultraman-ultra-500-figure-list/
+# Lakukan Web-Scrapping dari :
+# http://www.scifijapan.com/articles/2015/10/04/bandai-ultraman-ultra-500-figure-list/
 
-Daftar Ultraman dan Daftar Monster
-Nama-Ultraman dan No nya, ==> 01. Ultraman
-Nama-Monster dan No nya, ==> 73. Judah Spectre
+# Daftar Ultraman dan Daftar Monster
+# Nama-Ultraman dan No nya, ==> 01. Ultraman
+# Nama-Monster dan No nya, ==> 73. Judah Spectre
 
-Export ke dalam File JSON
+# Export ke dalam File JSON
 
-Format Isi untuk File Json :
-[{"Ultraman" : {"01" : "Ultraman", "02": "Ultra Seven".....}
-"Monster" : {"01" : "Alien Baltan", "02" : "Gomora"....}}]
+# Format Isi untuk File Json :
+# [{"Ultraman" : {"01" : "Ultraman", "02": "Ultra Seven".....}
+# "Monster" : {"01" : "Alien Baltan", "02" : "Gomora"....}}]
 
-Email :
-purwadhika.jcds@gmail.com 
+# Email :
+# purwadhika.jcds@gmail.com
