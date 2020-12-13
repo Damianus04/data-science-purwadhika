@@ -260,7 +260,7 @@ print(mean(input_number))
 print(mod(input_number))
 '''
 print("#"*50)
-
+'''
 # 4. Buat Return Function untuk Spin angka
 
 # Ada Deret Angka(List dalam list)
@@ -359,7 +359,7 @@ op2 = option2(input_list)
 op3 = option3(input_list)
 
 print(f"{op1}\n{op2}\n{op3}")
-
+'''
 
 print("#"*50)
 
@@ -478,3 +478,56 @@ print("#"*50)
 
 # Silakan Masukkan angka: MMXVIII
 # Output nya: 2018
+
+number = "4000"
+number = "MMXVIII"
+
+
+def roman_latin_number(number):
+    roman_latin_dict = {1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL",
+                        50: "L", 90: "XC", 100: "C", 400: "CD", 500: "D", 900: "CM", 1000: "M"}
+    dict_keys = list(roman_latin_dict.keys())[::-1]
+    dict_values = list(roman_latin_dict.values())[::-1]
+
+    number = str(number)
+
+    if number.isdigit():
+        input_number = int(number)
+        temp_conversion = ""
+        counter = 0
+        if input_number <= 4000:
+            while input_number > 0:
+                for i in range(input_number // dict_keys[counter]):
+                    temp_conversion += dict_values[counter]
+                    input_number -= dict_keys[counter]
+                counter += 1
+            return(f"{number} --> {temp_conversion}")
+        else:
+            return(f"{number} is above 4000. \nnumber should be under 4000")
+    elif number.isalpha():
+        try:
+            number = number.upper()
+            temp_conversion = 0
+            if len(number) >= 4 and number[:4] == "MMMM":
+                return(f"{number} is above 4000. \nnumber should be under 4000")
+            else:
+                for i in number:
+                    latin_number = dict_keys[dict_values.index(i)]
+                    temp_conversion += latin_number
+                return(f"{number} --> {temp_conversion}")
+        except:
+            return(f"{number} is incorrect. \nplease type the correct roman number")
+    elif number.isalnum():
+        return(f"{number} is incorrect. \ntype either latin number or roman number")
+    else:
+        return(f"{number} is incorrect. \nplease retype your input either in latin number or roman numbe")
+
+
+print(roman_latin_number(2018))
+print(roman_latin_number("MMXVIII"))
+print(roman_latin_number(4001))
+print(roman_latin_number("mmMMMxvi"))
+print(roman_latin_number(2016))
+print(roman_latin_number("mmxvi"))
+print(roman_latin_number("MMXyuIIIe"))
+print(roman_latin_number("MMX8"))
