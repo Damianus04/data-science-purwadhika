@@ -53,7 +53,7 @@ print("*" * 50)
 # except:
 #     print('error occurs, input should be a text')
 
-# Soal 3
+# Soal 3 --> soal ini belum selesai
 # print("Soal 3")
 # number_input = int(input("enter the number: "))
 # result = ((number_input - 93) // 100) + (93 * 100)

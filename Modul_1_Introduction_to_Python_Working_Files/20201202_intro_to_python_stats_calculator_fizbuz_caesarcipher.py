@@ -144,7 +144,7 @@ except:
 
 print("#"*50)
 '''
-# 3.
+# 3. --> kurang fitur percentile dan outliers
 # -Buat Algoritma Stats-
 # Buat List
 # - Cari Nilai
@@ -474,7 +474,7 @@ print(fizzbuzz())
 '''
 
 print("#"*50)
-
+'''
 # 7.
 # Buat Def Function
 # Caesar Cipher
@@ -523,7 +523,7 @@ def caesar_cipher(text, step):
 
 
 print(caesar_cipher('joni', 2000))
-
+'''
 print("#"*50)
 
 '''
