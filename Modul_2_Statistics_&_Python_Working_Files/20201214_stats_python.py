@@ -264,35 +264,42 @@ option = input(
     2) Foreign Currency to IDR
     --> """)
 
-if option == "1":
-    bank = input("choose the bank: ").lower()
-    currency = input("choose the currency: ").lower()
-    amount = int(input("type your amount: "))
+system = ''
+while system != 'y':
+    if option == "1":
+        bank = input("choose the bank: ").lower()
+        currency = input("choose the currency: ").lower()
+        amount = int(input("type your amount: "))
 
-    url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
-    data = requests.get(url)
-    output = data.json()
-    rate = output['jual']
+        url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
+        data = requests.get(url)
+        output = data.json()
+        rate = output['jual']
 
-    output = amount / rate
+        output = amount / rate
 
-    print(
-        f"in bank: '{bank}', '{amount}' IDR is '{output}' '{currency.upper()}'")
-elif option == '2':
-    bank = input("choose the bank: ").lower()
-    currency = input("choose the currency: ").lower()
-    amount = int(input("type your amount: "))
+        print(
+            f"in bank: '{bank}', '{amount}' IDR is '{output}' '{currency.upper()}'")
+    elif option == '2':
+        bank = input("choose the bank: ").lower()
+        currency = input("choose the currency: ").lower()
+        amount = int(input("type your amount: "))
 
-    url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
-    data = requests.get(url)
-    output = data.json()
-    rate = output['beli']
+        url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
+        data = requests.get(url)
+        output = data.json()
+        rate = output['beli']
 
-    output = amount * rate
+        output = amount * rate
 
-    print(
-        f"in bank: '{bank}', '{amount}' '{currency.upper()}' is '{output}' IDR ")
+        print(
+            f"in bank: '{bank}', '{amount}' '{currency.upper()}' is '{output}' IDR ")
+    else:
+        print("please select '1' or '2'")
 
+    system = input('''do you want to repeat: 
+                    --> yes (y)
+                    --> no (n)''')
 
 # 2.  Prakiraan Cuaca
 # url = https://openweathermap.org/current
@@ -320,3 +327,83 @@ elif option == '2':
 # weather = data.json()
 
 # print(weather)
+
+
+# Zomato
+# import requests
+
+# key = "d144413ae947e1fca6f92d6f043e82eb"
+# cat = "/categories"
+# city = "/cities"
+# host = "https://developers.zomato.com/api/v2.1"
+
+# head = {'user-key': key}
+
+# url1 = host + cat
+# url2 = host + city
+
+# data1 = requests.get(url1, headers=head)
+# data2 = requests.get(
+#     url2, headers={"user-key": "d144413ae947e1fca6f92d6f043e82eb"})
+
+# output1 = data1.json()
+# category1 = output1['categories']
+
+# list_cat = []
+
+# for i in range(len(category1)):
+#     list_cat.append(category1[i]['categories']['name'])
+
+# print(list_cat)
+
+
+# LATIHAN - TUGAS
+# gunakan API zomato
+
+# selamat datang di zomato apps:
+# silahkan pilih opsi:
+# 1. cari resto
+# 2. daily menu
+
+# opsi 1:
+# mencari restoran di kota tertentu
+# input: masukkan nama kota:
+# masukkan jumlah restoran yang akan ditampilkan
+
+# output:
+# - nama restoran: ...
+# - establishment name: ...
+# - cuisine name: ...
+# - alamat: ...
+# - no telpon: ...
+# - rating: ... (angka)
+# - review: ... (angka)
+
+# opsi 2:
+# daily menu - menu harian resto
+# input:
+# - masukkan nama kota
+# - masukkan nama resto:
+# - jumlah menu yang akan ditampilkan:
+
+# output:
+# daily menu di restorean xxx adalah...
+
+
+# # POKE API
+# # https://pokeapi.co/
+# masukkan nama pokemon:
+
+# output:
+# - nama pokemon:
+# - HP: ...
+# - attack: ...
+# - defense: ...
+# - speed: ...
+# - type: ...
+# - image: ... url image foto pokemon ...
+# - ability name:
+# 1. ...
+# 2. ...
+# 3. ...
+# 4. ...

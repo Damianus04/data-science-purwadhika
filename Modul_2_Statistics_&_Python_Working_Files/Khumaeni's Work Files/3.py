@@ -108,7 +108,7 @@ Nilau uang anda .50 usd.. (Mata uang asing) dalam rupiah . adalah .... (nilai ko
 ### https://openweathermap.org/
 
 # api.openweathermap.org/data/2.5/weather?q=London&appid={API key}
-
+'''
 key = '3a18ccca6a337aa57302cc46a2907609'
 host = "api.openweathermap.org"
 kota = input("Masukkan Nama Kota : ")
@@ -139,3 +139,95 @@ Kota yang anda masukkan tidak terdaftar
 Format Kota yang anda masukkan salah 
 
 ## Gunakan API OpenweatherMap
+'''
+
+################################### Zomato
+ # https://developers.zomato.com/documentation
+import requests
+
+key = "aacad4a56095f564c677dface758d709"
+cat = "/categories"
+city = "/cities"
+host = "https://developers.zomato.com/api/v2.1"
+
+Head = {"user-key" : key}
+
+url = host + cat
+url2 = host + city 
+
+data = requests.get(url, headers = Head)
+
+data2 = requests.get(url2, headers = {"user-key" : "aacad4a56095f564c677dface758d709"})
+
+
+Output = data.json()
+
+# print(Output['categories'])
+
+# print(len(Output['categories']))
+
+isi = len(Output['categories'])
+kategori = Output['categories']
+
+List_Cat = []
+
+for i in range(isi):
+    List_Cat.append(kategori[i]['categories']['name'])
+
+print(List_Cat)
+
+
+#################### Latihan - Tugas
+Gunakan API dari Zomato 
+
+Selamat Datang di Zomato Apps :
+Silahkan Pilih Opsi :
+1. Cari Resto 
+2. Daily Menu 
+
+
+Opsi 1 :
+Mencari Restoran di Kota Tertentu 
+Input :
+Masukkan Nama Kota :
+Masukkan Jumlah Restoran yg akan ditampilkan : 
+
+Output nya :
+- Nama Restoran : ....
+- Establishment Name : ...
+- Cuisine Name : .... 
+- Alamat : .... 
+- No Telfon : .... 
+- Rating : .... (Angka)
+- Review : .... (Angka)
+
+Opsi 2:
+Daily Menu - Menu Harian Resto 
+Input :
+- Masukkan nama Kota :
+- Masukkan nama Resto :
+- Jumlah menu yang akan ditampilkan : 
+
+Output nya :
+Daily Menu di Restoran xxxx adalah .....
+
+############################ POKE API
+# https://pokeapi.co/
+
+Pokemon Database :
+
+Input :
+Masukkan Nama Pokemon :
+
+Output :
+- Nama Pokemon :
+- HP : ...
+- Attack : ...
+- Defense : ...
+- Speed : ...
+- Type : ...
+- Image : .....Url image foto pokemon...
+- Ability Name :
+1 .....
+2 .....
+3 .....
