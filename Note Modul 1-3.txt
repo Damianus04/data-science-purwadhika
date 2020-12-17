@@ -1,0 +1,106 @@
+- Interpreter programming language -> program akan langsung mengeksekusi setiap baris kode dari atas ke bawah
+- case sensitive -> "A" beda dengan "a"
+- tidak butuh semicolon
+- Tabulasi - indentasi
+
+
+Materi Exam Modul 1
+- mengkonversi persamaan matematika dalam algoritma dengan variabel
+
+
+MONGODB
+
+--> Install MongoDB for community
+1. buat folder baru dulu di C --> data\db
+2. cmd pertama: C:\Program Files\MongoDB\Server\4.4\bin>mongod --dbpath C:\data\db
+3. cmd kedua: C:\Program Files\MongoDB\Server\4.4\bin>mongo
+
+show database
+- show dbs
+
+use/create database
+- use database_name
+
+delete database
+- use database_name
+- db.dropDatabase()
+
+show collections
+- show collections
+
+create collections
+- db.createCollections('karyawan')
+
+show data on collections
+-db.Aset.find()
+
+-> with condition
+db.Employee.find({'Usia': 25})
+db.Employee.find({'Gaji': 20000000}).pretty()
+
+-> conditional
+db.Employee.find({$and: [{}, {}]})
+--> db.Employee.find({$and: [{"Nama": "Rosi"}, {"Gaji": 15000000}]})
+--> db.Employee.find({$or: [{"Nama": "Joni"}, {"Kota": "Jakarta"}]})
+--> db.Employee.find({"Usia": {$lt: 26}}) --> less than
+--> db.Employee.find({"Usia": {$gt: 26}}) --> greater than
+--> lte: less than equal, gte: greater than equal
+--> db.Employee.find().limit(4).skip(3)
+
+-> sort
+--> db.Employee.find().sort({"Gaji": 1}) --> ascending
+--> db.Employee.find().sort({"Gaji": -1}) --> descending
+
+-> count
+--> db.Employee.find().count()
+--> db.Employee.find({"Nama": "Andre"}).count()
+
+add data to Collections
+db.Employee.insert([
+... {"Nama": "Yogi", "Usia": 30, "Kota": "Malang", "Gaji": 16000000},
+... {"Nama": "Cecil", "Usia": 26, "Kota": "Bandung", "Gaji": 15000000},
+... {"Nama": "Andre", "Usia": 27, "Kota": "Jakarta", "Gaji": 17000000},
+... {"Nama": "Andi", "Usia": 28, "Kota": "Bandung", "Gaji": 25000000}
+... ])
+--> if single data, [] not used
+
+update data value in Collections
+- update all --> db.Employee.update({}, {$set: {"Dept": "Data"})
+- update per item --> db.Employee.update({"Nama": "Mike"}, {$set: {"Usia": 25} })
+
+update data key in Collections
+- update all --> db.Employee.updateMany({}, {$set: {"Dept": "Data"}})
+	     --> db.Employee.updateMany({}, {$rename: {"Dept": "Divisi"}})
+- update per item --> db.Employee.update({"Nama": "Mike"}, {$rename: {"Usia": "Umur"}})
+
+update data based on certain query
+- db.Employee.updateMany({'Nama': 'Rosi'}, {$rename: {"Usia": "Umur"}}
+
+remove data
+-  db.Aset.remove({"nama": "brankas"})db.
+
+remove data key and value
+- db.Employee.update({"Nama": "Mike"}, {$unset: {"Umur": true}})
+
+create user
+1. go to one of db and collection
+2. > db.createUser({
+... 'user': 'AdministratorDB',
+... 'pwd': 'Admin123',
+... 'roles': ['dbAdmin', 'readWrite']
+... })
+
+3. show users or db.getUsers to show the information
+
+
+exercise: https://www.w3resource.com/mongodb-exercises/
+
+FINAL PROJECT:
+1. Problem
+
+
+2. Goals
+
+3. Perusahaan - user
+
+4. Data
