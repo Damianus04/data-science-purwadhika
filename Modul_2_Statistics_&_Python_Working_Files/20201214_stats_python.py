@@ -165,8 +165,7 @@ Database ----> Frond End (Html Page) ==> Scrapped
 # BeautifulSoup
 # Requests
 
-from bs4 import BeautifulSoup
-import requests
+
 # # --- GET dan POST ==> Request
 
 # url = "http://127.0.0.1:5500/contoh.html"
@@ -257,49 +256,94 @@ import requests
 # Output:
 # nilai uang anda 50 usd dalam rupiah adalah (nilai konversi)
 
-token = "bDSGqWmkLACiWbV9oXYuqn0MDn5wSEn0EEyjZ8Nx"
-option = input(
-    """choose your option:
-    1) IDR to Foreign Currency
-    2) Foreign Currency to IDR
-    --> """)
+from bs4 import BeautifulSoup
+import requests
 
-system = ''
-while system != 'y':
-    if option == "1":
-        bank = input("choose the bank: ").lower()
-        currency = input("choose the currency: ").lower()
-        amount = int(input("type your amount: "))
+try:
+    system = ''
+    while system != 'y':
+        token = "bDSGqWmkLACiWbV9oXYuqn0MDn5wSEn0EEyjZ8Nx"
+        option = input(
+            """choose your option:
+            1) IDR to Foreign Currency
+            2) Foreign Currency to IDR
+            --> """)
 
-        url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
-        data = requests.get(url)
-        output = data.json()
-        rate = output['jual']
+        if option == "1":
+            # USER INPUT
+            print("="*10, "CONVERT IDR TO FOREIGN CURRENCY", "="*10)
+            bank = input("choose the bank: ").lower()
+            currency = input("choose the currency: ").lower()
+            amount = int(input("type your amount in IDR: "))
 
-        output = amount / rate
+            # GET API DATA
+            url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
+            data = requests.get(url)
+            output = data.json()
 
-        print(
-            f"in bank: '{bank}', '{amount}' IDR is '{output}' '{currency.upper()}'")
-    elif option == '2':
-        bank = input("choose the bank: ").lower()
-        currency = input("choose the currency: ").lower()
-        amount = int(input("type your amount: "))
+            # DISPLAY RESULT
+            if output['status'] == 'success':
+                rate = output['jual']
+                conversion = round(amount / rate, 2)
+                print(
+                    f"In '{bank}', IDR '{amount}' is {currency.upper()} '{conversion}'")
+            elif output['status'] == 'error':
+                print(f"error: {output['message']}")
+            else:
+                continue
 
-        url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
-        data = requests.get(url)
-        output = data.json()
-        rate = output['beli']
+            print("="*10, "END OF CONVERSION", "="*10)
 
-        output = amount * rate
+            # EXIT COMMAND
+            system = input('''Do you want to exit? 
+            -- yes (y)
+            -- no (n)
+            --> ''')
+            if system == 'y':
+                print('Thank you for using this application')
+            elif system == 'n':
+                continue
+        elif option == '2':
+            # USER INPUT
+            print("="*10, "CONVERT FOREIGN CURRENCY TO IDR", "="*10)
+            bank = input("choose the bank: ").lower()
+            currency = input("choose the currency: ").lower()
+            amount = int(input("type your amount: "))
 
-        print(
-            f"in bank: '{bank}', '{amount}' '{currency.upper()}' is '{output}' IDR ")
-    else:
-        print("please select '1' or '2'")
+            # GET API DATA
+            url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
+            data = requests.get(url)
+            output = data.json()
 
-    system = input('''do you want to repeat: 
-                    --> yes (y)
-                    --> no (n)''')
+            # DISPLAY RESULT
+            if output['status'] == 'success':
+                rate = output['beli']
+                conversion = round(amount * rate, 2)
+                print(
+                    f"In '{bank}', {currency.upper()} '{amount}' is IDR '{conversion}'")
+            elif output['status'] == 'error':
+                print(f"error: {output['message']}")
+            else:
+                continue
+
+            print("="*18, "END OF CONVERSION", "="*18)
+
+            # EXIT COMMAND
+            system = input('''Do you want to exit? 
+            -- yes (y)
+            -- no (n)
+            --> ''')
+
+            if system == 'y':
+                print('Thank you for using this application')
+            elif system == 'n':
+                continue
+        else:
+            print("please select '1' or '2'")
+except(ValueError):
+    print("currency should be integer without any separator")
+
+    # KeyError
 
 # 2.  Prakiraan Cuaca
 # url = https://openweathermap.org/current

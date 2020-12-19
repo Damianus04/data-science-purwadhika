@@ -94,6 +94,13 @@ create user
 
 
 exercise: https://www.w3resource.com/mongodb-exercises/
+versi >4.4 install mongodb tools (https://www.mongodb.com/try/download/database-tools?tck=docs_databasetools)
+masuk ke hasil instalasi (C:\Program Files\MongoDB\Tools\100\bin>mongoimport --db NamaDBS --collection NamaCollection --file restaurants.json)
+
+- www.w3resource.com/mongodb-exercises/#PracticeOnline
+- https://www.mongodb.com/try/download/database-tools?tck=docs_databasetools
+- mongoimport --db NamaDBS --collection DataRESTO --file restaurants.json
+
 
 FINAL PROJECT:
 1. Problem
