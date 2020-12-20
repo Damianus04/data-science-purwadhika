@@ -12,8 +12,8 @@ MONGODB
 
 --> Install MongoDB for community
 1. buat folder baru dulu di C --> data\db
-2. cmd pertama: C:\Program Files\MongoDB\Server\4.4\bin>mongod --dbpath C:\data\db
-3. cmd kedua: C:\Program Files\MongoDB\Server\4.4\bin>mongo
+2. cmd pertama - server: C:\Program Files\MongoDB\Server\4.4\bin>mongod --dbpath C:\data\db
+3. cmd kedua - execution: C:\Program Files\MongoDB\Server\4.4\bin>mongo
 
 show database
 - show dbs
@@ -82,6 +82,10 @@ remove data
 remove data key and value
 - db.Employee.update({"Nama": "Mike"}, {$unset: {"Umur": true}})
 
+import new data
+- C:\Program Files\MongoDB\Tools\100\bin>mongoimport --db Culinary --collection restaurants --file restaurants.json
+- make sure the .json file is copied to the directory
+
 create user
 1. go to one of db and collection
 2. > db.createUser({
@@ -93,21 +97,19 @@ create user
 3. show users or db.getUsers to show the information
 
 
-exercise: https://www.w3resource.com/mongodb-exercises/
-versi >4.4 install mongodb tools (https://www.mongodb.com/try/download/database-tools?tck=docs_databasetools)
-masuk ke hasil instalasi (C:\Program Files\MongoDB\Tools\100\bin>mongoimport --db NamaDBS --collection NamaCollection --file restaurants.json)
+MongoDB exercise: 
+1) https://www.w3resource.com/mongodb-exercises/
 
-- www.w3resource.com/mongodb-exercises/#PracticeOnline
-- https://www.mongodb.com/try/download/database-tools?tck=docs_databasetools
-- mongoimport --db NamaDBS --collection DataRESTO --file restaurants.json
+2) versi >4.4 install mongodb tools (https://www.mongodb.com/try/download/database-tools?tck=docs_databasetools)
+
+3) masuk ke hasil instalasi (C:\Program Files\MongoDB\Tools\100\bin>mongoimport --db NamaDBS --collection DataRESTO --file restaurants.json
+
+
+C:\Program Files\MongoDB\Server\4.4\bin
 
 
 FINAL PROJECT:
 1. Problem
-
-
 2. Goals
-
 3. Perusahaan - user
-
 4. Data
