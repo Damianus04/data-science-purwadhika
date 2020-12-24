@@ -32,3 +32,22 @@ db.restaurants.find({$and: [{grades: {$elemMatch: {"score": {$gt: 80}}}}, {grade
 
 # 10) find the restaurants which locate in latitude value less than -95.754168
 db.restaurants.find({"address.coord": {$lt: -95.754168}}).pretty()
+
+# 11)  find the restaurants that do not prepare any cuisine of 'American' and their grade score more than 70 and latitude less than -65.754168
+
+- -> space should be added("American ")
+db.restaurants.find({$and: [{"cuisine": {$ne: "American"}}, {"grades.score": {$gt: 70}}, {"address.coord": {$lt: -65}}]}).pretty() - -> still need revision
+
+db.restaurants.find(
+    {$and:
+     [
+         {"cuisine": {$ne: "American "}},
+         {"grades.score": {$gt: 70}},
+         {"address.coord": {$lt: -65.754168}}
+     ]
+     }
+)
+
+
+# 12. find the restaurants which do not prepare any cuisine of 'American' and achieved a score more than 70 and located in the longitude less than -65.754168. Note : Do this query without using $and operator
+db.restaurants.find({"cuisine": {$ne: "American "}, "grades.score": {$gt: 70}, "address.coord": {$lt: -65}}).pretty()

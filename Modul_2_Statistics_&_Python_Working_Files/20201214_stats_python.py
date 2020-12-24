@@ -259,91 +259,91 @@ Database ----> Frond End (Html Page) ==> Scrapped
 from bs4 import BeautifulSoup
 import requests
 
-try:
-    system = ''
-    while system != 'y':
-        token = "bDSGqWmkLACiWbV9oXYuqn0MDn5wSEn0EEyjZ8Nx"
-        option = input(
-            """choose your option:
-            1) IDR to Foreign Currency
-            2) Foreign Currency to IDR
-            --> """)
+# try:
+#     system = ''
+#     while system != 'y':
+#         token = "bDSGqWmkLACiWbV9oXYuqn0MDn5wSEn0EEyjZ8Nx"
+#         option = input(
+#             """choose your option:
+#             1) IDR to Foreign Currency
+#             2) Foreign Currency to IDR
+#             --> """)
 
-        if option == "1":
-            # USER INPUT
-            print("="*10, "CONVERT IDR TO FOREIGN CURRENCY", "="*10)
-            bank = input("choose the bank: ").lower()
-            currency = input("choose the currency: ").lower()
-            amount = int(input("type your amount in IDR: "))
+#         if option == "1":
+#             # USER INPUT
+#             print("="*10, "CONVERT IDR TO FOREIGN CURRENCY", "="*10)
+#             bank = input("choose the bank: ").lower()
+#             currency = input("choose the currency: ").lower()
+#             amount = int(input("type your amount in IDR: "))
 
-            # GET API DATA
-            url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
-            data = requests.get(url)
-            output = data.json()
+#             # GET API DATA
+#             url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
+#             data = requests.get(url)
+#             output = data.json()
 
-            # DISPLAY RESULT
-            if output['status'] == 'success':
-                rate = output['jual']
-                conversion = round(amount / rate, 2)
-                print(
-                    f"In '{bank}', IDR '{amount}' is {currency.upper()} '{conversion}'")
-            elif output['status'] == 'error':
-                print(f"error: {output['message']}")
-            else:
-                continue
+#             # DISPLAY RESULT
+#             if output['status'] == 'success':
+#                 rate = output['jual']
+#                 conversion = round(amount / rate, 2)
+#                 print(
+#                     f"In '{bank}', IDR '{amount}' is {currency.upper()} '{conversion}'")
+#             elif output['status'] == 'error':
+#                 print(f"error: {output['message']}")
+#             else:
+#                 continue
 
-            print("="*10, "END OF CONVERSION", "="*10)
+#             print("="*10, "END OF CONVERSION", "="*10)
 
-            # EXIT COMMAND
-            system = input('''Do you want to exit? 
-            -- yes (y)
-            -- no (n)
-            --> ''')
-            if system == 'y':
-                print('Thank you for using this application')
-            elif system == 'n':
-                continue
-        elif option == '2':
-            # USER INPUT
-            print("="*10, "CONVERT FOREIGN CURRENCY TO IDR", "="*10)
-            bank = input("choose the bank: ").lower()
-            currency = input("choose the currency: ").lower()
-            amount = int(input("type your amount: "))
+#             # EXIT COMMAND
+#             system = input('''Do you want to exit?
+# -- yes(y)
+# -- no(n)
+# - -> ''')
+#             if system == 'y':
+#                 print('Thank you for using this application')
+#             elif system == 'n':
+#                 continue
+#         elif option == '2':
+#             # USER INPUT
+#             print("="*10, "CONVERT FOREIGN CURRENCY TO IDR", "="*10)
+#             bank = input("choose the bank: ").lower()
+#             currency = input("choose the currency: ").lower()
+#             amount = int(input("type your amount: "))
 
-            # GET API DATA
-            url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
-            data = requests.get(url)
-            output = data.json()
+#             # GET API DATA
+#             url = f"https://api.kurs.web.id/api/v1?token={token}&bank={bank}&matauang={currency}"
+#             data = requests.get(url)
+#             output = data.json()
 
-            # DISPLAY RESULT
-            if output['status'] == 'success':
-                rate = output['beli']
-                conversion = round(amount * rate, 2)
-                print(
-                    f"In '{bank}', {currency.upper()} '{amount}' is IDR '{conversion}'")
-            elif output['status'] == 'error':
-                print(f"error: {output['message']}")
-            else:
-                continue
+#             # DISPLAY RESULT
+#             if output['status'] == 'success':
+#                 rate = output['beli']
+#                 conversion = round(amount * rate, 2)
+#                 print(
+#                     f"In '{bank}', {currency.upper()} '{amount}' is IDR '{conversion}'")
+#             elif output['status'] == 'error':
+#                 print(f"error: {output['message']}")
+#             else:
+#                 continue
 
-            print("="*18, "END OF CONVERSION", "="*18)
+#             print("="*18, "END OF CONVERSION", "="*18)
 
-            # EXIT COMMAND
-            system = input('''Do you want to exit? 
-            -- yes (y)
-            -- no (n)
-            --> ''')
+#             # EXIT COMMAND
+#             system = input('''Do you want to exit?
+# -- yes(y)
+# -- no(n)
+# - -> ''')
 
-            if system == 'y':
-                print('Thank you for using this application')
-            elif system == 'n':
-                continue
-        else:
-            print("please select '1' or '2'")
-except(ValueError):
-    print("currency should be integer without any separator")
+#             if system == 'y':
+#                 print('Thank you for using this application')
+#             elif system == 'n':
+#                 continue
+#         else:
+#             print("please select '1' or '2'")
+# except(ValueError):
+#     print("currency should be integer without any separator")
 
-    # KeyError
+# # KeyError
 
 # 2.  Prakiraan Cuaca
 # url = https://openweathermap.org/current
@@ -362,15 +362,44 @@ except(ValueError):
 # kota yang anda masukkan tidak terdaftar
 
 # format kota yang anda masukkan salah
-# key = "479f8bc4202658a493ab6435aa6c0f72"
-# host = "api.openweathermap.org"
-# city = input("select a city: ")
-# url = f"https://{host}/data/2.5/weather?q={city}&appid={key}"
 
-# data = requests.get(url)
-# weather = data.json()
 
-# print(weather)
+exit = ""
+while exit != 'y':
+    key = "479f8bc4202658a493ab6435aa6c0f72"
+    host = "api.openweathermap.org"
+    city = input("select a city: ")
+    url = f"https://{host}/data/2.5/weather?q={city}&appid={key}"
+
+    data = requests.get(url)
+    weather = data.json()
+
+    if city.isalpha():
+        if weather['cod'] == 200:
+            city = weather['name']
+            temperature = weather['main']['temp']
+            weather_description = weather['weather'][0]['main']
+            long = weather['coord']['lon']
+            lat = weather['coord']['lat']
+            humidity = weather['main']['humidity']
+            wind_speed = weather['wind']['speed']
+
+            print(f"""
+                City: \t\t{city}
+                Temperature: \t{temperature} F
+                Weather: \t{weather_description}
+                Longitude: \t{long}
+                Latitude: \t{lat}
+                Humidity: \t{humidity}
+                Wind Speed: \t{wind_speed}""")
+        elif weather['cod'] == "404":
+            print(weather['message'])
+    elif city.isalnum() or city.isdigit():
+        print('city must be in the form of text')
+    else:
+        print('error, please repeat again')
+
+    exit = input('Do you want to exit? (y/n) \n-->').lower()
 
 
 # Zomato
