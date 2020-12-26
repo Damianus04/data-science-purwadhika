@@ -364,42 +364,42 @@ import requests
 # format kota yang anda masukkan salah
 
 
-exit = ""
-while exit != 'y':
-    key = "479f8bc4202658a493ab6435aa6c0f72"
-    host = "api.openweathermap.org"
-    city = input("select a city: ")
-    url = f"https://{host}/data/2.5/weather?q={city}&appid={key}"
+# exit = ""
+# while exit != 'y':
+#     key = "479f8bc4202658a493ab6435aa6c0f72"
+#     host = "api.openweathermap.org"
+#     city = input("select a city: ")
+#     url = f"https://{host}/data/2.5/weather?q={city}&appid={key}"
 
-    data = requests.get(url)
-    weather = data.json()
+#     data = requests.get(url)
+#     weather = data.json()
 
-    if city.isalpha():
-        if weather['cod'] == 200:
-            city = weather['name']
-            temperature = weather['main']['temp']
-            weather_description = weather['weather'][0]['main']
-            long = weather['coord']['lon']
-            lat = weather['coord']['lat']
-            humidity = weather['main']['humidity']
-            wind_speed = weather['wind']['speed']
+#     if city.isalpha():
+#         if weather['cod'] == 200:
+#             city = weather['name']
+#             temperature = weather['main']['temp']
+#             weather_description = weather['weather'][0]['main']
+#             long = weather['coord']['lon']
+#             lat = weather['coord']['lat']
+#             humidity = weather['main']['humidity']
+#             wind_speed = weather['wind']['speed']
 
-            print(f"""
-                City: \t\t{city}
-                Temperature: \t{temperature} F
-                Weather: \t{weather_description}
-                Longitude: \t{long}
-                Latitude: \t{lat}
-                Humidity: \t{humidity}
-                Wind Speed: \t{wind_speed}""")
-        elif weather['cod'] == "404":
-            print(weather['message'])
-    elif city.isalnum() or city.isdigit():
-        print('city must be in the form of text')
-    else:
-        print('error, please repeat again')
+#             print(f"""
+#                 City: \t\t{city}
+#                 Temperature: \t{temperature} F
+#                 Weather: \t{weather_description}
+#                 Longitude: \t{long}
+#                 Latitude: \t{lat}
+#                 Humidity: \t{humidity}
+#                 Wind Speed: \t{wind_speed}""")
+#         elif weather['cod'] == "404":
+#             print(weather['message'])
+#     elif city.isalnum() or city.isdigit():
+#         print('city must be in the form of text')
+#     else:
+#         print('error, please repeat again')
 
-    exit = input('Do you want to exit? (y/n) \n-->').lower()
+#     exit = input('Do you want to exit? (y/n) \n-->').lower()
 
 
 # Zomato
@@ -428,6 +428,84 @@ while exit != 'y':
 #     list_cat.append(category1[i]['categories']['name'])
 
 # print(list_cat)
+
+
+try:
+    key = "d144413ae947e1fca6f92d6f043e82eb"
+    host = "https://developers.zomato.com/api/v2.1"
+    head = {'user-key': key}
+
+    exit = ''
+    while exit != 'y':
+        print('='*10, 'Welcome to Zomato', '='*10)
+        option_input = input('''choose your option
+                - Find Resto (1)
+                - Find Daily Menu (2)
+                --> ''')
+
+        if option_input == '1':
+            print('OPTION 1: FIND RESTO\n')
+            city_input = input('type the city: ')
+            quantity_display = input('number of city to display: ')
+
+            if city_input.isalpha() and quantity_display.isdigit():
+                # locations - city id
+                city_api = f"/locations?query={city_input.lower()}"
+                url_city = host + city_api
+                data_city = requests.get(
+                    url_city, headers=head)
+
+                location = data_city.json()  # main information
+                city_id = location['location_suggestions'][0]['entity_id']
+                city_name = location['location_suggestions'][0]['city_name']
+                city_type = location['location_suggestions'][0]['entity_type']
+
+                # location details
+                city_id = city_id
+                city_type = city_type
+                location_api = f"/location_details?entity_id={city_id}&entity_type={city_type}"
+                url_location = host + location_api
+                data_location = requests.get(url_location, headers=head)
+
+                location_details = data_location.json()
+
+                #  restaurant, cuisine, establishment, address, phone number, rating, review
+                for h, i in enumerate(location_details['best_rated_restaurant'][:int(quantity_display)]):
+                    print(f"{h+1}) {i['restaurant']['name'].upper()}")
+                    print(
+                        f"* establishment: {i['restaurant']['establishment'][0]}")
+                    print(f"* cuisines: {i['restaurant']['cuisines']}")
+                    print(
+                        f"* address: {i['restaurant']['location']['address']}")
+                    print(
+                        f"* phone number: {i['restaurant']['phone_numbers']}")
+                    print(
+                        f"* rating: {i['restaurant']['user_rating']['aggregate_rating']}/{i['restaurant']['user_rating']['rating_text']}")
+                    print("* reviews: \n")
+                    for i in i['restaurant']['all_reviews']['reviews']:
+                        print(i['review'])
+                    print('')
+            else:
+                print(
+                    'Error, city should be text or city number should be integer number')
+
+        elif option_input == '2':
+            print('OPTION 2: FIND MENU\n')
+            city_input = input('type the city: ')
+            resto_input = input('type the restaurant name: ')
+            city_number = input('number of city to display: ')
+
+            if (city_input.isalpha() and resto_input.isalpha()) and city_number.isdigit():
+                print("Daily menu in restaurant x is xy")
+            else:
+                print(
+                    'Error, city & resto should be text or city number should be integer number')
+        else:
+            print("select either '1' or '2'")
+
+        exit = input('''Do you want to exit (y/n)''')
+except:
+    print('Error, city should be text or city number should be integer number')
 
 
 # LATIHAN - TUGAS
