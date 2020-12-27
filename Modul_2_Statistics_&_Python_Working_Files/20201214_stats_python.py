@@ -430,32 +430,35 @@ import requests
 # print(list_cat)
 
 
-try:
-    key = "d144413ae947e1fca6f92d6f043e82eb"
-    host = "https://developers.zomato.com/api/v2.1"
-    head = {'user-key': key}
+# try:
+key = "d144413ae947e1fca6f92d6f043e82eb"
+host = "https://developers.zomato.com/api/v2.1"
+head = {'user-key': key}
 
-    exit = ''
-    while exit != 'y':
-        print('='*10, 'Welcome to Zomato', '='*10)
-        option_input = input('''choose your option
-                - Find Resto (1)
-                - Find Daily Menu (2)
-                --> ''')
+exit = ''
+while exit != 'y':
+    print('='*10, 'Welcome to Zomato', '='*10)
+    option_input = input('''choose your option
+            - Find Resto (1)
+            - Find Daily Menu (2)
+            --> ''')
 
-        if option_input == '1':
-            print('OPTION 1: FIND RESTO\n')
-            city_input = input('type the city: ')
-            quantity_display = input('number of city to display: ')
+    if option_input == '1':
+        print('OPTION 1: FIND RESTO\n')
+        city_input = input('type the city: ')
+        quantity_display = input('number of city to display: ')
 
-            if city_input.isalpha() and quantity_display.isdigit():
-                # locations - city id
-                city_api = f"/locations?query={city_input.lower()}"
-                url_city = host + city_api
-                data_city = requests.get(
-                    url_city, headers=head)
+        if (city_input.isalpha() or " " in city_input) and quantity_display.isdigit():
+            # locations - city id
+            city_api = f"/locations?query={city_input.lower()}"
+            url_city = host + city_api
+            data_city = requests.get(
+                url_city, headers=head)
 
-                location = data_city.json()  # main information
+            location = data_city.json()  # main information
+            if location['location_suggestions'] == []:
+                print('--> City not found, please select another city')
+            else:
                 city_id = location['location_suggestions'][0]['entity_id']
                 city_name = location['location_suggestions'][0]['city_name']
                 city_type = location['location_suggestions'][0]['entity_type']
@@ -473,40 +476,84 @@ try:
                 for h, i in enumerate(location_details['best_rated_restaurant'][:int(quantity_display)]):
                     print(f"{h+1}) {i['restaurant']['name'].upper()}")
                     print(
-                        f"* establishment: {i['restaurant']['establishment'][0]}")
+                        f"* establishment: {i['restaurant']['establishment']}")
                     print(f"* cuisines: {i['restaurant']['cuisines']}")
                     print(
-                        f"* address: {i['restaurant']['location']['address']}")
+                        f"* address: {i['restaurant']['location']['address']}, {location_details['location']['country_name']}")
                     print(
                         f"* phone number: {i['restaurant']['phone_numbers']}")
                     print(
                         f"* rating: {i['restaurant']['user_rating']['aggregate_rating']}/{i['restaurant']['user_rating']['rating_text']}")
                     print("* reviews: \n")
-                    for i in i['restaurant']['all_reviews']['reviews']:
-                        print(i['review'])
+                    # for i in i['restaurant']['all_reviews']['reviews']:
+                    #     print(i['review'])
                     print('')
-            else:
-                print(
-                    'Error, city should be text or city number should be integer number')
 
-        elif option_input == '2':
-            print('OPTION 2: FIND MENU\n')
-            city_input = input('type the city: ')
-            resto_input = input('type the restaurant name: ')
-            city_number = input('number of city to display: ')
-
-            if (city_input.isalpha() and resto_input.isalpha()) and city_number.isdigit():
-                print("Daily menu in restaurant x is xy")
-            else:
-                print(
-                    'Error, city & resto should be text or city number should be integer number')
         else:
-            print("select either '1' or '2'")
+            print(
+                '--> Error, city should be text or city number should be integer number')
+    elif option_input == '2':
+        print('OPTION 2: FIND MENU\n')
+        city_input = input('type the city: ')
+        resto_input = input('type the restaurant name: ')
+        quantity_display = input('number of city to display: ')
 
-        exit = input('''Do you want to exit (y/n)''')
-except:
-    print('Error, city should be text or city number should be integer number')
+        if (city_input.isalpha() or " " in city_input) and resto_input.isalpha() and quantity_display.isdigit():
+            # locations - city id
+            city_api = f"/locations?query={city_input.lower()}"
+            url_city = host + city_api
+            data_city = requests.get(
+                url_city, headers=head)
 
+            location = data_city.json()  # main information
+            if location['location_suggestions'] == []:
+                print('--> City not found, please select another city')
+            else:
+                city_id = location['location_suggestions'][0]['entity_id']
+                city_name = location['location_suggestions'][0]['city_name']
+                city_type = location['location_suggestions'][0]['entity_type']
+
+                # location details
+                city_id = city_id
+                city_type = city_type
+                location_api = f"/location_details?entity_id={city_id}&entity_type={city_type}"
+                url_location = host + location_api
+                data_location = requests.get(url_location, headers=head)
+
+                location_details = data_location.json()
+
+                # daily menu
+                restaurant_name = ''
+                for i in location_details['best_rated_restaurant']:
+                    if resto_input.lower() in i['restaurant']['name'].lower():
+                        # print(i['restaurant']['name'])
+                        restaurant_name = i['restaurant']['name']
+                        restaurant_id = i['restaurant']['R']['res_id']
+                    else:
+                        continue
+
+                url_menu = f"https://developers.zomato.com/api/v2.1/dailymenu?res_id={restaurant_id}"
+                data_menu = requests.get(url_menu, headers=head)
+                menu = data_menu.json()
+                # menu['code'], menu['message']
+
+                if menu['code'] == 400:
+                    print(f"{restaurant_name.upper()} \n--> {menu['message']}")
+                else:
+                    print(f"{menu}")
+        else:
+            print(
+                '--> Error, city & resto should be text and city number should be integer number')
+
+    else:
+        print("--> select either '1' or '2'")
+
+    exit = input('''Do you want to exit (y/n)
+    --> ''')
+# except IndexError:
+#     print('Error, the information you want to display may contain not more than 1 place or not available, please narrow the number of information to display or select other cities')
+# except:
+#     print('Error, city should be text or city number should be integer number')
 
 # LATIHAN - TUGAS
 # gunakan API zomato
