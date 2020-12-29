@@ -634,12 +634,16 @@ try:
             image_front_shiny = image_library['sprites']['front_shiny']
 
             # HP
+            hp = pokemon['stats'][0]['base_stat']
 
             # Attack
+            attack = pokemon['stats'][1]['base_stat']
 
             # Defense
+            defense = pokemon['stats'][2]['base_stat']
 
             # Speed
+            speed = pokemon['stats'][5]['base_stat']
 
             # Type
             types = []
@@ -654,17 +658,16 @@ try:
             print(f"""
             {name.upper()}
             * types:""")
-            for i, j in enumerate(abilities):
-                print(f"\t {i+1}) {j}")
-            print(f"""
-            * images: {image_front_shiny}
-            * HP: 
-            * attack: 
-            * defense: 
-            * speed: 
+            for i, j in enumerate(types):
+                print(f"\t\t {i+1}) {j}")
+            print(f"""\t    * images -> {image_front_shiny}
+            * HP -> {hp}
+            * attack -> {attack}
+            * defense -> {defense}
+            * speed -> {speed}
             * abilities: """)
             for i, j in enumerate(abilities):
-                print(f"\t  {i+1}) {j}")
+                print(f"\t\t  {i+1}) {j}")
 
         elif data_pokemon.status_code == 404:
             print('--> pokemon not registered, please try again')
@@ -673,5 +676,6 @@ try:
 
         exit = input('''\nDo you want to exit (y/n)
             --> ''')
+        print(' ')
 except:
     print("data not found, please try again")
