@@ -129,3 +129,13 @@ FINAL PROJECT:
 2. Goals
 3. Perusahaan - user
 4. Data
+5. Past Projects
+	- Credit Scoring - SBA Loan Default Prediction
+	- Sentiment Analysis - Twitter
+	- Income Prediction
+	- New Credit Card Application Prediction
+	- Employee Turn-Over
+	- Salary Prediction - NBA Salary Prediction
+	- Heart Disease Prediction
+	- Restaurant Recommendation
+	
