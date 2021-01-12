@@ -31,6 +31,54 @@
 -- > update data
 -- UPDATE Assets SET stock=240 WHERE Name='PC';
 
+-- > add column
+-- ALTER TABLE employee ADD COLUMN 
+-- age TINYINT DEFAULT 23 AFTER name; -- AFTER is to positioning in certain place
+
+-- > shift column position
+-- ALTER TABLE employee MODIFY COLUMN
+-- age tinyint AFTER city;
+
+-- > change column name
+-- ALTER TABLE employee RENAME COLUMN
+-- age TO age_range;
+
+-- > delete column
+-- ALTER TABLE employee DROP COLUMN
+-- age;
+
+-- > change data type of column
+-- ALTER TABLE employee MODIFY COLUMN
+-- city varchar(50);
+
+
+-- > sorting the data
+-- SELECT name, city, salary FROM employee
+-- -- ORDER BY salary; -- ORDER BY salary ASC
+-- ORDER BY salary DESC;
+
+-- SELECT name, city, salary FROM employee
+-- ORDER BY city DESC, salary;
+
+-- SELECT name, city, salary FROM employee
+-- ORDER BY city DESC, salary;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE city!='Jakarta';
+
+-- SELECT name, city, salary FROM employee 
+-- WHERE salary > 20000000 ORDER BY salary;
+
+-- > HAVING is for syntetic column
+-- > WHERE is for original column
+-- SELECT name, city, 0.2*salary AS increment FROM employee
+-- HAVING increment > 3000000;
+
+-- > LIKE
+-- SELECT name, city, salary FROM employee
+-- WHERE name LIKE '%y';
+-- SELECT name, city, salary FROM employee
+-- WHERE name LIKE 'C%y%';
 
 
 -- CREATE TABLE employee (
@@ -62,6 +110,62 @@
 -- DELETE FROM employee WHERE name='Rendi';
 -- INSERT INTO employee(name, gender) VALUES('Lulu', 'Female');
 -- INSERT INTO employee(name, salary, city) VALUES('Beni', 30000000, 'Malang');
-INSERT INTO employee(name, gender, salary, city) VALUES('Nila', 'Female', 21000000, 'Bandung');
+-- INSERT INTO employee(name, gender, salary, city) VALUES('Nila', 'Female', 21000000, 'Bandung');
+-- INSERT INTO employee(name) VALUES
+-- ('Billy'),
+-- ('Kimberly'),
+-- ('Tommy');
 
-select * from employee;
+-- UPDATE employee SET age_range=21
+-- WHERE name='Devy';
+
+-- SELECT name, salary, age_range FROM employee;
+-- SELECT name, salary, 0.2*salary AS final_salary
+-- FROM employee;
+
+-- SELECT name, city, salary FROM employee
+-- ORDER BY city DESC, salary;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE city!='Jakarta';
+
+-- SELECT name, city, salary FROM employee 
+-- WHERE salary > 20000000 ORDER BY salary;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE city IN ('Bandung', 'Jakarta');
+
+-- SELECT name, city, salary FROM employee
+-- WHERE city NOT IN ('Jakarta', 'Bandung') ORDER BY salary;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE city='Jakarta' AND salary<20000000;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE salary BETWEEN 15000000 AND 25000000;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE salary >=15000000 AND salary <= 25000000;
+
+-- SELECT name, city, 0.2*salary AS increment FROM employee
+-- HAVING increment > 3000000;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE name LIKE 'Deni';
+
+-- SELECT name, city, salary FROM employee
+-- WHERE name LIKE '%y';
+
+-- SELECT name, city, salary FROM employee
+-- WHERE name LIKE 'C%y%';
+
+-- SELECT name, city, salary FROM employee
+-- ORDER BY salary DESC LIMIT 5;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE city IN ('Jakarta', 'Malang') 
+-- ORDER BY salary DESC
+-- LIMIT 3;
+
+SELECT * FROM employee
+LIMIT 3, 4;

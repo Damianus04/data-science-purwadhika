@@ -124,6 +124,17 @@ MongoDB exercise:
 }
 
 
+MySQL
+Client - 3 alternatif
+1. melalui GUI
+2. melalui mySQL command line client
+3. melalui command prompt
+
+--> melalui command prompt
+	- cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+	- --> mysql -u damianus -p
+
+
 FINAL PROJECT:
 1. Problem
 2. Goals
