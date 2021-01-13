@@ -19,6 +19,7 @@
 -- > delete table
 -- drop table Coba;
 
+
 -- > insert data
 -- INSERT INTO Assets VALUES(1, 'Book', 60);
 -- INSERT INTO Assets (Name, noAsset, stock) VALUES ('Pen', 23, 120);
@@ -56,6 +57,17 @@
 -- SELECT name, city, salary FROM employee
 -- -- ORDER BY salary; -- ORDER BY salary ASC
 -- ORDER BY salary DESC;
+
+
+-- > reading the data
+-- 1. select
+-- 2. from
+-- 3. where (having -> if syntectic column)
+-- 4. like
+-- 5. group by
+-- 6. order by
+-- 7. limit
+
 
 -- SELECT name, city, salary FROM employee
 -- ORDER BY city DESC, salary;
@@ -167,5 +179,58 @@
 -- ORDER BY salary DESC
 -- LIMIT 3;
 
-SELECT * FROM employee
-LIMIT 3, 4;
+-- SELECT * FROM employee
+-- LIMIT 3, 4;
+
+-- SELECT name, city, salary FROM employee 
+-- WHERE city!='Jakarta' 
+-- ORDER BY salary DESC
+-- LIMIT 4,3;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE city='Jakarta' AND salary>20000000;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE salary BETWEEN 15000000 AND 25000000;
+
+-- SELECT name, city, 0.2*salary AS increment FROM employee
+-- HAVING increment > 3000000;
+
+-- SELECT name, city, salary FROM employee
+-- WHERE name LIKE '%t%';
+
+-- SELECT * FROM employee
+-- ORDER BY salary
+-- LIMIT 5;
+
+-- > agregation
+-- (SUM, AVG, MAX, MIN) + HAVING + ORDER BY --> for numeric
+-- ORDER BY --> for non-numeric
+-- SELECT SUM(salary) FROM employee;
+-- SELECT SUM(salary) AS total, city FROM employee
+-- GROUP BY city;
+
+-- SELECT SUM(salary) AS total, city FROM employee
+-- WHERE city IN ('Jakarta', 'Bandung')
+-- GROUP BY city;
+
+-- SELECT SUM(salary) AS total, city FROM employee
+-- WHERE city IN ('Jakarta', 'Bandung')
+-- GROUP BY city
+-- HAVING total > 8000000
+-- ORDER BY total;
+
+-- SELECT AVG(salary) AS average, city FROM employee
+-- GROUP BY city;
+
+-- SELECT SUM(salary) AS total, city FROM employee
+-- WHERE salary > 
+-- 	(SELECT AVG(salary) AS average FROM employee
+--     HAVING salary > average);
+
+SELECT SUM(salary) AS total, city FROM employee
+WHERE salary > 
+	(SELECT AVG(salary) AS average FROM employee
+    HAVING salary > average) 
+    GROUP BY city;
+    
