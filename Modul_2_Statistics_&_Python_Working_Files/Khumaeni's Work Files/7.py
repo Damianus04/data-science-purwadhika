@@ -325,3 +325,64 @@ menampilkan 5 data teratas - data pertama
 SELECT * FROM employee ORDER BY gaji LIMIT 3,5;
 => Menampilkan data yg telah diurutkan berdasarkan gaji dg metode Ascending 
 => Kemudian melewatkan(skip) 3 data pertama, kemudian tampilkan 5 data selanjutnya.
+
+
+Database Administrator
+Data Engineer
+
+Data Analyst ==> 
+
+Data Scientist ==> 
+
+######################## Agregation Data
+
+# Menghitung jumlah data
+SELECT COUNT(*) FROM nama_tabel;
+
+Select count(*) from employee;
+=> akan menampilkan jumlah employee
+
+# Summary data (jumlah total) ==> Data Numerik - Math
+SELECT SUM(nama_kolom) FROM nama_tabel;
+
+SELECT SUM(gaji) FROM employee;
+=> menampilkan total gaji employee secara keseluruhan
+
+# Rata-rata data => Data Numerik - Math
+SELECT AVG(nama_kolom) FROM nama_tabel;
+
+SELECT AVG(gaji) FROM employee;
+=> menampilkan nilai rata-rata gaji seluruh employee
+
+# Nilai minimum data => Data Numerik - Math
+SELECT MIN(nama_kolom) FROM nama_tabel;
+
+SELECT MIN(gaji) FROM employee;
+=> menampilkan nilai Minimum gaji seluruh employee
+
+# Nilai maximum data => Data Numerik - Math
+SELECT MAX(nama_kolom) FROM nama_tabel;
+
+SELECT MAX(gaji) FROM employee;
+=> menampilkan nilai Maksimum gaji seluruh employee
+
+### GROUP BY ==> Group By digunakan ketika ada fungsi Aggregation
+==> Mencari nilai aggregation berdasarkan kelompok tertentu
+==> Mengelompokkan data berdasarkan Kolom tertentu (Bukan Numerik)
+
+SELECT kolom_1, AggFunc(kolom_2) FROM nama_tabel GROUP BY kolom_1;
+=> Kolom 1 meruapakan Kolom yg berisi data Kategorikal
+=> Kolom 2 merupakan kolom yg berisi data numerikal
+
+SELECT kota, avg(gaji) FROM employee GROUP BY kota;
+=> akan menampilkan gaji rata-rata employee untuk setiap Kota 
+
+## Sub query => Jika ada query di dalam query
+
+Menghitung total gaji employee di setiap kota yg gajinya di atas gaji rata-rata seluruh employee
+
+SELECT kota, sum(gaji) from employee where gaji > (select avg(gaji) from employee) GROUP BY Kota;
+
+
+
+
