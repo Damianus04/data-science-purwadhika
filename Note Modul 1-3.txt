@@ -155,4 +155,17 @@ FINAL PROJECT:
 	- Salary Prediction - NBA Salary Prediction
 	- Heart Disease Prediction
 	- Restaurant Recommendation
+
+
+EVALUATION METRICS
+- Linear Regression
+	- persamaan garis y = ax + b
+	- trend garis akan mendekati data prediksi jika a dan b
+	  memiliki angka yang mendekati sempurna
+	- kombinasi loss curve a dan b menghasilkan parabola 3D
+	- untuk mencari a dan b, maka digunakan loss optimizer
+	- ada dua jenis -> gradient & non-gradient descent
+	- dengan teknik gradient descent, a dan b dapat dicari dengan
+	  mencari titik paling rendah (menuruni bukit)
+	- di linear regression, bukit cuma satu
 	
