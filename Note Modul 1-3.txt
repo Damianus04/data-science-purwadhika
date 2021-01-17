@@ -134,6 +134,12 @@ Client - 3 alternatif
 	- cd C:\Program Files\MySQL\MySQL Server 8.0\bin
 	- --> mysql -u damianus -p
 
+Reconnect localhost
+1. Win+R
+2. run services.msc
+3. find MySQL 80 
+4. click start
+
 
 FINAL PROJECT:
 1. Problem
