@@ -165,7 +165,50 @@ EVALUATION METRICS
 	- kombinasi loss curve a dan b menghasilkan parabola 3D
 	- untuk mencari a dan b, maka digunakan loss optimizer
 	- ada dua jenis -> gradient & non-gradient descent
+
 	- dengan teknik gradient descent, a dan b dapat dicari dengan
 	  mencari titik paling rendah (menuruni bukit)
 	- di linear regression, bukit cuma satu
+
+- Polynomial Regression
+	- menambahkan kuadrat untuk membuat garis/prediksi berlekuk
+	- pangkat 1: lurus, pangkat 2: lengkung,
+	  pangkat 3 dst: mulai berlekuk/bergelombang
+
+- Bias-Variance Tradeoff
+	- Bias = Loss = Error
+	- Variance = variasi lekukan garis/prediksi
+	- More complex model (high variance) ->prone to overfit (low bias)
+	  More simple model(low variance) -> prone to underfit (high bias)
+	- tidak ada yang high variance dan high bias dan
+	  tidak ada yang low variance dan low bias
+	  jika ada maka model itu sudah pasti salah dan 
+	  lebih jelek dari nilai rata2
+	- model yang ideal adalah medium variance dan medium bias
+
+
+FINAL PROJECTS
+1. Statistics
+
+- Standard Deviation - untuk menunjukkan keragaman data
+- Variance -> pangkat 2 dari standard deviation
+- Mean, Median, Quartile formula
+  - quartile -> pertama tahu nilai tengah dulu (median) setelah diurutkan
+	- 
+- Boxplot -> 1.5 IQR
+	- model2 boxplot
+	- IQR: Q3-Q1 (nilai tengah antara median dan nilai maksimum)
+
+- Correlation - mengetahui hubungan dari dua variable.
+  1. korelasi range nya antara -1 sampai 1, korelasi itu kuat
+     (mendekati 1/-1) dan lemah (mendekati 0)
+  2. korelasi positif mendekati 1, korelasi negatif mendekati -1
+- korelasi ada - Pearson dan Spearman
+
+2. Business understanding & Machine learning
+
+3. Final Projects Concept
+	- Vitamin - to boost the performance - to improve/optimize
+	- Medicine - to cure the illness - to solve problem
+	
 	
