@@ -210,5 +210,7 @@ FINAL PROJECTS
 3. Final Projects Concept
 	- Vitamin - to boost the performance - to improve/optimize
 	- Medicine - to cure the illness - to solve problem
+4. Modul 2's question
+	- beda std numpy dan pandas
 	
 	
