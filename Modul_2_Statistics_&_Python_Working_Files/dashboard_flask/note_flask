@@ -27,3 +27,11 @@
 
     {% endblock content %}
 
+
+
+
+flask mysql
+1. membuat app.py
+    isinya adalah route dan definisi untuk CRUD (GET, POST, PATCH, DELETE)
+2. membuat file jupyter untuk melakukan request
+    code nya melakukan CRUD dengan url dari route di app.py
