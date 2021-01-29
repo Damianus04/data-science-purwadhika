@@ -212,5 +212,9 @@ FINAL PROJECTS
 	- Medicine - to cure the illness - to solve problem
 4. Modul 2's question
 	- beda std numpy dan pandas
+	- fungsi pandas yang penting ekstraksi, subsetting, groupby
+
+5. EDA harus dibahas tuntas dan kompleks
+   Machine Learning harus dilakukan sesimple mungkin dulu
 	
 	
