@@ -1,4 +1,4 @@
-FOLDERS & FILES
+1 ==> FOLDERS & FILES
 Files
 	- app.py
 Folder
@@ -8,7 +8,7 @@ Folder
 	- model
 
 
-SET templates FOLDER
+2 ==> SET templates FOLDER
 create index.html as the template
 	--> use bootstrap template
 
@@ -28,7 +28,7 @@ index.html adalah main template
         </body>
     </html>
 
-SET initial app.py to check everything goes well
+3 ==> SET initial app.py to check everything goes well
 	# Default
 	from flask import Flask, render_template, request, url_for
 	import numpy as np
@@ -49,13 +49,10 @@ SET initial app.py to check everything goes well
 	if __name__ == '__main__':
     	app.run(debug=True)
 
+4 ==> SET templates FOLDER
+create category.html --> html ini akan merender index.html juga
 
-
-
-
-
-
-2. category.html meng extend index.html untuk ambil display main template
+category.html meng extend index.html untuk ambil display main template
     --> di halaman ini tidak perlu lagi menggunakan html template
     --> html, css code di sini akan mengimport standard template nya dari index.html (extend index.html)
     --> code untuk component utama diletakkan di dalam block content
@@ -77,6 +74,23 @@ SET initial app.py to check everything goes well
 
 
     {% endblock content %}
+
+
+5 ==> PREPARE data
+
+--> to display data that is read from app.py, data should be rendered in app.route()
+
+    sephora = pd.read_csv('data/sephora_website_dataset_top_5.csv')
+
+    @app.route('/')
+    def index():
+	return render_template('index.html', data=sephora.head())
+
+--> the variable in html should like this
+    <div class="container">
+        <h2>Text</h2>
+        <h4>{{ data }}</h4>
+    </div>
 
 
 

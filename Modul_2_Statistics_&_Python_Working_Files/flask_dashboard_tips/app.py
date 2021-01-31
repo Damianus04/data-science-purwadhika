@@ -21,8 +21,6 @@ tips = pd.read_csv('./data/tips.csv')
 ###################
 # HIST & BOX PLOT #
 ###################
-
-
 def category_plot(
         cat_plot='histplot',
         cat_x='sex',
@@ -276,7 +274,6 @@ def scatt_fn():
 ##########
 #PIE PLOT#
 ##########
-
 def pie_plot(hue='sex'):
     vcounts = tips[hue].value_counts()
     labels = []
@@ -299,7 +296,7 @@ def pie_plot(hue='sex'):
     return graphJSON
 
 ##############
-#PIE PLOT ROUTER#
+#PIE PLOT ROUTE#
 ##############
 
 

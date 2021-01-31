@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+    <!-- <div class="chart" id="plot">
+        <script>
+            var graphs = {{plot | safe}};
+            Plotly.plot('plot',graphs,{});
+        </script>
+    </div> -->
+
+    <div class="container">
+        <h2>Text</h2>
+        <h4>{{ data }}</h4>
+    </div>
+{% endblock content%}

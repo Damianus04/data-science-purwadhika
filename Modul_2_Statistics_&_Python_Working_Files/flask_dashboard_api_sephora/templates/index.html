@@ -12,6 +12,7 @@
     <title>Dashboard - Sephora!</title>
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
@@ -36,34 +37,37 @@
           </div>
         </div>
     </nav>
+
+
+    <!-- Title -->
     <main role="main">
         <section class="jumbotron text-center">
           <div class="container">
-            <h1>Hello, World!</h1>
+            <h1>Dashboard - Sephora Data</h1>
             <p class="lead text-muted">
-              This is a collection of my mini projects. In this site, each application
-              stands alone and has their own function based on its title. Behind the
-              scene, they use machine learning and deep learning concept and
-              algorithm. All the codes are written in python and javascript using
-              Flask and Bootstrap framework. These are collection of mini projects,
-              should you feel they need to be improved, feel free to provide any
-              feedbacks or critics through
-              <a href="https://www.linkedin.com/in/damianus-deni/">LinkedIn</a>
-            </p>
-            <p>
-              <a href="#" class="btn btn-primary my-2">Home</a>
-              <a href="#" class="btn btn-secondary my-2">Personal Information</a>
+              Explore the charts below to look at detail the data of Sephora Website.
             </p>
           </div>
         </section>
-      </main>
+    </main>
+
+
+    <!-- Price Distribution in Boxplot -->
+    <div class="container">
+        <div class="bg-light p-5 rounded">
+        <h1>Price Distribution</h1>
+        <p class="lead">Using this boxplot, we can see the distribution of price and compare the price of  each brand.</p>
+        <a class="btn btn-lg btn-primary" href="{{ url_for('price_distribution')}}" role="button">Check the price distribution &raquo;</a>
+        <p class="lead">Using this boxplot, we can see the distribution of price and compare the price of  each brand.</p>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h2>Text</h2>
+        <h4>{{ data }}</h4>
+    </div>
     
-
-
-
-
-
-
     {% block content %}
 
     {% endblock %}
@@ -78,5 +82,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     -->
+
+    <!-- Option 3: Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
   </body>
 </html>
