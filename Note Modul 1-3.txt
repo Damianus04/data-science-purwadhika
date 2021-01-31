@@ -187,6 +187,179 @@ EVALUATION METRICS
 	- model yang ideal adalah medium variance dan medium bias
 
 
+
+
+EDA 
+-> EDA harus mengelaborasi data secara tuntas dan kompleks
+-> Machine Learning tahap awal harus sesimple mungkin utk set benchmark
+
+	step-step EDA
+	1. import data
+		- pd.read_csv('file_name', index_col=0/'column_name')
+	2. overview info
+		- df.describe() --> numeric stats
+		- data_desc = desc(df)
+	3. set the EDA using crosstab/pivot_table
+		
+	4. set the visualization based on EDA on no. 3
+	- Histogram - matplotlib
+	  - to see the data distribution - one variable
+	  -----------------------
+	  plt.style.use('seaborn')
+	  fig = plt.figure(figsize=(8,6))
+	  ax = plt.axes()
+
+	  ax.hist(df.price)
+	  ax.set_title('Distribution of Price')
+	  ax.set_xlabel('price')
+	  ax.set_ylabel('frequency')
+
+	  plt.show()
+	  -----------------------
+
+	- Histogram - seaborn
+	  #######################
+	  sns.distplot(data_perfume_moist.price)
+	  plt.title('Distribution of Price for Perfume & Moisturizers')
+
+	  plt.xlabel('price')
+	  plt.ylabel('frequency')
+
+	  plt.show()
+	  #######################
+
+	- Piechart - matplotlib
+	  - to find the categorization
+	  =======================
+	  1) grouping
+	     price_by_price_category = data_perfume_moist[[
+		'price', 
+		'price_category']].groupby(['price_category'], 
+		as_index=False).count()
+	      
+	     price_by_price_category
+
+	  2) create pie chart
+	     # Pie Chart
+	     fig = plt.figure(figsize=(9,7))
+	     ax = plt.axes()
+
+	     # data
+	     ax.pie(price_by_price_category['price'], 
+		labels = price_by_price_category['price_category'], 
+		explode = (0, 0.05, 0.05, 0.4, 0, 0))
+
+	     # data label
+	     ax.set_title('Price Category: Perfume & Moisturizer', size=16)
+	     ax.axis('equal')
+
+	     # show
+	     plt.show()
+	 =======================
+	
+	- Scatterplot - matplotlib
+	  - to find pattern and correlation
+	 #######################
+	    # figure & axis
+	    fig = plt.figure(figsize=(8,6))
+	    ax = plt.axes()
+
+	    # data
+	    total_bill = tips['total_bill']
+	    tip = tips['tip']
+
+  	    ax.scatter(total_bill, tip)
+
+       	    # data label
+	    plt.title('Scatter Plot: Total Bill vs Tip', size=15)
+	    plt.xlabel('Total Bill')
+	    plt.ylabel('Tip')
+
+	    # show
+	    plt.show()
+	#######################
+
+	- Boxplot - seaborn
+	  - to compare the data distribution
+	  sns.boxplot(data=df, x='brand', y='price')
+
+	- Barplot - matplotlib
+	***********************
+	 1) group first
+	  review_by_category = df_top_5[df_top_5.brand=='tarte'][['number_of_reviews', 'category']].groupby(['category'], as_index=True).sum()
+	  # review_by_category
+
+	 2) visualize
+	  # figure & axis
+	  fig = plt.figure(figsize=(8,6))
+ 	  ax = plt.axes()
+
+ 	  # data
+	  category = df_top_5[df_top_5.brand=='tarte']['category'].unique().tolist()
+	  number_of_reviews = review_by_category['number_of_reviews']
+
+	  ax.barh(category, number_of_reviews)
+
+	  # data label
+	  plt.title('Review based on Category', size=15)
+	  plt.xlabel('Number of Reviews')
+	  plt.ylabel('Category')
+
+	  # show
+	  plt.show()
+	***********************
+
+
+PLOTLY
+# Boxplot with plotly
+# if filtered used data = df_top_5[df_top_5.brand=='tarte']
+fig = px.box(df_top_5, x='brand', y='price')
+fig.show()
+
+
+# Barplot with plotly
+data = df_top_5[df_top_5.brand=='tarte']
+fig = px.bar(data, x='category', y='number_of_reviews')
+fig.show()
+
+
+# Scatterplot with plotly
+data = df_top_5[df_top_5.brand=='tarte']
+fig = px.scatter(data, x='price', y='number_of_reviews')
+fig.show()
+
+
+==> appendix
+= def desc(df):
+    dataDesc = []
+
+    for i in df.columns:
+        dataDesc.append([
+            i,
+            df[i].dtypes,
+            df[i].isna().sum(),
+            round((((df[i].isna().sum()) / len(df)) * 100), 2),
+            df[i].nunique(),
+            df[i].drop_duplicates().sample(2).values
+        ])
+
+    description = pd.DataFrame(dataDesc, columns=[
+        'Data Feature',
+        'Data Types',
+        'Null',
+        'Null Percentage',
+        'Unique',
+        'Unique Sample'
+    ])
+
+    return description
+
+
+
+
+
+
+
 FINAL PROJECTS
 1. Statistics
 
@@ -214,7 +387,33 @@ FINAL PROJECTS
 	- beda std numpy dan pandas
 	- fungsi pandas yang penting ekstraksi, subsetting, groupby
 
-5. EDA harus dibahas tuntas dan kompleks
-   Machine Learning harus dilakukan sesimple mungkin dulu
-	
+
+
+
+ini untuk Plot2 yang tadi, sama gambaran jawaban dari yang flask
+From Karina Anggraeni to Everyone:  03:17 PM
+Mas, mau make sure aja, jadi materi yg diujikan itu mirip dengan soal Sephora yg minggu lalu ya Mas? Kalau materi flask itu optional aja ya?
+From hafizhan afif to Everyone:  03:35 PM
+materi yang flask API belum masuk sih kalo saya lihat ya
+yg masuk itu yang dashboard dulu
+karena disini fokusnya visualisasi data / data Exploration / EDA Process
+From Advendio Desandros to Everyone:  03:35 PM
+berarti harus pake plotly ya mas?
+From hafizhan afif to Everyone:  03:36 PM
+iyah kalo untuk dashboard web (using flask)
+From Advendio Desandros to Everyone:  03:38 PM
+cantik atau enggaknya dashboard pengaruh ke nilai ga mas? Soalnya pake plotly lumayan ribet setelah diliat2
+From hafizhan afif to Everyone:  03:39 PM
+enggak
+From Advendio Desandros to Everyone:  03:39 PM
+Hoo oke, thanks mas
+From hafizhan afif to Everyone:  03:39 PM
+yang baik visualisasi itu yang bisa dibaca/ dimengerti sama yg liat
+From Karina Anggraeni to Everyone:  03:39 PM
+Oke makasih Mas
+From hafizhan afif to Everyone:  03:40 PM
+sama mungkin ditambahin deskripsi di bawhanya, biar pembaca ga bingung jg
+(interpretasi dari dasboardnya)
+eh dari plot nya mksdnya
+
 	

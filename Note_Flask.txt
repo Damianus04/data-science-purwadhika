@@ -1,0 +1,218 @@
+FOLDERS & FILES
+Files
+	- app.py
+Folder
+	- static
+	- templates
+	- data
+	- model
+
+
+SET templates FOLDER
+create index.html as the template
+	--> use bootstrap template
+
+index.html adalah main template
+    --> di html ini, sebisa mungkin dibuat sebuah wadah yang nanti akan diisi berbagai macam component.
+    --> lebih baik jika index.html sudah punya header, nav dan footer sehingga component hanya tinggal ditaruh di body (block content)
+
+    <html>....
+        <head></head>
+        <body>
+            template
+            .....
+
+            {% block content %}
+           
+            {% endblock %}
+        </body>
+    </html>
+
+SET initial app.py to check everything goes well
+	# Default
+	from flask import Flask, render_template, request, url_for
+	import numpy as np
+	import pandas as pd
+	import json
+
+	# Visualization
+	import plotly
+	import plotly.graph_objs as go
+
+
+	app = Flask(__name__)
+
+	@app.route('/')
+	def index():
+    	return render_template('index.html')
+
+	if __name__ == '__main__':
+    	app.run(debug=True)
+
+
+
+
+
+
+
+2. category.html meng extend index.html untuk ambil display main template
+    --> di halaman ini tidak perlu lagi menggunakan html template
+    --> html, css code di sini akan mengimport standard template nya dari index.html (extend index.html)
+    --> code untuk component utama diletakkan di dalam block content
+
+    {% extends 'index.html' %}
+
+    {% block content %}
+        - html code
+        - for loop - sample --> harus diawali {% %}
+            {% for drop in drop_plot %}
+                {% if focus_plot == drop[0] %}
+                    return '<option value={{drop[0]}} selected>{{drop[1]}}</option>'
+                {% else %}
+                    return '<option value={{drop[0]}}>{{drop[1]}}</option>'
+                {% endif %}
+            {% endfor %}
+
+        - untuk menjalankan fungsi misalkan untuk klik button harus didalam {nama_fungsi}
+
+
+    {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Initiate Project
+- make a new directory --> mkdir url-shortener
+- go to the directory --> cd url-shortener
+- open code editor --> code .
+- create virtual environment on the code editor terminal --> python -m venv venv
+- activate the virtual environment --> venv\Scripts\activate
+- deactivate --> in the virtual env directory, "deactivate
+- check the list of libraries --> pip list
+
+Starting Flask Project
+- install necessary packages 
+  a. flask --> pip install flask
+  b. flask-wtf --> pip install flask-wtf
+  c. python-dotenv --> pip install python-dotenv
+- (alternative 1) create a file (.flaskenv) under the directory (not in the venv) and type these:
+  FLASK_ENV=development
+  FLASK_APP=main.py
+- (alternative 2) set FLASK_ENV=development on terminal
+- Run & Set Port
+  flask run --port=5050 (alt 1)
+  py app.py             (alt 2)
+
+Command Prompt
+mac				windows
+ls				dir
+pwd				echo %cd%
+export FLASK_APP=hello		set FLASK_APP=hello
+export FLASK_ENV=development	set FLASK_ENV=development
+
+Requirement
+- Generate the requirement --> pip freeze > requirements.txt
+- Install the requirement --> pip install -r requirements.txt
+
+
+
+
+
+
+
+Use Bootstrap
+1. install --> pip install flask-bootstrap
+2. use -->
+	from flask_bootstrap import Bootstrap
+	# ...
+	bootstrap = Bootstrap(app)
+
+Template
+- base.html is the main template
+
+
+
+Deploy to Heroku
+1. create virtual env
+2. pip install gunicorn
+3. pip freeze > requirements.txt
+4. create Procfile (manual bisa atau touch Procfile)
+	fill this on the file -> web: gunicorn app: app
+5. install heroku CLI
+	$ npm install -g heroku-cli
+	$ heroku --version
+	$ heroku login
+6. Create Git Repo & Heroku Project
+	git init
+	$ heroku create -b https://github.com/mars/create-reactapp-buildpack.git or heroku create nama-project
+7. Push project to Heroku
+	$ git add .
+	$ git commit -m "deploy ke Heroku"
+	$ git push heroku master
+	$ heroku open
+8. Change Heroku App Name
+	git remote rm heroku
+	heroku git:remote -a text-sentiment-checker
+
+NOTES on SENTIMENT CHECKER DEPLOYMENT
+- there should be these files
+	- app.py
+	- requirements.txt
+	- nltk.txt (put the corpora to download)
+	- Procfile
+- Procfile should be no typo
+	--> web: gunicorn app:app
+- Omit this:
+	--> .flaskenv 
+	or
+	--> make sure the mode is "production", not "deployment"
+- we should build database
+	-> install db, sqlalchemy
+	-> how to import sqlalchemy?
+
+
+Menghapus/remove origin
+git remote -v
+git remote rm origin
+
+Renaming apps
+heroku apps:rename newname
+Renaming oldname to newname... done
+http://newname.herokuapp.com/git@herokuapp.com:newname.git
+Git remote heroku updated
+
+heroku apps:rename newname --app oldname
+http://newname.herokuapp.com/git@herokuapp.com:newname.git
+
+Updating remote
+git remote rm heroku
+heroku git:remote -a newname
+
+
+
+CSS
+in the base.html should be like this:
+<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='css/styles.css') }}"/>
+
+--> css file should be stored under static folder
+--> hard refresh to clear caches
+
