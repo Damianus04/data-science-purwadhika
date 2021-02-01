@@ -82,14 +82,24 @@ category.html meng extend index.html untuk ambil display main template
 
     sephora = pd.read_csv('data/sephora_website_dataset_top_5.csv')
 
+    ** directly in index.html
     @app.route('/')
     def index():
 	return render_template('index.html', data=sephora.head())
 
---> the variable in html should like this
+    ** by clicking a button that is referred to function set in app.py
+    @app.route('/price-distribution', methods=["GET", 'POST'])
+def price_distribution():
+    data = sephora.head()
+    if request.method == "GET":
+        return render_template('price-distribution.html', text=data)
+    elif request.method == "POST":
+        return render_template('price-distribution.html', text=data)
+
+--> the variable in html should be like this
     <div class="container">
         <h2>Text</h2>
-        <h4>{{ data }}</h4>
+        <h4>{{ text}}</h4>
     </div>
 
 

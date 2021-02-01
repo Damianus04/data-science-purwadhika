@@ -5,7 +5,7 @@ import pandas as pd
 import json
 
 # Visualization
-import plotly as px
+import plotly
 import plotly.graph_objs as go
 
 
@@ -29,17 +29,31 @@ def boxplot():
             y=sephora['price']
         )
     ]
+    title = 'Box Plot'
 
+    layout = go.Layout(
+        title=title,
+        xaxis=dict(title='brand'),
+        yaxis=dict(title='price'),
+        boxmode='group'
+    )
+
+    result = {'data': data, 'layout': layout}
     brand = sephora.head()
-    graphJSON = json.dumps(data, cls=px.utils.PlotlyJSONEncoder)
+    graphJSON = json.dumps(result, cls=plotly.utils.PlotlyJSONEncoder)
 
     return graphJSON, brand
 
 
-@app.route('/price-distribution')
+@app.route('/price-distribution', methods=["GET", 'POST'])
 def price_distribution():
+    data = sephora.columns
     box = boxplot()
-    return render_template('boxplot.html', plot=box)
+    if request.method == "GET":
+        return render_template('price-distribution.html', plot=box, text=data)
+    elif request.method == "POST":
+        # box = boxplot()
+        return render_template('price-distribution.html', plot=box, text=data)
 
 
 if __name__ == '__main__':
