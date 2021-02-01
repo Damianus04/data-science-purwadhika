@@ -355,6 +355,12 @@ fig.show()
     return description
 
 
+pandas'question:
+1) memberi nama kolom pada dataframe value_counts
+2) membuat multi column baru dengan .apply()
+3) convert day using .map()
+
+
 
 
 
