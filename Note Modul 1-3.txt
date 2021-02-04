@@ -141,6 +141,42 @@ Reconnect localhost
 4. click start
 
 
+JOIN
+INNER JOIN akan sama saja yaitu hanya mengambil irisan
+kuncinya ada di posisi setelah/sebelum RIGHT atau LEFT
+-- --- -- INNER JOIN
+-- --- -- menampilkan hasil irisan yang sama-sama ada di kedua table
+-- SELECT students.student_name, lecturers.lecturer_name --> nama table/kolom sesuai DB
+-- FROM lecturers INNER JOIN students 		         --> dibalik sama aja
+-- ON students.lecturer_id = lecturers.lecturer_id;      --> dibalik sama aja
+
+
+-- --- -- LEFT JOIN
+-- --- -- semua data di table sebelum operator LEFT JOIN akan muncul
+-- --- -- tampilan data tergantung kolom mana yang akan dipilih lebih dulu dalam SELECT
+
+-- --- -- sama2 left join tapi dituker hasilnya beda
+-- SELECT L.lecturer_name, S.student_name 
+-- FROM lecturers L LEFT JOIN students S 
+-- ON L.lecturer_id = S.lecturer_id;
+
+-- SELECT lecturers.lecturer_name, students.student_name
+-- FROM students LEFT JOIN lecturers						-- > ketika ditukar hasilnya beda
+-- ON lecturers.lecturer_id = students.lecturer_id			-- > id ketika ditukar tidak memberikan efek
+
+
+-- --- -- RIGHT JOIN
+-- --- -- semua data di table setelah operator RIGHT JOIN akan muncul
+-- SELECT L.lecturer_name, S.student_name
+-- FROM lecturers L RIGHT JOIN students S
+-- ON L.lecturer_id = S.lecturer_id;
+
+-- SELECT lecturers.lecturer_name, students.student_name
+-- FROM lecturers RIGHT JOIN  students
+-- ON students.lecturer_id = lecturers.lecturer_id
+
+
+
 FINAL PROJECT:
 1. Problem
 2. Goals
@@ -389,9 +425,10 @@ FINAL PROJECTS
 3. Final Projects Concept
 	- Vitamin - to boost the performance - to improve/optimize
 	- Medicine - to cure the illness - to solve problem
-4. Modul 2's question
-	- beda std numpy dan pandas
-	- fungsi pandas yang penting ekstraksi, subsetting, groupby
+4. Modul 2 - Exam
+	- PyMySQL
+	- EDA & Visualization
+	- Dashboard
 
 
 
