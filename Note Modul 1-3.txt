@@ -140,6 +140,14 @@ Reconnect localhost
 3. find MySQL 80 
 4. click start
 
+SELECT COUNT(DISTINCT --) AS -- FROM --
+GROUP BY --
+WHERE/HAVING --
+ORDER BY -- 
+LIMIT --
+
+
+
 
 JOIN
 INNER JOIN akan sama saja yaitu hanya mengambil irisan
@@ -429,7 +437,11 @@ FINAL PROJECTS
 	- PyMySQL
 	- EDA & Visualization
 	- Dashboard
+   
+	referensi test
+	1) EDA & Visualization
 
+	2) SQL
 
 
 
