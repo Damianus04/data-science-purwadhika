@@ -13,30 +13,31 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 
-    <title>Dashboard - Tips</title>
+    <title>Dashboard - Sephora - Tutorial Version</title>
   </head>
   <body>
     <div class="containter">
         <!-- Menampilkan Judul dari dasboard -->
         <a href="{{url_for('index')}}" class="text-decoration-none text-secondary">
             <h1 class="text-center text-capitalize display-4 my-5">
-                Dashboard - Sephora
+                Dashboard - Occupation - Tutorial Version
             </h1>
         </a>
 
         <!-- Membuat tombol-tombol navigasi -->
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item font-weight-bold">
-                <a href="{{url_for('category_plot_route', nav=True)}}" class="nav-link text-dark lead">Histogram & Box - Sephora</a>
+                <a href="{{url_for('scatterplot_route')}}" class="nav-link text-dark lead">Scatter Plot</a>
             </li>
             <li class="nav-item font-weight-bold">
-                <a href="{{url_for('scatter_plot_route')}}" class="nav-link text-dark lead">Scatter Plot - Sephora</a>
+                <a href="{{url_for('boxplot_route')}}" class="nav-link text-dark lead">Boxplot</a>
             </li>
             <li class="nav-item font-weight-bold">
-                <a href="{{url_for('line_plot_route')}}" class="nav-link text-dark lead">Line Chart - Flight</a>
+                <a href="" class="nav-link text-dark lead">xxx</a>
             </li>
         </ul>
         
+
 
         {% block content %}
            

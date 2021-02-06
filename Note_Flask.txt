@@ -39,6 +39,9 @@ index.html adalah main template
 	import plotly
 	import plotly.graph_objs as go
 
+	# data
+	sephora = pd.read_csv('./data/sephora.csv')
+
 
 	app = Flask(__name__)
 
