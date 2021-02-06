@@ -18,7 +18,7 @@ app = Flask(__name__)
 ## CATEGORY (Barplot and Box) PLOT ##
 ###################
 
-## IMPORT DATA USING pd.read_csv
+# IMPORT DATA USING pd.read_csv
 sephora = pd.read_csv('./static/sephora.csv')
 top5_brands = sephora['brand'].value_counts()[:5].index
 sephora = sephora[sephora['brand'].isin(top5_brands)].reset_index(drop=True)
@@ -26,9 +26,9 @@ sephora = sephora[sephora['brand'].isin(top5_brands)].reset_index(drop=True)
 
 # membuat si fungsi plot nya
 def category_plot(
-    cat_plot = 'histplot',
-    cat_x = 'brand', cat_y = 'price',
-    estimator = 'count', hue = 'brand'):
+        cat_plot='histplot',
+        cat_x='brand', cat_y='price',
+        estimator='count', hue='brand'):
 
     # jika menu yang dipilih adalah histogram
     if cat_plot == 'histplot':
@@ -37,27 +37,27 @@ def category_plot(
         # generate config histogram dengan mengatur sumbu x dan sumbu y
         for val in sephora[hue].unique():
             hist = go.Histogram(
-                x=sephora[sephora[hue]==val][cat_x],
-                y=sephora[sephora[hue]==val][cat_y],
+                x=sephora[sephora[hue] == val][cat_x],
+                y=sephora[sephora[hue] == val][cat_y],
                 histfunc=estimator,
                 name=val
             )
-            #masukkan ke dalam array
+            # masukkan ke dalam array
             data.append(hist)
-        #tentukan title dari plot yang akan ditampilkan
-        title='Histogram Sephora'
+        # tentukan title dari plot yang akan ditampilkan
+        title = 'Histogram Sephora'
 
     elif cat_plot == 'boxplot':
         data = []
 
         for val in sephora[hue].unique():
             box = go.Box(
-                x=sephora[sephora[hue] == val][cat_x], #series
+                x=sephora[sephora[hue] == val][cat_x],  # series
                 y=sephora[sephora[hue] == val][cat_y],
-                name = val
+                name=val
             )
             data.append(box)
-        title='Box'
+        title = 'Box'
 
     # menyiapkan config layout tempat plot akan ditampilkan
     # menentukan nama sumbu x dan sumbu y
@@ -67,7 +67,7 @@ def category_plot(
             xaxis=dict(title=cat_x),
             yaxis=dict(title='# Orders'),
             # boxmode group digunakan berfungsi untuk mengelompokkan box berdasarkan hue
-            boxmode = 'group'
+            boxmode='group'
         )
     else:
         layout = go.Layout(
@@ -75,13 +75,13 @@ def category_plot(
             xaxis=dict(title=cat_x),
             yaxis=dict(title=cat_y),
             # boxmode group digunakan berfungsi untuk mengelompokkan box berdasarkan hue
-            boxmode = 'group'
+            boxmode='group'
         )
 
-    #simpan config plot dan layout pada dictionary
+    # simpan config plot dan layout pada dictionary
     result = {'data': data, 'layout': layout}
 
-    #json.dumps akan mengenerate plot dan menyimpan hasilnya pada graphjson
+    # json.dumps akan mengenerate plot dan menyimpan hasilnya pada graphjson
     graphJSON = json.dumps(result, cls=plotly.utils.PlotlyJSONEncoder)
 
     return graphJSON
@@ -94,7 +94,7 @@ def index():
 
 # ada dua kondisi di mana kita akan melakukan request terhadap route ini
 # pertama saat klik menu tab (Histogram & Box)
-# kedua saat mengirim form (saat merubah salah satu dropdown) 
+# kedua saat mengirim form (saat merubah salah satu dropdown)
 @app.route('/cat_fn/<nav>')
 def cat_fn(nav):
 
@@ -106,7 +106,7 @@ def cat_fn(nav):
         cat_y = 'number_of_reviews'
         estimator = 'count'
         hue = 'category'
-    
+
     # saat memilih value dari form
     else:
         cat_plot = request.args.get('cat_plot')
@@ -118,17 +118,20 @@ def cat_fn(nav):
     # Dari boxplot ke histogram akan None
     if estimator == None:
         estimator = 'count'
-    
+
     # Saat estimator == 'count', dropdown menu sumbu Y menjadi disabled dan memberikan nilai None
     if cat_y == None:
         cat_y = 'number_of_reviews'
 
     # Dropdown menu [('input variables string','Label that show in drpp down menu')]
     list_plot = [('histplot', 'Histogram'), ('boxplot', 'Box')]
-    list_x = [('brand', 'Brand'), ('category', 'Category'), ('price', 'Price'), ('love', 'Love')]
-    list_y = [('price', 'Price'), ('love', 'Love'), ('number_of_reviews', 'Num Reviews')]
-    list_est = [('count', 'Count'), ('avg', 'Average'), ('max', 'Max'), ('min', 'Min')]
-    list_hue = [('brand', 'Brand'), ('category','Category')]
+    list_x = [('brand', 'Brand'), ('category', 'Category'),
+              ('price', 'Price'), ('love', 'Love')]
+    list_y = [('price', 'Price'), ('love', 'Love'),
+              ('number_of_reviews', 'Num Reviews')]
+    list_est = [('count', 'Count'), ('avg', 'Average'),
+                ('max', 'Max'), ('min', 'Min')]
+    list_hue = [('brand', 'Brand'), ('category', 'Category')]
 
     plot = category_plot(cat_plot, cat_x, cat_y, estimator, hue)
     return render_template(
@@ -147,15 +150,15 @@ def cat_fn(nav):
         # menu yang akan tampil di dropdown 'Hue'
         focus_hue=hue,
         # list yang akan digunakan looping untuk membuat dropdown 'Jenis Plot'
-        drop_plot= list_plot,
+        drop_plot=list_plot,
         # list yang akan digunakan looping untuk membuat dropdown 'Sumbu X'
-        drop_x= list_x,
+        drop_x=list_x,
         # list yang akan digunakan looping untuk membuat dropdown 'Sumbu Y'
-        drop_y= list_y,
+        drop_y=list_y,
         # list yang akan digunakan looping untuk membuat dropdown 'Estimator'
-        drop_estimator= list_est,
+        drop_estimator=list_est,
         # list yang akan digunakan looping untuk membuat dropdown 'Hue'
-        drop_hue= list_hue
+        drop_hue=list_hue
     )
 
 ##################
@@ -163,6 +166,8 @@ def cat_fn(nav):
 ##################
 
 # scatter plot function
+
+
 def scatter_plot(cat_x, cat_y, hue, brand):
 
     # call dataset
@@ -180,21 +185,21 @@ def scatter_plot(cat_x, cat_y, hue, brand):
         sephora = x[x['brand'].isin(top5_brands)]
     else:
         x = sephora
-        sephora = x[x['brand']==brand]
+        sephora = x[x['brand'] == brand]
 
     data = []
     for val in sephora[hue].unique():
         scatt = go.Scatter(
-            x = sephora[sephora[hue] == val][cat_x],
-            y = sephora[sephora[hue] == val][cat_y],
-            mode = 'markers',
-            name = val
+            x=sephora[sephora[hue] == val][cat_x],
+            y=sephora[sephora[hue] == val][cat_y],
+            mode='markers',
+            name=val
         )
         data.append(scatt)
 
     layout = go.Layout(
-        title= 'Scatter',
-        title_x= 0.5,
+        title='Scatter',
+        title_x=0.5,
         xaxis=dict(title=cat_x),
         yaxis=dict(title=cat_y)
     )
@@ -210,10 +215,13 @@ def scatter_plot(cat_x, cat_y, hue, brand):
 def scatt_fn():
 
     # mengambil nilai argumen dari API (saat awal akan None)
-    cat_x = request.args.get('cat_x')  # ambil isi formulir dari html name: cat_x
-    cat_y = request.args.get('cat_y')  # ambil isi formulir dari html name: cat_y
+    # ambil isi formulir dari html name: cat_x
+    cat_x = request.args.get('cat_x')
+    # ambil isi formulir dari html name: cat_y
+    cat_y = request.args.get('cat_y')
     hue = request.args.get('hue')    # ambil isi formulir dari html name: hue
-    brand = request.args.get('brand')    # ambil isi formulir dari html name: hue
+    # ambil isi formulir dari html name: hue
+    brand = request.args.get('brand')
 
     # WAJIB! default value ketika scatter pertama kali dipanggil
     if cat_x == None and cat_y == None and hue == None:
@@ -223,11 +231,13 @@ def scatt_fn():
         brand = 'all'
 
     # Dropdown menu list
-    list_x = [('number_of_reviews', 'Num Reviews'), ('price', 'Price'), ('love', 'Love')]
-    list_y = [('number_of_reviews', 'Num Reviews'), ('price', 'Price'), ('love', 'Love')]
+    list_x = [('number_of_reviews', 'Num Reviews'),
+              ('price', 'Price'), ('love', 'Love')]
+    list_y = [('number_of_reviews', 'Num Reviews'),
+              ('price', 'Price'), ('love', 'Love')]
     list_hue = [('brand', 'Brand')]
-    list_brand = [('all', 'All') ,('SEPHORA_COLLECTION', 'Sephora'), ('CLINIQUE', 'Clinique')
-                , ('tarte', 'Tarte'), ('TOM_FORD', 'Tom Ford'),  ('Dior', 'Dior')]
+    list_brand = [('all', 'All'), ('SEPHORA_COLLECTION', 'Sephora'), ('CLINIQUE',
+                                                                      'Clinique'), ('tarte', 'Tarte'), ('TOM_FORD', 'Tom Ford'),  ('Dior', 'Dior')]
 
     # kita panggil si plot nya
     plot = scatter_plot(cat_x, cat_y, hue, brand)
@@ -240,10 +250,10 @@ def scatt_fn():
         focus_y=cat_y,
         focus_hue=hue,
         focus_brand=brand,
-        drop_x= list_x,
-        drop_y= list_y,
-        drop_hue= list_hue,
-        drop_brand = list_brand
+        drop_x=list_x,
+        drop_y=list_y,
+        drop_hue=list_hue,
+        drop_brand=list_brand
     )
 
 
@@ -266,25 +276,24 @@ def line_plot(cat_x, cat_y, hue):
 
         # ambil semua data jika tanpa pembeda
         scatt = go.Scatter(
-            x = flight[cat_x],
-            y = flight[cat_y],
-            mode = 'lines'
+            x=flight[cat_x],
+            y=flight[cat_y],
+            mode='lines'
         )
         data.append(scatt)
     else:
         for val in flight[hue].unique():
             scatt = go.Scatter(
-                x = flight[flight[hue] == val][cat_x],
-                y = flight[flight[hue] == val][cat_y],
-                mode = 'lines',
-                name = val
+                x=flight[flight[hue] == val][cat_x],
+                y=flight[flight[hue] == val][cat_y],
+                mode='lines',
+                name=val
             )
             data.append(scatt)
-      
 
     layout = go.Layout(
-        title= 'Line Plot',
-        title_x= 0.5,
+        title='Line Plot',
+        title_x=0.5,
         xaxis=dict(title=cat_x),
         yaxis=dict(title=cat_y)
     )
@@ -300,8 +309,10 @@ def line_plot(cat_x, cat_y, hue):
 def line_fn():
 
     # mengambil nilai argumen dari API (saat awal akan None)
-    cat_x = request.args.get('cat_x')  # ambil isi formulir dari html name: cat_x
-    cat_y = request.args.get('cat_y')  # ambil isi formulir dari html name: cat_y
+    # ambil isi formulir dari html name: cat_x
+    cat_x = request.args.get('cat_x')
+    # ambil isi formulir dari html name: cat_y
+    cat_y = request.args.get('cat_y')
     hue = request.args.get('hue')    # ambil isi formulir dari html name: hue
 
     # WAJIB! default value ketika scatter pertama kali dipanggil
@@ -313,7 +324,7 @@ def line_fn():
     # Dropdown menu list
     list_x = [('year', 'Tahun'), ('month', 'Bulan')]
     list_y = [('passengers', 'Penumpang')]
-    list_hue = [('none','None'), ('month', 'Month')]
+    list_hue = [('none', 'None'), ('month', 'Month')]
 
     # kita panggil si plot nya
     plot = line_plot(cat_x, cat_y, hue)
@@ -325,9 +336,9 @@ def line_fn():
         focus_x=cat_x,
         focus_y=cat_y,
         focus_hue=hue,
-        drop_x= list_x,
-        drop_y= list_y,
-        drop_hue= list_hue,
+        drop_x=list_x,
+        drop_y=list_y,
+        drop_hue=list_hue,
     )
 
 
