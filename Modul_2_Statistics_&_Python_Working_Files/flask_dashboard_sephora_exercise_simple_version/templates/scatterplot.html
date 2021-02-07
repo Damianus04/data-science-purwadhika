@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <!-- Menu Dropdown -->
+    <form action="{{url_for('scatterplot_route')}}" id="form">
+        <div class="my-5 row d-flex justify-content-around">
+
+            <!-- Dropdwon Sumbu X -->
+            <div class="col-2">
+                <p class="text-center lead">X Axis</p>
+                <select class="form-control" name="cat_x" onchange="form.submit()">
+                    {% for drop in drop_x %}
+                        {% if focus_x == drop[0] %}
+                            return '<option value={{drop[0]}} selected>{{drop[1]}}</option>'
+                        {% else %}
+                            return '<option value={{drop[0]}}>{{drop[1]}}</option>'
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Dropdwon Sumbu Y -->
+            <div class="col-2">
+                <p class="text-center lead">Y Axis</p>
+                <select class="form-control" name="cat_y" onchange="form.submit()">
+                    {% for drop in drop_y %}
+                        {% if focus_y == drop[0] %}
+                            return '<option value={{drop[0]}} selected>{{drop[1]}}</option>'
+                        {% else %}
+                            return '<option value={{drop[0]}}>{{drop[1]}}</option>'
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="container">
+        <div class="chart" id="bargraph">
+            <script>
+                var graphs = {{plot | safe}};
+                Plotly.plot('bargraph',graphs,{});
+            </script>
+        </div>
+    </div>
+
+
+{% endblock content %}

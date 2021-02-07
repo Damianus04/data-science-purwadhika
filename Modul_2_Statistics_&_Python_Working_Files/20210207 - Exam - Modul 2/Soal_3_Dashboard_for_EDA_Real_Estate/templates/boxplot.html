@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="alert alert-dark" role="alert">
+        Data outliers dimulai sebarannya dari Distance: 23.35 hingga 48.1
+        <br/> Ada data outliers yang berada di bawah batas bawah, karena memang tidak ada jarak yang lebih kecil dari 0
+    </div>
+    <!-- Menu Dropdown -->
+    <form action="{{url_for('boxplot_route')}}" id="form">
+        <div class="my-5 row d-flex justify-content-around">
+        
+            <!-- Dropdwon Sumbu X -->
+            <div class="col-2">
+                <p class="text-center lead">X Axis</p>
+                <select class="form-control" name="cat_x" onchange="form.submit()">
+                    {% for drop in drop_x %}
+                        {% if focus_x == drop[0] %}
+                            return '<option value={{drop[0]}} selected>{{drop[1]}}</option>'
+                        {% else %}
+                            return '<option value={{drop[0]}}>{{drop[1]}}</option>'
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="container">
+        <div class="chart" id="bargraph">
+            <script>
+                var graphs = {{plot | safe}};
+                Plotly.plot('bargraph',graphs,{});
+            </script>
+        </div>
+    </div>
+
+
+{% endblock content %}
