@@ -9,7 +9,7 @@
             <!-- Dropdwon Sumbu X -->
             <div class="col-2">
                 <p class="text-center lead">X Axis</p>
-                <select class="form-control" name="cat_x" onchange="form.submit()">
+                <select class="form-control" name="x_axis" onchange="form.submit()">
                     {% for drop in drop_x %}
                         {% if focus_x == drop[0] %}
                             return '<option value={{drop[0]}} selected>{{drop[1]}}</option>'
@@ -23,7 +23,7 @@
             <!-- Dropdwon Sumbu Y -->
             <div class="col-2">
                 <p class="text-center lead">Y Axis</p>
-                <select class="form-control" name="cat_y" onchange="form.submit()">
+                <select class="form-control" name="y_axis" onchange="form.submit()">
                     {% for drop in drop_y %}
                         {% if focus_y == drop[0] %}
                             return '<option value={{drop[0]}} selected>{{drop[1]}}</option>'

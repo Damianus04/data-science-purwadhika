@@ -445,30 +445,86 @@ FINAL PROJECTS
 
 
 
-ini untuk Plot2 yang tadi, sama gambaran jawaban dari yang flask
-From Karina Anggraeni to Everyone:  03:17 PM
-Mas, mau make sure aja, jadi materi yg diujikan itu mirip dengan soal Sephora yg minggu lalu ya Mas? Kalau materi flask itu optional aja ya?
-From hafizhan afif to Everyone:  03:35 PM
-materi yang flask API belum masuk sih kalo saya lihat ya
-yg masuk itu yang dashboard dulu
-karena disini fokusnya visualisasi data / data Exploration / EDA Process
-From Advendio Desandros to Everyone:  03:35 PM
-berarti harus pake plotly ya mas?
-From hafizhan afif to Everyone:  03:36 PM
-iyah kalo untuk dashboard web (using flask)
-From Advendio Desandros to Everyone:  03:38 PM
-cantik atau enggaknya dashboard pengaruh ke nilai ga mas? Soalnya pake plotly lumayan ribet setelah diliat2
-From hafizhan afif to Everyone:  03:39 PM
-enggak
-From Advendio Desandros to Everyone:  03:39 PM
-Hoo oke, thanks mas
-From hafizhan afif to Everyone:  03:39 PM
-yang baik visualisasi itu yang bisa dibaca/ dimengerti sama yg liat
-From Karina Anggraeni to Everyone:  03:39 PM
-Oke makasih Mas
-From hafizhan afif to Everyone:  03:40 PM
-sama mungkin ditambahin deskripsi di bawhanya, biar pembaca ga bingung jg
-(interpretasi dari dasboardnya)
-eh dari plot nya mksdnya
+MACHINE LEARNING
+- Analogi ML Supervised --> 
+	- di sekolah ada murid
+	- mau mengirim murid ke olimpiade matematika
+	- cara seleksi? ambil sampel untuk ambil murid paling pinter
+	- terpilih murid A, B, C lalu diberi materi sampai pinter
+	- ketika di fase akhir, mereka diberi ujian untuk menentukan siapa ikut olimpiade
+	- setelah test, murid B paling bagus dan ikut olimpiade dengan bekal, 
+	  semua latihan + jawaban (training) dan test + jawaban (testing).
+
+	- data scientist ==> sekolah
+	- model + algoritma ==> murid
+	- deploy model + algoritma ==> olimpiade
+	- training + testing ==> soal latihan dan test kelulusan olimpiade
+
+- Classification ada ground truth (supervised)
+  Clustering tidak punya ground truth (unsupervised)
+
+
+- numerik: interval (median, mean) & ratio
+  kategorik: nominal(tidak punya urutan: warna) & ordinal(punya urutan: jenjang pend)
+
+- data adalah bagian terpenting dari machine learning.
+  seberapa bagus algoritmanya, jika datanya jelek, maka hasilnya jelek.
+
+- x/feature/independent variable/explanatory
+  y/label/dependent variable/response
+	--> label muncul setelah feature
+
+- normality test untuk melihat potensi fillna
+
+
+
+LINEAR REGRESSION
+--> uji hipotesis????????? beta 0, beta 1, menolak h0, t-test, f-test, ANOVA
+
+- simple regression	: 1 independent variable
+  multiple regression	: > 1 independent variable
+
+- beta = slope/gradient
+
+- Korelasi pakai pearson (mengukur kekuatan relationship).
+  Regresi untuk mencari dampak variable x ke Y.
+
+- Multicolinearity -> hubungan antar independent variable
+	--> expectation: antar independent variable tidak berhubungan
+
+- jika data tidak normal, jika inferensial maka non parametrik test
+  jika data normal, jika ingin inferensial maka pakai parametrik test
+
+- populasi -> error
+  sample -> residu
+
+- Rsquare -> seberapa bagus garis linear yang dibanding yang pertama.
+
+- misi regresi -> meminimalkan SSE hingga dapat garis paling error kecilnya.
+
+- dalam linear regression untuk analisa, tidak boleh ada multicollinearity --> how to handle: dua variable independent yang saling mempengaruhi dirangkum jadi satu
+- tapi untuk prediksi, multicollinearity boleh --> tapi konsekuensinya bisa ada overfitting
+
+- sklearn.onehotencode -> pd.get_dummies
+
+- success event di ML: contohnya dalam klasifikasi, 1 nya adalah churn, bad credit score
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	

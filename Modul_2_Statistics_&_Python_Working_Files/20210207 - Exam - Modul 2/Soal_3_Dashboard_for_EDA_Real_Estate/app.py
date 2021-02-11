@@ -38,10 +38,10 @@ def box_plot(x_axis='Distance'):
 
 def line_plot(x_axis='YearBuilt', y_axis='Price'):
     data = [
-        go.Line(
+        go.Scatter(
             x=real_estate[x_axis],
             y=real_estate[y_axis],
-            mode='lines'
+            mode='lines+markers'
         )
     ]
 
@@ -68,7 +68,7 @@ def index():
 
 @app.route("/dataset")
 def dataset_route():
-    table = real_estate
+    table = real_estate.head(100)
     return render_template('dataset.html', data=table)
 
 
@@ -92,14 +92,15 @@ def boxplot_route():
 
 @app.route('/line-plot')
 def lineplot_route():
-    # x_axis = request.args.get('cat_x')
-    # y_axis = request.args.get('cat_y')
 
-    x_axis = 'YearBuilt'
-    y_axis = 'Price'
+    x_axis = request.args.get('cat_x')
+    y_axis = request.args.get('cat_y')
 
-    list_x = [('YearBuilt', 'Year Built')]
-    list_y = [('Price', 'Price')]
+    # x_axis = 'YearBuilt'
+    # y_axis = 'Price'
+
+    list_x = [('YearBuilt', 'Year Built'), ('Price', 'Price')]
+    list_y = [('Price', 'Price'), ('YearBuilt', 'Year Built')]
 
     # Running scatter_plot function
     line = line_plot(x_axis, y_axis)
@@ -108,6 +109,25 @@ def lineplot_route():
     return render_template('lineplot.html', plot=line,
                            focus_x=x_axis, focus_y=y_axis,
                            drop_x=list_x, drop_y=list_y)
+
+# @app.route('/line-plot')
+# def lineplot_route():
+#     # x_axis = request.args.get('cat_x')
+#     # y_axis = request.args.get('cat_y')
+
+#     x_axis = 'YearBuilt'
+#     y_axis = 'Price'
+
+#     list_x = [('YearBuilt', 'Year Built')]
+#     list_y = [('Price', 'Price')]
+
+#     # Running scatter_plot function
+#     line = line_plot(x_axis, y_axis)
+
+#     # return all variables
+#     return render_template('lineplot.html', plot=line,
+#                            focus_x=x_axis, focus_y=y_axis,
+#                            drop_x=list_x, drop_y=list_y)
 
 
 if __name__ == '__main__':

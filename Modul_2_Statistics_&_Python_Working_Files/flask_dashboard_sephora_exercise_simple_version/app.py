@@ -70,11 +70,11 @@ def index():
 
 @app.route('/scatter-plot')
 def scatterplot_route():
-    # x_axis = request.args.get('cat_x')
-    # y_axis = request.args.get('cat_y')
+    x_axis = request.args.get('x_axis')
+    y_axis = request.args.get('y_axis')
 
-    x_axis = 'number_of_reviews'
-    y_axis = 'price'
+    # x_axis = 'number_of_reviews'
+    # y_axis = 'price'
 
     list_x = [('brand', 'Brand'), ('category', 'Category'),
               ('price', 'Price'), ('love', 'Love')]
