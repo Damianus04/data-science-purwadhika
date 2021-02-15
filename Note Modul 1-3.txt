@@ -657,7 +657,8 @@ LINEAR REGRESSION
 
 
 
-
+CONFUSION MATRIX
+- accuracy bisa menipu, karena prediksi nya tidak sensitif terhadap data yang porsinya kecil.
 
 
 
