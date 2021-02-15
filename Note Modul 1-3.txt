@@ -406,7 +406,9 @@ pandas'question:
 
 
 
-
+Visualisasi
+- untuk sendiri
+- untuk dipresent: melihat hubungan antara independent dan dependen variable
 
 
 
@@ -475,6 +477,148 @@ MACHINE LEARNING
 	--> label muncul setelah feature
 
 - normality test untuk melihat potensi fillna
+
+STATISTIK 
+Parameter: angka yang mewakili data dari suatu populasi
+Statistik: angka yang mewakili data dari suatu sample
+Di Statistika, yang kita periksa dinamakan variabel
+	--> variabel: karakter yg dapat diukur, dihitung dan dikelompokkan (tinggi, berat, warna, etc)
+		dapat bervariasi satu sama lain
+
+
+TENDENSI SENTRAL, UKURAN DISPERSI, UKURAN LOKASI
+1. tendensi sentral -> angka yang mewakili kondisi secara keseluruhan data
+2. ukuran dispersi -> sebaran data
+3. ukuran posisi -> dimana posisi data tunggal kita dalam distribusi data scr keseluruhan
+
+1) Tendensi Sentral
+	- Mean (data dlm interval/rasio), Median (data dlm skala ordinal), Modus (data dlm skala nominal)
+	- Mean sensitif terhadap outlier, jika begitu maka bisa diganti ke median
+	- Jika data terdistribusi normal, maka hasil modus hampir sama dengan mean/median
+	- Jika modus dalam data lebih dari satu, maka grafiknya bisa bimodal/multimodal, jika hanya satu namanya unimodal
+
+2) Dispersi
+	- Rentang: paling sederhana dan paling kurang kuat; menggunakan max dan min data
+	- Varians: variasi dari data; 
+		- cara hitung: rerata dari selisih kuadrat masing2 skor terhadap mean
+			a. hitung mean dari seluruh data
+			b. setiap item data dikurangi mean lalu dikuadratkan
+			c. jumlahkan hasilnya dan hitung reratanya
+	- Standard Deviation: 
+	       - rerata jarak skor terhadap mean yang digunakan untuk mengukur dispersi skor terhadap rerata
+	       - hasil penjumlahannya sama dengan nol
+	       - semakin besar std, maka semakin besar data tersebar
+	       - data yang bagus adalah yang std nya tidak terlalu besar
+	       - cara hitung: akar kuadrat dari varians
+	- Standard Error:
+	       - SE = Standard Error of the Mean (SEM)
+	       - SE = SD dibagi akar banyaknya pengamatan (akar n)
+	      
+3) Ukuran Posisi
+	- Kuartil: data dibagi jadi 4 bagian sama (Q1, Q2, Q3), Q2=Median
+	- Desil: data dibagi jadi 10 bagian sama, D5=Median
+	- Persentil: data dibagi menjadi 100 bagian sama, P50=Median
+	     
+
+Istilah dalam EDA Statistik:
+- n -> jumlah subjek dalam kelompok
+- N -> jumlah total subjek
+- M -> Mean
+- Mdn -> Median
+- SD -> Standard Deviation
+
+
+JENIS STATISTIK
+--> Deskriptif
+	- menggambarkan karakteristik
+	- mendeskripsikan/menggambarkan kondisi data (sampel/populasi)
+	- hasil analisa tidak bisa dipakai untuk generalisasi pada populasi
+--> Inferensia
+	- memberikan analisis yang lebih dalam
+	- ingin memprediksi/menggambarkan kondisi populasi berdasarkan data dari sample.
+	- hasil analisa bisa untuk generalisasi pada tingkat populasi
+
+
+AKTIVITAS UTAMA
+1) Estimasi - menduga parameter populasi berdasarkan statistik (std, mean, etc) dari sample.
+	- estimasi titik (satu nilai tunggal)
+	- estimasi interval (rentangan nilai)
+
+2) Uji Hipotesis - memiliki dugaan thd parameter populasi; kita memiliki prediksi dari kondisi populasi lalu kita uji dugaan tersebut bisa diterima atau ditolak.
+	- hipotesis nol		--> menyatakan tidak ada hubungan
+	- hipotesis alternatif	--> menyatakan ada hubungan
+
+	hasil akhirnya hanya salah satu hipotesis yang diterima
+
+
+JENIS HIPOTESIS
+1) Hipotesis Statistik
+	a) Ho    -> u1 = u2 - tidak ada hubungan/tidak ada perbedan
+	b) Ha/H1 -> u1 != u2 - ada hubungan/ada perbedaan
+2) Hipotesis Penelitian
+	a) observasi dari suatu kondisi
+	b) menemukan ada permasalahan
+	c) dirumuskan dalam pertanyaan penelitian
+	d) ada jawaban sementara (hipotesis penelitian) berdasarkan dari kajian pustaka, referensi ilmiah dari sumber yang sudah ada.
+	f) setelah merumuskan hipotesis penelitian kita lalu menentukan hipotesis statistik
+	g) ada Ho dan Ha
+	h) setelah ada hipotesis statistik maka saat nya melakukan uji statistik untuk menentukan mana yang dapat diterima (Ho atau Ha)
+
+
+	hipotesis penelitian sejalan dengan hipotesis alternatif:  menyatakan ada hubungan.
+	kadang hipotesis penelitian bisa sejalan dengan hipotesis nol
+
+
+UJI STATISTIK
+yang dijadikan dasar awal uji statistik adalah Ho
+1) Menolak Ho		-> Ho tidak dapat diterima
+2) Gagal Menolak Ho	-> Ho dapat diterima
+
+
+	
+SKALA PENGUKURAN
+NOIR = Nominal Ordinal Interval Ratio: semakin ke kanan semakin presisi
+
+Karakter Penanda
+1. Identitas: setiap nilai pada skala pengukuran bersifat unik
+2. Besaran: nilai memiliki hubungan teratur satu sama lain.
+3. Interval yang sama: jarak antar skala sama
+4. Nol mutlak: memiliki titik nol yang sebenarnya, angka nol sebagai angka paling kecil, tidak ada minus
+
+1) Skala Nominal -> memenuhi Identitas
+	- skala paling lemah/rendah
+	- hanya bisa membedakan antar benda/peristiwa berdasarkan nama (predikat)
+	- angka/simbol tidak ada arti kuantitatif, hanya menunjukkan ada/tidak ada nya karakteristik
+	- analisa statistika terbatas: hanya alat ukur non-parametrik (modus, distribusi frekuensi, chi-square)
+	- tidak bisa diterapkan operasi matematika standar
+	- contoh: jenis kelamin (Pria/1, Wanita/2)
+2) Skala Nominal -> memenuhi Identitas, Besaran
+	- nilai hasil pengukuran selain menunjukkan perbedaan juga menunjukkan urutan/tingkatan objek yang diukur
+	- meski nilai sudah memiliki batas yang jelas tapi belum punya jarak
+	- analisa statistika terbatas: hanya alat ukur non-parametrik (modus, distribusi frekuensi, chi-square)
+	- tidak bisa diterapkan operasi matematika standar
+	- contoh: tingkat kesukaan dari level 1, 2, 3, 4, 5
+	- contoh: juara kompetisi (1, 2, 3) -> 2x juara 1 tidak bisa dikatakan sama dengan juara 1
+3) Skala Interval -> memenuhi Identitas, Besaran, Interval Sama
+	- operasi arimatik dasar dapat diterapkan
+	- sudah punya batas jelas dan jarak, tapi jarak itu belum merupakan kelipatan
+	- contoh: suhu (selisih 20 ke 30 derajat sama dengan selisih 40 ke 50 derajat)
+	- contoh: nilai ujian (A: 40, B: 80 -> tidak bisa dikatakan B dua kali lebih pintar dari A)
+	- analisa statistika lebih beragam (ANOVA, uji T, ANCOVA)
+4) Skala Rasio -> memenuhi Identitas, Besaran, Interval Sama, Nol Mutlak
+	- skala rasio sama dengan interval hanya ditambah 0 mutlak
+	- Nol mutlak = nilai yang paling rendah adalah nilai 0, tidak ada yang lebih rendah lagi
+		- contoh: berat badan tidak mungkin kurang dari 0 kg
+	- skala rasio sudah punya nilai perbandingan/rasio
+		- contoh: A=20kg, B=40kg, B dua kali lebih berat dari A
+	- operasi arimatik dasar dapat diterapkan
+	- sudah punya batas jelas dan jarak yang merupakan kelipatan
+	- contoh: 
+	- analisa statistika lebih beragam (ANOVA, uji T, ANCOVA)
+
+
+
+
 
 
 
