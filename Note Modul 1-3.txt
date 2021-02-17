@@ -661,6 +661,25 @@ CONFUSION MATRIX
 - accuracy bisa menipu, karena prediksi nya tidak sensitif terhadap data yang porsinya kecil.
 
 
+KNN
+- bagus ketika di scaling
+
+
+DECISION TREE
+- 
+- gini impurity -> 
+	- indeks penilaian, 
+	- rumusnya menggunakan proba yes dan no
+	- feature yang memiliki gini impurity paling kecil akan jd root pertama
+	
+- DT akan berhenti split jika
+	- sudah mencapai max depth
+	- sample habis
+	- minimum sample split
+
+tentukan parameter (leaf, max depth, dll)
+feature nya dicari gini impurity nya, lalu diurutkan jadi tree
+lalu tiap baris data nya baru dimasukkan ke logika tree nya
 
 
 
