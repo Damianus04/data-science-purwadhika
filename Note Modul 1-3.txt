@@ -677,15 +677,42 @@ LINEAR REGRESSION
 - MSE = variance of residuals
 - RMS = standard deviation of residuals.
 - R square = ukuran kebaikan dari model prediksi.
+	- Rsquare = (SSR/SST)
+		  = 1 - (SSE/SST)
 - SSE adl hasil jumlah dari error sum(yi-ypred)**2 garis yang melewati centroid hasil rata2 dari feature X & y.
 	- SSE = sum(yi - ypred)**2
 - SST: - jika tidak punya variable independen untuk memprediksi harga rumah selanjutnya, garis linear terbaik adalah rata2 dari harga rumah itu sendiri
 	- SST = sum(yi - yrata)**2
-	- 
+	- SST biasanya lebih besar nilainya
 - SSR:  - selisih dari dua garis regresi (garis rata2 dan garis regresi terbaik dari sse)
 	- SSR = sum(ypred - yrata)
+- Analogi
+	- SST = Mangga (total SSR dan SSE)
+	- SSR = Daging buah (selisih dua garis regresi/explained variance)
+	- SSE = Kulit (residu/unexplained variance)
 
 
+MULTIPLE LINEAR REGRESSION
+- kurang lebih sama dengan linear regression
+- feature nya lebih dari satu
+- persamaan umum:
+	y = b0 + b1x1 + b2x2 + ... + bkxk + e
+
+- Adjusted Rsquare --> sama dengan Rsquare dan digunakan ketika variable independent lebih dari 1.
+
+
+RESIDUAL ANALYSIS
+- residual = real - prediction
+- residual merupakan bentuk statistik dari error
+	sample -> residu
+	populasi -> error
+- residual analysis: normality assumption
+	harapannya P-value adalah distribusi normal
+	P-value < alpha --> masuk ke H1, distribusi tidak normal.
+- residual analysis: gauss-markov
+	harapannya residu lurus dan tidak membentuk pola
+	residu mendekati 0
+	
 
 
 - Korelasi pakai pearson (mengukur kekuatan relationship).
