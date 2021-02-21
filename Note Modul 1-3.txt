@@ -672,19 +672,32 @@ LINEAR REGRESSION
 5) HIPOTESIS TESTING adalah menjelaskan fenomena pada populasi hanya dengan menggunakan data sample yang kita punya saja.
 
 - T-Test dan F-Test digunakan untuk cek uji hipotesis
+- T-Test: - t = betai/s betai
+	  - untuk reject Ho, tstats > tcrit
+	  - tcrit didapat dari tabel distribusi t (alpha biasanya 0.05)
+	  - tentukan juga degree of freedom (n-2 untuk simple linear regression) 
+	    n-2 maksudnya adl dikurangi coef dan intercept 
+	  - one sided (b1 != 0 - P-Value <= alpha) atau 	    	    two-sided (b1>0 / b1<0 - P-Value/2 <= alpha)
 
-5) Measuring prediction accuracy
+6) Measuring prediction accuracy
+20210211-Linear Regression 3, Classification - 00:50:00
+- yi, yrata = ybar, ypred = yhat
 - MSE = variance of residuals
 - RMS = standard deviation of residuals.
-- R square = ukuran kebaikan dari model prediksi.
+- R square = ukuran kebaikan dari model prediksi. punya skala 0-1
+	- seberapa baik suatu model linear regresi dijelaskan jika dibandingkan dengan metode yang lama (garis linear yrata)
 	- Rsquare = (SSR/SST)
 		  = 1 - (SSE/SST)
-- SSE adl hasil jumlah dari error sum(yi-ypred)**2 garis yang melewati centroid hasil rata2 dari feature X & y.
+- SSE:  - adl hasil jumlah dari error sum(yi-ypred)**2 garis yang melewati centroid hasil rata2 dari feature X & y.
+	- misi dari regresi linear untuk minimize error hingga dapat SSE paling kecil
 	- SSE = sum(yi - ypred)**2
-- SST: - jika tidak punya variable independen untuk memprediksi harga rumah selanjutnya, garis linear terbaik adalah rata2 dari harga rumah itu sendiri
+- SST:  - garis linear regresi pertama yang didapat dari rata2 y ketika tidak ada variable independen
+	- jika tidak punya variable independen untuk memprediksi harga rumah selanjutnya, garis linear terbaik adalah rata2 dari harga rumah itu sendiri
+	- SST biasanya lebih besar nilainya	
 	- SST = sum(yi - yrata)**2
-	- SST biasanya lebih besar nilainya
-- SSR:  - selisih dari dua garis regresi (garis rata2 dan garis regresi terbaik dari sse)
+- SSR:  - selisih dari dua garis regresi (garis linear regresi pertama dan garis regresi terbaik/terbaru dari sse)
+	- SSR biasanya lebih kecil dari SST
+	- SSR = SST - SSE --> garis regresi pertama - garis regresi terbaik	
 	- SSR = sum(ypred - yrata)
 - Analogi
 	- SST = Mangga (total SSR dan SSE)
@@ -709,17 +722,32 @@ RESIDUAL ANALYSIS
 - residual analysis: normality assumption
 	harapannya P-value adalah distribusi normal
 	P-value < alpha --> masuk ke H1, distribusi tidak normal.
-- residual analysis: gauss-markov
+- residual analysis: gauss-markov assumption
 	harapannya residu lurus dan tidak membentuk pola
 	residu mendekati 0
-	
-
 
 - Korelasi pakai pearson (mengukur kekuatan relationship).
   Regresi untuk mencari dampak variable x ke Y.
 
-- Multicolinearity -> hubungan antar independent variable
-	--> expectation: antar independent variable tidak berhubungan
+MULTICOLINEARITY 
+20210211-Linear Regression 3, Classification 1:17:00)
+-> hubungan antar independent variable
+-> expectation: - antar independent variable tidak berhubungan
+		- satu independent variable hanya mempengaruhi dependent variable secara individual
+-> reality: - satu independent variable bisa saja mempengaruhi dependent variable dan independent variable yang lain
+-> dalam linear regresi, analisa dengan multicolinearity tidak diperbolehkan. namun independent variable ini tidak perlu dihapus, bisa pakai PCA untuk dirangkum menjadi satu dengan independent varible lain
+-> jika untuk prediksi, multicolinearity diperbolehkan, tapi ada konsekuensi potensi overfitting
+-> multicol cenderung punya Rsquare tinggi, F-Test reject, tapi T-Test accept, jadi bertolak belakang.
+-> cara identifikasi multicol yaitu dengan VIF (variance inflation factor)
+	- jika VIF tinggi (>10) = collinearity sangat tinggi
+	- jika VIF tinggi (>4) = collinearity tinggi
+	- jika VIF rendah (<4) = acceptable, harapannya kurang dari 4
+-> formulanya berasal dari y = m1x1 + m2x2 + c, dimana y dihold/dihilangkan dulu untuk dicari R nya
+	-> rumus menjadi x1 = m2x2 + c atau
+			 x2 = m1x1 + c
+		==> ketemu Rsquare
+	-> VIF = 1 / (1 - Rsquare)
+
 
 - jika data tidak normal, jika inferensial maka non parametrik test
   jika data normal, jika ingin inferensial maka pakai parametrik test
@@ -727,28 +755,82 @@ RESIDUAL ANALYSIS
 - populasi -> error
   sample -> residu
 
-- Rsquare -> seberapa bagus garis linear yang dibanding yang pertama.
-
-- misi regresi -> meminimalkan SSE hingga dapat garis paling error kecilnya.
-
 - dalam linear regression untuk analisa, tidak boleh ada multicollinearity --> how to handle: dua variable independent yang saling mempengaruhi dirangkum jadi satu
 - tapi untuk prediksi, multicollinearity boleh --> tapi konsekuensinya bisa ada overfitting
 
-- sklearn.onehotencode -> pd.get_dummies
 
-- success event di ML: contohnya dalam klasifikasi, 1 nya adalah churn, bad credit score
+Regression with Dummy Variable
+-> data categoric harus diubah ke bentuk numeric salah satunya dengan encoding
+-> satu variable akan dibuatkan dummy feature encoding/categoric nya sesuai jumlah kelas/jenis yang ada di variable itu, lalu salah satu feature dari dummy features akan dipakai.
+-> pd.get_dummiies, sklearn.onehotencoder, sklearn.binaryencoder
 
 
 
 
+CLASSIFICATION - LOGISTIC REGRESSION
+-> Logistic Regression, Decision Tree, KNN
+-> binary (yes/no, default/pif), multiclass (jenis bunga, sentimen)
 
-CONFUSION MATRIX
+-> Binary Logistic Regression 20210211-Linear Regression 3 / 03:26:00
+	- formula mirip dengan linear regression 
+	- formula linear regression dalam logistic regression disebut odd
+		-> linear regression * exp (eular=2.71)
+		-> formula
+		   P(Y=1) = odd/(1 + odd)
+			  = (exp(b0+b1x1+...+bkxk)) / 1 + (exp(b0+b1x1+...+bkxk))
+	- garis dalam logistic regression tidak terbatas antara 0 - 1 (bentuk garisnya S)
+	- linear regression di logreg digunakan untuk menghitung proba P(Y=1)
+	- kejadian success event di binary ini contohnya dalam klasifikasi, fokus 1 nya adalah churn atau bad credit score (yang menjadi sorotan/yang menarik perhatian kita)
+	- linear regresi dalam binary logistic regression disebut sigmoid curve. -> cara baca memakai P(Y=1) = odd/(1 + odd)
+
+
+-> Odds-Ratio (OR) = Odd(a)/Odd(b) --> Odd = P(occuring) / (1-(P(occuring))) -> cara baca: peluang a adl OR kali lbh sering dari peluang b
+-> OR digunakan untuk menginterpretasi Bi (koefisien) dlm binary logreg
+	-> OR = exp(Bi(c-d)) --> untuk c lebih besar dari d
+	-> cara baca koefisien di logreg harus memakai Odds Ratio di atas. (bukan langsung baca koefisien seperti di linear regresi - setiap kenaikan feature x, ada kenaikan koefisien Bi)
+
+-> sigmoid = odd/(1 + odd)
+-> Log-Likehood Ratio Test (LLR-Test) : nama lain dari F-Test (untuk tahu apakah koefisiennya 0 atau tidak semua 0)
+-> Wald Test : nama lain dari T-Test
+-> Logistic Regression tidak punya semacam residual analysis/gauss markov
+
+
+CONFUSION MATRIX (02:40:00 / 20210215)
 - accuracy bisa menipu, karena prediksi nya tidak sensitif terhadap data yang porsinya kecil.
+- accuracy di industri jarang dipakai, karena hanya menghitung keakuratan secara general.
+- accuracy = (TN+TP) / (TN+TP+FN+FP)
+- accuracy bisa menjebak
+	- ada 1000 orang (900 tidk cancer, 100 cancer) -> imbalance
+	- ada kecenderungan model hanya mempelajari yang tidak cancer
+	- apalagi karakteristik cancer dan tidak cancer agak mirip2, ada persimpangan
+	- ketika diimplementasi, ketika ada 1000 orang (900 tidk cancer, 100 cancer), model memprediksi 0/tidak cancer
+	- model tidak pernah memprediksi 1/cancer
+	- accuracy menunjukkan 90%, tapi model gagal/tidak sensitif menebak orang dengan potensi cancer.
+- accuracy bisa dipakai ketika 0 dan 1 sama2 penting seperti menebak kucing/anjing (tidak terlalu fatal)
+
+- # z adalah wald test
+- P-value < 0.05 berarti penting
 
 
-KNN
+
+
+KNN (20210216/01:30:00)
+- bekerja berdasarkan kelas mayoritas
+- termasuk non-parametrik karena tidak menghasilkan persamaan rumus
+- kurang praktikal karena harus memetakan data point nya.
 - bagus ketika di scaling
+- regression harus mensyaratkan pemenuhan asumsi, sehingga prediksi untuk data yang tidak memenuhi asumsi akan lebih jelek, jadi butuh yang non-parametrik seperti knn
+- KNN membagi data menjadi train, val, test
+- Mengukur jarak di KNN bisa memakai euclidean (pythagoras) distance dan manhattan distance ( sum(a-b) )
+- euclidean sensitif dengan masalah skala, jika dua variable punya skala yang tidak sama, maka interpretasinya bisa terpengaruh
+-
 
+
+Normalisation (Scaling)
+- MinMaxScaler -> y = (x - min xi) / (max xi - min xi)
+- StandardScaler -> y = (x - xrata) / s
+- RobustScaler -> (xi - Q1(x)) / (Q3 x) - (Q1 x)
+- minmax dan standard sensitif dgn outlier, robust lebih stabil
 
 DECISION TREE
 - 
