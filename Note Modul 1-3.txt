@@ -818,7 +818,7 @@ KNN (20210216/01:30:00)
 - bekerja berdasarkan kelas mayoritas
 - termasuk non-parametrik karena tidak menghasilkan persamaan rumus
 - kurang praktikal karena harus memetakan data point nya.
-- bagus ketika di scaling
+- bagus ketika di scaling karena distance based. Skala yang sama sangat berpengaruh terhadap interpretasi.
 - regression harus mensyaratkan pemenuhan asumsi, sehingga prediksi untuk data yang tidak memenuhi asumsi akan lebih jelek, jadi butuh yang non-parametrik seperti knn
 - KNN membagi data menjadi train, val, test
 - Mengukur jarak di KNN bisa memakai euclidean (pythagoras) distance dan manhattan distance ( sum(a-b) )
@@ -847,6 +847,36 @@ DECISION TREE
 tentukan parameter (leaf, max depth, dll)
 feature nya dicari gini impurity nya, lalu diurutkan jadi tree
 lalu tiap baris data nya baru dimasukkan ke logika tree nya
+
+
+
+DATA PREPARATION & FEATURE ENGINEERING
+- Scaling -> untuk data numeric (interval & ration) --> (weight, gaji, usia, LT, LB, dll), scaling tidak boleh untuk
+	- standard scaler
+	- minmax scaler
+	- robust scaler
+- Binning -> pengelompokkan range dari data numerik menjadi kategorik (biasanya menjadi ordinal)
+	- contoh nya untuk age
+- Encoding -> untuk data data categoric -> nominal (tidak punya urutan warna, kota) dan ordinal (tingkat pendidikan, hangat/panas/dingin, tidak puas/puas/sangat puas)
+	- ordinal encoder -> ordinal data
+	- onehot encoder -> ordinal dan nominal data
+	- binary encoder -> nominal data 
+- Text Preprocessing
+	- Lemmatization -> mengubah menjadi sesuatu yang dipahami manusia/based on dictionary (biasanya untuk sentiment analysis)
+	- Stemming -> mengubah menjadi kata yang tidak ada di kamus (biasa untuk spam analysis)
+	- TF-IDF / Bag of Words
+
+- scaler biasanya bekerja per kolom; normalizer dlm sklearn bekerjanya per baris data untuk dijadikan rasio. Istilah ini sebaiknya dipisah antara scaling dan normalization.
+
+- .fit dan .transform (20210222)
+	- fit hanya boleh di training
+	- transform boleh training dan testing
+	- fit_transform hanya boleh di training
+
+
+DEEP LEARNING
+- DL adalah machine learning yang ber layer-layer
+- ML adalah deep learning yang memiliki satu layer
 
 
 cara mengatasi - mau ga mau belajar, banyak resource, 
