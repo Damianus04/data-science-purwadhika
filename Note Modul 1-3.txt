@@ -882,6 +882,21 @@ DEEP LEARNING
 cara mengatasi - mau ga mau belajar, banyak resource, 
 
 
+MISSING VALUE
+- NaN diisi, data type nya akan jadi float
+- Simple technique: drop column, drop row, substitution with mean/median/mode
+- Advance technique: see ppt
+- Another ways: track back, just let it missing
+
+
+Normality test untuk cek distribusi data (SciPy) yang mengeluarkan nilai statistik dan P-value
+--> jika normal, pakai mean
+--> jika tidak normal, bisa median
+jenis test
+	- kolmogorov-smirnov
+	- saphiro-wilk
+	- anderson
+
 
 
 
