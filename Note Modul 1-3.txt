@@ -898,9 +898,17 @@ jenis test
 	- anderson
 
 
+OUTLIER
+- Global outlier -> hanya di satu measurement/varibale saja. (contoh zoom, ketika non-pandemic tingkat penggunaan naik secara eksponensial
+- Contextual Outlier -> melibatkan dua variable
+- outlier di linear regression
+	- broke pattern
+	- do not broke pattern -> bagus untuk memprediksi ruang kosong yang sepola dengan data normal nya.
 
 
 
-
+POLYNOMIAL
+x1 y -> x1 x1kuadrat y
+y = c + m1x1 + m2x1kuadrat
 
 	
