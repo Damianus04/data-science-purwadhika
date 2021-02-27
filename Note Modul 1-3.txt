@@ -911,4 +911,14 @@ POLYNOMIAL
 x1 y -> x1 x1kuadrat y
 y = c + m1x1 + m2x1kuadrat
 
+
+BINNING
+- untuk melihat hubungan numeric vs categoric, di binning lalu diplot
 	
+PIPELINE
+- pipeline untuk handle spesific feature (kumpulan dari bbrp method) - hubungannya seri
+- column transformer adalah gabungan semua pipeline yang ada (kumpulan dari bbrp pipeline) - hubunganya paralel, asynchronus
+
+
+FEATURE SELECTION
+memilih fitur penting untuk menggeneralisasi dari point of view data
