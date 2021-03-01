@@ -832,13 +832,27 @@ Normalisation (Scaling)
 - RobustScaler -> (xi - Q1(x)) / (Q3 x) - (Q1 x)
 - minmax dan standard sensitif dgn outlier, robust lebih stabil
 
-DECISION TREE
-- 
-- gini impurity -> 
-	- indeks penilaian, 
+DECISION TREE (20210217 - 00:35:00)
+- Decision tree terdiri dari Root, Node dan Leaves
+- Cara menentukan Node:
+  1) Gini impurity -> 1 = (proba yes)kuadrat - (proba no)kuadrat
 	- rumusnya menggunakan proba yes dan no
+	- gini impurity tiap feature dicari weighted average nya (proba sampel yes+no tiap true dan false / total data)
+	- jika proba yes dan no 50-50, maka gini impurity nya tinggi (0.5) - gini impurity paling jelek karena akan bingung mau ikut keputusan yang mana.
+	- jika proba yes dan no adl 0 atau 1, maka gini impuritinya akan 0
+	- semakin kecil, gini nya maka semakin bagus
+	- impurity = indeks ketidakmurnian -> semakin tidak murni atau semakin bercampur maka nilai gini nya akan semakin tinggi.
+	- jika impurity nya rendah, maka data semakin homogen atau berpihak pada satu saja (yes/no)
 	- feature yang memiliki gini impurity paling kecil akan jd root pertama
-	
+	- node selanjutnya akan memilih feature tersisa dengan gini impurity paling kecil (perhitungannya selalu berdasarkan target)
+	- tree akan berhenti tergantung pada parameter max_depth (kedalaman/level pohon), sample quantity habis, minimum sample split (jumlah total data ketika boleh split)
+
+  2) Entropy -> -P(no)*log2(P(yes)) -P(no)*log2(P(no))
+	- mencari entropy paling kecil
+  3) Information Gain -> entropy(decision leaf) - entropy(feature
+	- mencari information gain paling besar
+
+
 - DT akan berhenti split jika
 	- sudah mencapai max depth
 	- sample habis
@@ -848,6 +862,39 @@ tentukan parameter (leaf, max depth, dll)
 feature nya dicari gini impurity nya, lalu diurutkan jadi tree
 lalu tiap baris data nya baru dimasukkan ke logika tree nya
 
+
+GENERALIZATION
+--> tujuan utama generalization: memperkenalkan sedikit error pada training set, sehingga dia lebih general pada testing nya.
+
+- underfitting ->  bias tinggi, variance rendah, semakin sederhana, semakin underfitting
+	- training score < testing score
+- overfitting -> bias rendah, variance tinggi, semakin kompleks semakin overfitting
+	- training score > testing score
+--> harus menemukan sweet spot
+
+	bias rendah di underfitting -> buruknya performa ML pada train dan test set
+	variance tinggi di overfitting -> perubahan drastis pada nilai prediksi, ketika training set yang digunakan sedikit berbeda
+
+
+
+GENERALIZATION ON LINEAR MODEL (20210218 - 01:15:00)
+- Ridge dan Lasso outputnya adalah slope kombinasi
+- Linear regresi: mengestimasi koefisien dengan rumus linear regresi biasa (meminimalkan RSS)
+- Ridge/Lasso: mengestimasi koefisien dengan rumus linear regresi ditambah ada lambda (meminimalkan RSS dengan faktor lambda*koef)
+
+- bisa pakai Ridge dan Lasso
+	- Ridge(L2 Regularization): reduce effect/magnitude of certain features
+	  - tujuan linear regression adalah mencari minimum RSS
+	  - Ridge selain mencari minimum RSS yang di tambah lambda
+	  - ketika lambda 0 maka Ridge akan jadi linear regression biasa.
+	  - lambda biasanya angka positif di atas 0 (..1000, 100, 10, 0.1, ...)
+	- Lasso(L1 Regularization): make zero effect/magnitude for certain features
+	  - cara kerja hampir sama dengan ridge
+	  - Lasso selain mencari minimum RSS yang di tambah lambda, dimana lambda nya adalah dari nilai absolute beta/koefisien
+	- Elasticnet: gabungan Ridge dan Lasso
+	  - RSS ditambah lambda di lasso dan ridge dengan memakai rasio, akan berat ke lasso dan ridge
+
+- estimasi koefisien (20210218 - 02:25:00)
 
 
 DATA PREPARATION & FEATURE ENGINEERING
@@ -922,3 +969,46 @@ PIPELINE
 
 FEATURE SELECTION
 memilih fitur penting untuk menggeneralisasi dari point of view data
+
+
+MODEL EVALUATION
+1) Accuracy
+
+
+2) Recall
+- recall(-) = TN/TN+FP   1/1+0
+- recall(+) = TP/TP+FN   1/1+0
+
+3) Precision
+
+
+4) F1-Score / Fbeta score
+- kombinasi precision dan recall
+- ga dapat treshold
+
+recall, beta >
+
+5) ROC/AUC
+- TPR (Recall Positive) setinggi mungkin
+- FPR (Recall Negative) sekecil mungkin
+- semakin besar AUC, semakin bagus
+- besar AUC antara 0-1
+
+
+6) PR-Curve
+- Precision Recall Curve
+- Precision dan Recall sebaik mungkin (susah karena ada trade off)
+- PR-C tidak mempedulikan TN
+
+
+FPR = 1 - Recall(-)
+TPR = TP / FN+TP
+
+kebutuhan resampling
+- iya jika data 0 dan 1 karakteristik nya hampir sama
+- tidak jika data 0 dan 1 karakteristiknya berbeda
+
+=>recall mengandung huruf a, maka kita langsung tuju Actual -> bentuknya mendatar/row -> ingin memasukkan orang yang bersalah ke penjara -> berprasangka buruk
+
+=>precision diawali p, maka kita langsung tuju Prediction -> bentuknya menurun/kolom
+-> selektif memilih orang yang akan dimasukkan penjara -> berprasangka baik
