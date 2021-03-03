@@ -705,6 +705,14 @@ LINEAR REGRESSION
 	- SSE = Kulit (residu/unexplained variance)
 
 
+
+SSE = selisih titik data ke garis regresi/prediksi
+SST = selisih titik data ke garis mean
+SSR = selisih titik titik di garis regresi dengan garis mean
+
+Rsquare = SSR dibagi SST, seberapa besar data yang bisa dijelaskan dengan garis linear yang baru. -> Rsquare semakin mendekati satu semakin bagus.
+
+
 MULTIPLE LINEAR REGRESSION
 - kurang lebih sama dengan linear regression
 - feature nya lebih dari satu
@@ -993,6 +1001,9 @@ recall, beta >
 - FPR (Recall Negative) sekecil mungkin
 - semakin besar AUC, semakin bagus
 - besar AUC antara 0-1
+	mendekati 1 bagus
+	kalau tengah random
+	mendekati 0 akan jelek karena prediksinya akan kebalik 
 
 
 6) PR-Curve
@@ -1012,3 +1023,31 @@ kebutuhan resampling
 
 =>precision diawali p, maka kita langsung tuju Prediction -> bentuknya menurun/kolom
 -> selektif memilih orang yang akan dimasukkan penjara -> berprasangka baik
+
+
+EVALUATION METHOD
+- train (val) dan test set --> val set bersembunyi di train ketika proses cross validation
+- cross validation untuk mengecek kualitas model nya bagaimana ketika data training nya digeser2 ketika proses cross validation.
+- kestabilan model bisa diukur dari std/variance nya, semakin kecil semakin stabil
+
+- Hyperparameter Tuning
+	- Grid Search -> kandidatnya adalah kombinasi semua parameter yang dimasukkan.
+	- Randomized Search -> kandidatnya adalah sejumlah max iter yang ditentukan, jumlahnya pasti di bawah jumlah kombinasi grid search
+
+	- GS/RS CV
+	  -> setiap kombinasi parameter akan dicoba dalam beberapa fold.
+	  -> nilai rata2 fold akan menjadi nilai setiap kombinasi parameter untuk dibandinkan dengan kombinasi parameter lainnya.
+	  -> final nya akan dipilih nilai rata2 fold terbaik untuk suatu kombinasi parameter
+
+
+
+ALGORITHM CHAINS
+
+
+
+RMSE -> std / standard error -> dipakai untuk memberikan range, misal RMSE=2, maka jika hasilnya 25, range adalah 25+2 dan 25-2
+MSE -> variance
+Rsquare -> 1 - (SSResidual/SSTotal) = 1 - (SSError/SSTotal)
+
+
+
