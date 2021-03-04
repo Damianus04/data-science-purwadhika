@@ -907,7 +907,7 @@ GENERALIZATION ON LINEAR MODEL (20210218 - 01:15:00)
 
 DATA PREPARATION & FEATURE ENGINEERING
 - Scaling -> untuk data numeric (interval & ration) --> (weight, gaji, usia, LT, LB, dll), scaling tidak boleh untuk
-	- standard scaler
+	- standard scaler -> mean mendekati 0, std nya mendekati 1
 	- minmax scaler
 	- robust scaler
 - Binning -> pengelompokkan range dari data numerik menjadi kategorik (biasanya menjadi ordinal)
@@ -1045,9 +1045,15 @@ ALGORITHM CHAINS
 
 
 
-RMSE -> std / standard error -> dipakai untuk memberikan range, misal RMSE=2, maka jika hasilnya 25, range adalah 25+2 dan 25-2
-MSE -> variance
-Rsquare -> 1 - (SSResidual/SSTotal) = 1 - (SSError/SSTotal)
+REGRESSION EVALUATION
+- Residu adalah hasil kurang ypred - y
+- Rsquare semakin besar semakin bagus, selain itu, semakin kecil semakin bagus karena bicara error.
+- RMSE -> std / standard error -> dipakai untuk memberikan range, misal RMSE=2, maka jika hasilnya 25, range adalah 25+2 dan 25-2
+- MSE -> variance
+- Rsquare -> 1 - (SSResidual/SSTotal) = 1 - (SSError/SSTotal)
+- MAE tidak sensitif terhadap outlier -> tidak ada pengkuadratan -> cenderung memberikan error yang lebih kecil dari MSE
+- RMSPE -> hasil akar rata2 penjumlahan presentase residu dibanding data y -> sensitive outlier
+- MAPE
+- RMSLE -> y yang minus tidak bisa di log, harus memasukkan nilai konstanta
 
-
-
+- regresi tidak pakai stratify karena tidak ada kelas yang harus dibagi proporsinya untuk train dan test
