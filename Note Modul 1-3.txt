@@ -979,7 +979,36 @@ FEATURE SELECTION
 memilih fitur penting untuk menggeneralisasi dari point of view data
 
 
-MODEL EVALUATION
+CLASSIFICATION - MODEL EVALUATION
+--> Confusion Matrix
+- positif dan negatif tergantung kita.
+	1. Accuracy -> paling mudah dihitung, tapi punya banyak kekurangan.
+	2. di dunia nyata false positive dan false negative saling trade off --> tidak bisa dua2nya kecil
+	3. Model dengan False Positive minimal --> Presisi Tinggi
+		- dari data yang diprediksi  i positif, berapa banyak yang benar
+		- kasus imigrasi -> dari yang diprediksi positive (bukan imigran gelap), berapa yang benar? karena akan bahaya jika ada imigran gelap diprediksi positive (bukan imigran gelap).
+		- FORMULA: True Positive/(True Positive + False Positive)
+	4. Model dengan False Negative minimal --> Recall/Sensitivitas Tinggi
+		- kasus covid dan antifraud adalah contoh yang pakai recall
+		- kasus covid -> dari case yang diprediksi negative (tidak kena covid), berapa banyak yang benar? karena akan bahaya jika ada orang yang kena covid tapi diprediksi tidak kena covid.
+		- kasus antifraud -> dari case yang diprediksi negative (bukan fraud), berapa banyak yang benar? karena akan bahaya jika ada orang yang fraud tapi diprediksi tidak melakukan fraud.
+		- kasus analisa sentimen -> dari case yang diprediksi negative (bukan sentimen Bad), berapa banyak yang benar? karena akan berbahaya jika ada sentimen yang ternyata Bad tapi diprediksi Good/Neutral.
+	5. F1-Score 
+	  - Precision dan Recall ketika dicari mean aritmatika nya akan bias karena tidak bisa merangkum nilai P dan R secara akurat, jika P cenderung tinggi dan R rendah, maka rata aritmatika tidak bisa menginformasikan mana yang rendah dan tinggi karena mean aritmatika akan memberikan nilai mean yang tepat berada di tengah P dan R, vice versa
+	  - alternative nya yaitu memakai mean harmonik 2xy/(x+y), dengan ini maka informasi mean nya akan bisa menggambarkan model secara lebih akurat -> jika salah satu elemen terlalu besar dan kecil, maka nilai mean harmonik akan memberikan informasi lebih akurat dengan fokus pada nilai yang lebih kecil --> ini disebut juga F1-Score.
+	  - Precision     f0.5      f1       f2       Recall
+		--> naikkan beta jika ingin mendekati recall
+		--> turunkan beta jika ingin mendekati precision
+	6. Macro & Weighted
+	  - Macro: rata-rata tiap kolom (mean aritmatik) dari precision, recall, f1-score
+	  - Weighted: memakai weighted mean
+		xbar = ( xprecision.sample + xrecall.sample + f1score.sample) / total sample
+	7. Micro
+	  - pada kasus Micro -> precision = recall = f1score = accuracy
+	  - karena jumlah FP dan FN selalu sama maka itu berpengaruh pada penentuan precision, recall, f1score dan accuracy.
+
+
+
 1) Accuracy
 
 
@@ -1044,7 +1073,6 @@ EVALUATION METHOD
 ALGORITHM CHAINS
 
 
-
 REGRESSION EVALUATION
 - Residu adalah hasil kurang ypred - y
 - Rsquare semakin besar semakin bagus, selain itu, semakin kecil semakin bagus karena bicara error.
@@ -1057,3 +1085,20 @@ REGRESSION EVALUATION
 - RMSLE -> y yang minus tidak bisa di log, harus memasukkan nilai konstanta
 
 - regresi tidak pakai stratify karena tidak ada kelas yang harus dibagi proporsinya untuk train dan test
+
+
+IMBALANCE DATASET
+- bisa oversampling/undersampling
+- bisa memakai yang sudah include dalam algoritma (logreg, decision tree, random forest, svm)
+- SMOTE -> membuat syntetic data, Random Oversampling -> menduplikasi data
+- bisa hyperparameter di SMOTE
+
+
+ENSEMBLE
+- ketika semua percobaan dengan berbagai algoritma dengan tuning dsb, maka bisa dicari dengan ensemble model.
+
+
+F1 Score -> fokus ke salah satu kelas
+
+AUC jika fokus ke kedua kelas
+ROC jika fokus ke salah satu kelas (recall curve)
