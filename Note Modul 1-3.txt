@@ -1102,3 +1102,24 @@ F1 Score -> fokus ke salah satu kelas
 
 AUC jika fokus ke kedua kelas
 ROC jika fokus ke salah satu kelas (recall curve)
+
+
+UNSUPERVISED LEARNING
+- Dimensional Reduction
+	- PCA hanya boleh untuk numerical data
+	- merangkum informasi sebanyak mungkin, dalam kolom sesedikit mungkin.
+
+SSD = d1kuadrat + d2kuadrat + ... + dnkuadrat
+var = SSD/n-1
+	- untuk menghilangkan collinearity
+	- memperkecil probabilitas terjadinya overfitting
+	- dapat membantu klasifikasi
+	- PCA bekerja berdasarkan distance
+	- pca.fit(X_scaled) # guru sedang mempelajari ulang materinya
+	  pca.transform(X_scaled) # guru mulai membuat rangkuman baru
+	- FUNGSI: 
+	  - kesampingkan target
+	  - fokus ke feature-> banyak dan multicol
+	  - kita bingung mau pakai kolom mana, kalo feature selection malah ga kepilih yang bagus karena ada feature yang dibuang
+	  - PCA tidak membuang feature tapi merangkum semua feature
+	  - 
