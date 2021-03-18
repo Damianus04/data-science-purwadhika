@@ -480,6 +480,14 @@ MACHINE LEARNING
 - normality test untuk melihat potensi fillna
 
 STATISTIK 
+Numerical Data
+	- discrete: ada batas atas dan bawah, bilangan bulat
+	- continues: tak hingga, hanya bisa diukur, bilangan desimal
+Categorical Data
+	- nominal: urutan data tidak penting
+	- ordinal: bisa diurut dan urutannya penting, tapi tidak bisa diketahui selisih tiap poin data
+
+
 Parameter: angka yang mewakili data dari suatu populasi
 Statistik: angka yang mewakili data dari suatu sample
 Di Statistika, yang kita periksa dinamakan variabel
@@ -1109,8 +1117,8 @@ UNSUPERVISED LEARNING
 	- PCA hanya boleh untuk numerical data
 	- merangkum informasi sebanyak mungkin, dalam kolom sesedikit mungkin.
 
-SSD = d1kuadrat + d2kuadrat + ... + dnkuadrat
-var = SSD/n-1
+	- SSD = d1kuadrat + d2kuadrat + ... + dnkuadrat
+	- var = SSD/n-1
 	- untuk menghilangkan collinearity
 	- memperkecil probabilitas terjadinya overfitting
 	- dapat membantu klasifikasi
@@ -1122,4 +1130,35 @@ var = SSD/n-1
 	  - fokus ke feature-> banyak dan multicol
 	  - kita bingung mau pakai kolom mana, kalo feature selection malah ga kepilih yang bagus karena ada feature yang dibuang
 	  - PCA tidak membuang feature tapi merangkum semua feature
-	  - 
+
+- Clustering
+
+
+
+TEXT MINING
+- Corpus adalah kumpulan dari documents
+
+- Term Matrix
+	- Bag of Words
+	- TF IDF
+	  1) Hitung TF nya dulu, bisa langsung atau pakai ratio
+	  2) IDF = log(no of sentences / no of sentences containing word)
+
+- stemming cocok untuk spam, lemmatization cocok untuk sentiment analysis
+	  
+
+
+Machine Learning Exam - priority
+- https://github.com/RifkyAndisa/Purwadhika-Modul-3/tree/main/Ujian_Modul3_JCDS_JKT_BDG-main --> ada soal lengkapnya.
+- https://github.com/RifkyAndisa/Purwadhika-Modul-3/tree/main/Wrap%20up
+- https://github.com/Matt-krby/Ujian-Modul-3 --> ada soal lengkapnya.
+
+Machine Learning Exam
+- https://github.com/rafdyrizq/Ujian-Modul-3
+- https://github.com/alamalfaris/Heart-Machine-Learning-Project
+- https://github.com/ezrasitorus77/Bank-Customer-Churn-EDA-Modelling
+- https://github.com/NovitaSari04/Ujian_Pemain_Basket
+- https://github.com/laksonodimitrij/Ujian-Modul-3
+- https://github.com/citraput/Heart-Machine-Learning-Project
+- https://github.com/theis19/Purwadhika-Data-Science-Course/tree/master/3.%20Machine%20Learning
+- https://github.com/PriscillaWidjaja/Ujian_Machine-Learning
