@@ -1041,6 +1041,8 @@ recall, beta >
 	mendekati 1 bagus
 	kalau tengah random
 	mendekati 0 akan jelek karena prediksinya akan kebalik 
+- roc auc fokus dua kelas
+  pr curve fokus ke satu kelas
 
 
 6) PR-Curve
