@@ -1164,3 +1164,27 @@ Machine Learning Exam
 - https://github.com/citraput/Heart-Machine-Learning-Project
 - https://github.com/theis19/Purwadhika-Data-Science-Course/tree/master/3.%20Machine%20Learning
 - https://github.com/PriscillaWidjaja/Ujian_Machine-Learning
+
+
+Ujian modul 3 - 28 Maret 2021
+
+Ujian Final exam - 24 Maret 2021
+Ujian terdiri dari 40 soal pilihan ganda dengan mencakup semua materi atau 3 modul yang telah dipelajari. 
+
+Ujian logic test - 23 Maret 2021
+Ujian terdiri atas 60 soal dengan 2 tipe soal, masing-masing soal diberikan waktu untuk menjawab 2 menit.
+Setelah selesai 1 soal dan slide dipindahkan ke slide berikutnya, tidak bisa meminta untuk kembali ke soal sebelumnya.
+Tipe soal 1 : logika gambar
+Tipe soal 2 : Logika penarikan kesimpulan (silogisme dari beberapa premis) 
+Semua soal ujian dalam bahasa inggris.
+
+
+
+RECOMMENDATION SYSTEM
+
+
+- Cosinus Similarity
+	- sudut 0, cos = 1
+	- sudut 90, cos = 0
+	- sudut 180, cos = -1
+	- sudut 270, cos = 0
